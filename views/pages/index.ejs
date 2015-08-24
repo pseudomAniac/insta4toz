@@ -8,6 +8,14 @@
 			<% include ../partials/header %>
 		</header>
 		<main class="row text-capitalize text-info">
+			<div class="jumbotron">
+				<div class="row centre">
+					<span id="slogan" class="centre text-lowercase description">sudo dezigns | wow is just the beginning | <a href="http://www.facebook.com/sudodez">www.facebook.com/sudodez</a></span>
+					<h1 class="centre text-uppercase headline">Welcome</h1>
+					<p class="col-offset-xs-8"></p>
+					<p class="description col-xs-4 text-lowercase text-black">Hello! Welcome to the first sudo dezigns online app. I have tried to pack it with more the one awesome feature so that it will keep you coming back for more. <br /><br /><i class="glyphicon glyphicon-globe"></i><span class="text-black text-info">  Please feel free to leave a comment on our facebook page <a href="http://www.facebook.com/sudodez">www.facebook.com/sudodez</a>.</span></p>
+				</div>
+			</div>
 			<!-- instagram photos will be displayed here -->
 			<div class="row">
 				<% grams.forEach(function (gram) { %>
@@ -23,9 +31,6 @@
 							<div class="comments">
 								<span class="glyphicon glyphicon-comment"></span>
 								<%= gram.comments.count %>
-							</div>
-							<div class="caption">
-								<%= gram.caption.text %>
 							</div>
 						</div>
 					</div>
