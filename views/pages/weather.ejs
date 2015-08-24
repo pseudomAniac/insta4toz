@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/head %>
+	</head>
+	<body class="container">
+		<header class="row">
+			<% include ../partials/header %>
+		</header>
+		<main class="container text-capitalize text-info">
+			<!-- instagram photos will be displayed here -->
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-3 weather-data-widget">
+					<ul class="weather-data-list text-lowercase">
+						<li class="desc"><span class="text-uppercase weather-data-detail">DESCRIPTION:</span> <%= laewd.weather[0].description %></li>
+						<li class="press"><span class="text-uppercase weather-data-detail">PRESSURE:</span> <%= laewd.main.pressure %> hPa</li>
+						<li class="clouds"><span class="text-uppercase weather-data-detail">CLOUD COVER:</span> <%= laewd.clouds.all %> %</li>
+						<li class="humi"><span class="text-uppercase weather-data-detail">HUMIDITY:</span> <%= laewd.main.humidity %> %</li>
+						<li class="w_speed"><span class="text-uppercase weather-data-detail">WIND SPEED:</span> <%= laewd.wind.speed %> m/sec</li>
+						<li class="w_dir"><span class="text-uppercase weather-data-detail">WIND DIRECTION:</span> <%= laewd.wind.deg %> deg</li>
+						<li class="rain_volume"><span class="text-uppercase weather-data-detail">RAIN VOLUME:</span> <%= laewd.main.pressure %> mm</li>
+						<li class="date"><span class="text-uppercase weather-data-detail"><%= laewd.dt %></span></li>
+						<li class="city bordered-circle text-uppercase text-center" title="<%= laewd.name %>"><%= laewd.name %> </li>
+						<li class="temp bordered-circle text-uppercase text-center" title="Temp."><%= laewd.main.temp %> &#176;C</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		<footer class="clear container-fluid">
+			<% include ../partials/footer %>
+		</footer>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			// CITY NAME
+			var city = $("li.city").text();
+
+			if (city.length > 3) {
+				var tempCity = city;
+				city = "";
+				for (var i=0; i<3; i++) {
+					city += tempCity.charAt(i);
+				}
+			}
+			$("li.city").text(city);
+
+			// timestamp
+			var unxdate = $("li.date").text();
+			var date = new Date(unxdate*1000);
+			var month = date.getMonth();
+			var day = date.getDate();
+			var hours = date.getHours();
+
+			var newDate = hours + ":00 HOURS "; 
+			$("li.date>span").text("Last Updated: " + newDate);
+		});
+		</script>
+	</body>
+</html>
