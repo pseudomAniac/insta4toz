@@ -6,6 +6,7 @@ var weather = require("openweather-apis");
 app.use(express.static(__dirname + "/public"));
 
 app.set('view engine','ejs');
+app.set('port', (process.env.PORT || 5000))
 
 app.get('/', function(req,res){
 	// res.render('pages/index');
@@ -52,5 +53,6 @@ app.get('/weather', function(req,res) {
 	// });
 });
 
-app.listen(6395);
-console.log("app started at http://localhost:6395/");
+app.listen(app.get('port'), function() {
+	console.log("app started at " + app.get('port'));
+});
