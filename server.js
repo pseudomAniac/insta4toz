@@ -52,5 +52,5 @@ app.get('/weather', function(req,res) {
 	// });
 });
 
-app.listen(8080);
-console.log("app started at http://localhost:8080/");
+app.listen(6395);
+console.log("app started at http://localhost:6395/");
