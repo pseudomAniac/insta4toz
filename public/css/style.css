@@ -83,9 +83,12 @@ span.weather-data-detail {
 }
 .headline {
     font-family: Oswald Lobster;
+    color: aliceblue;
+    text-shadow: 1px 1px 2px cadetblue;
 }
 .description {
     font-family: "Dancing Script" Sans;
+    color:azure;
 }
 .centre {
     margin-right: auto;
@@ -93,9 +96,10 @@ span.weather-data-detail {
     display: table;
 }
 .jumbotron {
-    background-image: url("https://scontent.cdninstagram.com/hphotos-xaf1/t51.2885-15/e15/11357922_556474401158761_418549621_n.jpg");
-    background-position-y: 63em;
+    background-image: url("https://slyvestery.files.wordpress.com/2015/08/flower.jpg");
     background-size: cover;
+    background-position-y: 0em;
+    border-radius: 0;
 }
 #slogan {
     margin-bottom: -2.25em;
