@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Rufina|Josefin+Sans);
 body {
 	padding-top: 50px;
 }
@@ -82,13 +83,18 @@ span.weather-data-detail {
     text-shadow: 1px 1px 2px black;
 }
 .headline {
-    font-family: Oswald Lobster;
+    font-family: 'Oswald','Lobster','Rufina',serif;
     color: aliceblue;
     text-shadow: 1px 1px 2px cadetblue;
 }
 .description {
-    font-family: "Dancing Script" Sans;
+    font-family: "Dancing Script", 'Josefin Sans', sans-serif;
     color:azure;
+}
+#slogan {
+    color: black;
+    float: left;
+    font-family: 'Josefin Sans', 'Rufina', serif;
 }
 .centre {
     margin-right: auto;
@@ -100,10 +106,6 @@ span.weather-data-detail {
     background-size: cover;
     background-position-y: 0em;
     border-radius: 0;
-}
-#slogan {
-    margin-bottom: -2.25em;
-    color: black;
 }
 .text-black {
     color: black;
