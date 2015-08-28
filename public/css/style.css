@@ -110,3 +110,9 @@ span.weather-data-detail {
 .text-black {
     color: black;
 }
+div.emphasize {
+    padding-bottom: 2em;
+    background-color: chartreuse;
+    padding-top: 2em;
+    margin-bottom: 2em;
+}

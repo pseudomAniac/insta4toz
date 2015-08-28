@@ -14,10 +14,18 @@ app.get('/', function(req,res){
 	// ig.media_popular(function(err, medias, remaining, limit) {
 	// 	res.render('pages/index', {grams: medias});
 	// });
-	
-	ig.tag_media_recent('manusday', function(err, medias, pagination, remaining, limit) {
-		res.render('pages/index', {grams: medias});
+	var tags = ['manusday', 'pngup', 'nipsday', 'nips','instapng', 'sudo', 'gulfday','dday','tgif', 'manus', 'tsunam', 'salamist', 'lewasogeri', 'turtle', 'turtles', 'tortoise'], tags_query = new Object();
+	var tagged = tags[Math.floor(Math.random()*tags.length)];
+	ig.tag_media_recent(tagged, function(err, medias, pagination, remaining, limit) {
+		res.render('pages/index', {grams: medias, tag_used: tagged});
 	});
+	// for (var i=0; i<tags.length; i++) {
+	// 	tags_query[i]=ig.tag_media_recent(tags[i], function(err, medias, pagination, remaining, limit) {
+	// 		// res.render('pages/index', {grams: medias});
+	// 		return medias;
+	// 	});
+	// };
+	// res.render('pages/index', {grams: tags_query});
 });
 
 app.get('/newguinea', function(req,res){
