@@ -10,7 +10,12 @@ app.set('port', (process.env.PORT || 5000))
 
 app.get('/', function(req,res){
 	// res.render('pages/index');
-	ig.media_popular(function(err, medias, remaining, limit) {
+
+	// ig.media_popular(function(err, medias, remaining, limit) {
+	// 	res.render('pages/index', {grams: medias});
+	// });
+	
+	ig.tag_media_recent('manusday', function(err, medias, pagination, remaining, limit) {
 		res.render('pages/index', {grams: medias});
 	});
 });
@@ -25,6 +30,10 @@ ig.use({
 	client_id: '70267f0181bb4fd6a81440f0f0939b76',
 	client_secret: 'bd71b76f1912441dac0d5d4850b65826'
 });
+// ig.use({
+// 	user_id: '1111105774',
+// 	username: 'sudodez'
+// });
 
 app.get('/weather', function(req,res) {
 

@@ -105,7 +105,7 @@ span.weather-data-detail {
     background-image: url("https://slyvestery.files.wordpress.com/2015/08/flower.jpg");
     background-size: cover;
     background-position-y: 0em;
-    border-radius: 0;
+    border-radius: 0 !IMPORTANT;
 }
 .text-black {
     color: black;
