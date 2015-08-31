@@ -14,18 +14,11 @@ app.get('/', function(req,res){
 	// ig.media_popular(function(err, medias, remaining, limit) {
 	// 	res.render('pages/index', {grams: medias});
 	// });
-	var tags = ['manusday', 'pngup', 'nipsday', 'nips','instapng', 'sudo', 'gulfday','dday','tgif', 'manus', 'tsunam', 'salamist', 'lewasogeri', 'turtle', 'turtles', 'tortoise'], tags_query = new Object();
+	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday'], tags_query = new Object();
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function(err, medias, pagination, remaining, limit) {
-		res.render('pages/index', {grams: medias, tag_used: tagged});
+		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
 	});
-	// for (var i=0; i<tags.length; i++) {
-	// 	tags_query[i]=ig.tag_media_recent(tags[i], function(err, medias, pagination, remaining, limit) {
-	// 		// res.render('pages/index', {grams: medias});
-	// 		return medias;
-	// 	});
-	// };
-	// res.render('pages/index', {grams: tags_query});
 });
 
 app.get('/newguinea', function(req,res){
@@ -38,10 +31,10 @@ ig.use({
 	client_id: '70267f0181bb4fd6a81440f0f0939b76',
 	client_secret: 'bd71b76f1912441dac0d5d4850b65826'
 });
-// ig.use({
-// 	user_id: '1111105774',
-// 	username: 'sudodez'
-// });
+
+app.get('/template', function(req,res) {
+	res.render('pages/template');
+});
 
 app.get('/weather', function(req,res) {
 
@@ -56,6 +49,7 @@ app.get('/weather', function(req,res) {
 		// console.log(data);
 		res.render('pages/weather', {laewd: data});
 	});
+
 
 	// weather.setCity('Goroka');
 	// weather.getAllWeather(function (err, data) {

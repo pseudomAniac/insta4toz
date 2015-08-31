@@ -112,7 +112,9 @@ span.weather-data-detail {
 }
 div.emphasize {
     padding-bottom: 2em;
-    background-color: chartreuse;
+    background-color: #772953;
     padding-top: 2em;
     margin-bottom: 2em;
+    border-top: 2px solid darkgray;
+    border-bottom: 12px solid black;
 }

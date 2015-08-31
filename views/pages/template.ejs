@@ -18,38 +18,9 @@
 			<!-- instagram photos will be displayed here -->
 			<div class="row">
 				<div class="emphasize text-center col-xs-12">
-					<strong class="text-info h3">"#<%= tag_used %>"</strong>
+					<strong class="text-info h3">"#tags"</strong>
 					<div class="text-info">All photos shown in this page were randomly generated with this tag.</div>
 				</div>
-				<div class="nav navbar col-xs-offset-3" role="menu">
-					<span>These are some tags we have available:</span>
-					<ul class="list-unstyled list-inline">
-						<% for(var i=0; i<tag.length; i++){ %>
-							<% if (tag[i] === tag_used) {} else { %>
-							<li><a href="#" title="this feature will be added in the next release"><%=tag[i] %></li>
-							<%}%>
-						<%};%>
-					</ul>
-				</div>
-			</div>
-			<div class="row">
-				<% grams.forEach(function (gram) { %>
-					<div class="instagram-pic col-sm-3">
-						<a href="<%= gram.link %>" target="_blank">
-							<img class="img-responsive" src="<%= gram.images.standard_resolution.url %>"></img>
-						</a>
-						<div class="instagram-bar" id="<%= gram.id %>">
-							<div class="likes">
-								<span class="glyphicon glyphicon-heart"></span>
-								<%= gram.likes.count %>
-							</div>
-							<div class="comments">
-								<span class="glyphicon glyphicon-comment"></span>
-								<%= gram.comments.count %>
-							</div>
-						</div>
-					</div>
-				<%	}) %>
 			</div>
 		</main>
 		<footer class="clear container-fluid">
