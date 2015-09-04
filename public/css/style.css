@@ -92,7 +92,7 @@ span.weather-data-detail {
     color:azure;
 }
 #slogan {
-    color: black;
+    color: white;
     float: left;
     font-family: 'Josefin Sans', 'Rufina', serif;
 }
@@ -102,13 +102,13 @@ span.weather-data-detail {
     display: table;
 }
 .jumbotron {
-    background-image: url("https://slyvestery.files.wordpress.com/2015/08/flower.jpg");
     background-size: cover;
     background-position-y: 0em;
     border-radius: 0 !IMPORTANT;
+    background-image: url("https://slyvestery.files.wordpress.com/2015/08/20150314_071544-editted2.jpg");
 }
-.text-black {
-    color: black;
+.text-white {
+    color: white;
 }
 div.emphasize {
     padding-bottom: 2em;
@@ -117,4 +117,8 @@ div.emphasize {
     margin-bottom: 2em;
     border-top: 2px solid darkgray;
     border-bottom: 12px solid black;
+}
+.tag-list-container {
+    margin-left: 1em;
+    width: auto;
 }

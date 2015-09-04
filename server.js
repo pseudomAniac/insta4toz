@@ -14,7 +14,7 @@ app.get('/', function(req,res){
 	// ig.media_popular(function(err, medias, remaining, limit) {
 	// 	res.render('pages/index', {grams: medias});
 	// });
-	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday'], tags_query = new Object();
+	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function(err, medias, pagination, remaining, limit) {
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});

@@ -8,11 +8,11 @@
 			<% include ../partials/header %>
 		</header>
 		<main class="container-fluid text-info">
-			<div class="jumbotron ">
+			<div class="jumbotron">
 				<div class="row">
 					<span id="slogan" class="text-lowercase description">sudo dezigns | wow is just the beginning | www.facebook.com/sudodez</span>
 					<h1 class="text-uppercase headline"><i class='glyphicon glyphicon-fire small' style="color: purple;text-shadow: 2px 2px 2px azure;"></i>Welcome</h1>
-					<p class="description col-md-offset-8 text-black">Hello! Welcome to the first sudo dezigns online app. I have tried to pack it with more the one awesome feature so that it will keep you coming back for more. <br /><br /><i class="glyphicon glyphicon-globe"></i><span class="text-black text-info"> Please feel free to leave a comment on our facebook page <a href="http://www.facebook.com/sudodez">www.facebook.com/sudodez</a>.</span></p>
+					<p class="description col-md-4 text-white">Hello! Welcome to the first sudo dezigns online app. I have tried to pack it with more the one awesome feature so that it will keep you coming back for more. <br /><br /><i class="glyphicon glyphicon-globe"></i><span class="text-black text-info"> Please feel free to leave a comment on our facebook page <a href="http://www.facebook.com/sudodez">www.facebook.com/sudodez</a>.</span></p>
 				</div>
 			</div>
 			<!-- instagram photos will be displayed here -->
@@ -21,9 +21,9 @@
 					<strong class="text-info h3">"#<%= tag_used %>"</strong>
 					<div class="text-info">All photos shown in this page were randomly generated with this tag.</div>
 				</div>
-				<div class="nav navbar col-xs-offset-3" role="menu">
+				<div class="nav navbar tag-list-container" role="menu">
 					<span class="">These are some tags we have available:</span>
-					<ul class="list-unstyled list-inline">
+					<ul class="btn list-unstyled list-inline">
 						<% for(var i=0; i<tag.length; i++){ %>
 							<% if (tag[i] === tag_used) {} else { %>
 							<li><a href="#" title="this feature will be added in the next release"><%=tag[i] %></li>
