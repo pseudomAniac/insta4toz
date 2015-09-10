@@ -11,26 +11,27 @@ app.set('port', (process.env.PORT || 5000))
 app.get('/', function(req,res){
 	// res.render('pages/index');
 
-	// ig.media_popular(function(err, medias, remaining, limit) {
+	// ig.media_popular(function (err, medias, remaining, limit) {
 	// 	res.render('pages/index', {grams: medias});
 	// });
 	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
-	ig.tag_media_recent(tagged, function(err, medias, pagination, remaining, limit) {
+	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
 	}); 
 });
 
 app.get('/instacarousel', function(req, res) {
-	var tags = ['himalayas','cityphotography', 'landscapephotography', 'scenic'];
+	var tags = ['cityphotography', 'landscapephotography', 'architectures', 'paratroopers'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
-	ig.tag_media_recent("instapng", function (err, medias, pagination, remaining, limit) {
+	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
 		res.render('pages/instacarousel', {grams: medias, tag_used: tagged, tag: tags });
+		console.log(medias);
 	})
 })
 
 app.get('/newguinea', function(req,res){
-	ig.media_search(-6.733543, 147.001667, 5000, function(err, medias, remaining, limit) {
+	ig.media_search(-6.733543, 147.001667, 5000, function (err, medias, remaining, limit) {
 		res.render('pages/newguinea', {grams: medias});
 	});
 });
