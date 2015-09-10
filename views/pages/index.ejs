@@ -21,15 +21,28 @@
 					<strong class="text-info h3">"#<%= tag_used %>"</strong>
 					<div class="text-info">All photos shown in this page were randomly generated with this tag.</div>
 				</div>
-				<div class="nav navbar tag-list-container" role="menu">
-					<span class="">These are some tags we have available:</span>
-					<ul class="btn list-unstyled list-inline">
-						<% for(var i=0; i<tag.length; i++){ %>
-							<% if (tag[i] === tag_used) {} else { %>
-							<li><a href="#" title="this feature will be added in the next release"><%=tag[i] %></li>
-							<%}%>
-						<%};%>
-					</ul>
+				<button id="tag-plus" class="btn-lg btn-tag btn-danger" data-toggle="modal" data-target="#tagslist"><span class="glyphicon glyphicon-plus"></span></button>
+				<div class="modal fade" role="dialog" id="tagslist">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button class="close" data-dismiss="modal" type="button">&times;</button>
+								<h4 class="modal-title">Available Tags</h4>
+							</div>
+							<div class="modal-body">
+										<ul class="list-inline tag-list-container">
+								<% for(var i=0; i<tag.length; i++){ %>
+									<% if (tag[i] === tag_used) {} else { %>
+											<li><a href="#"><%=tag[i] %></li>
+									<%}%>
+								<%};%>
+										</ul>
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-default" type="button" data-dismiss="modal"><span class="glyphicon glyphicon-trash"></span></button>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">

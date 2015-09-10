@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/head %>
+	</head>
+	<body class="">
+		<header class="row">
+			<% include ../partials/header %>
+		</header>
+		<main class="container-fluid col-xs-12 col-sm-4">
+			<div class="carousel slide" id="carousel-demo" data-ride="carousel">
+				<ol class="carousel-indicators">
+				<% var numberOfSlides = 9; %>
+				<% for (var count=0; count<numberOfSlides; count++) {%>
+					<li data-target="#carousel-demo" data-slide-to="<% count %>"></li>
+				<% }; %>
+					<!-- <li data-target="#carousel-demo" data-slide-to="1"></li>
+					<li data-target="#carousel-demo" data-slide-to="2"></li>
+					<li data-target="#carousel-demo" data-slide-to="3"></li>
+					<li data-target="#carousel-demo" data-slide-to="4"></li> -->
+				</ol>
+				<div class="carousel-inner">
+					<% grams.some(function (gram, index) { %>
+					<div class="item" id="carousel-image-<%= index %>">
+						<img src="<%= gram.images.standard_resolution.url %>" alt="<%= gram.user.username %>" />
+						<div class="carousel-caption">
+							<p class="description"><%= gram.caption.text %></p>
+						</div>
+					</div>
+					<% return index > numberOfSlides; }); %>
+				</div>
+				<a class="left carousel-control" href="#carousel-demo" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-demo" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
+		</main>
+		<footer class="clear container-fluid">
+			<% include ../partials/footer %>
+		</footer>
+	</body>
+	<script>
+	$(".item:first").removeClass('left next').addClass('active');
+	</script>
+</html>

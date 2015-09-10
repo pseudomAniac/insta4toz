@@ -18,8 +18,16 @@ app.get('/', function(req,res){
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function(err, medias, pagination, remaining, limit) {
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
-	});
+	}); 
 });
+
+app.get('/instacarousel', function(req, res) {
+	var tags = ['himalayas','cityphotography', 'landscapephotography', 'scenic'];
+	var tagged = tags[Math.floor(Math.random()*tags.length)];
+	ig.tag_media_recent("instapng", function (err, medias, pagination, remaining, limit) {
+		res.render('pages/instacarousel', {grams: medias, tag_used: tagged, tag: tags });
+	})
+})
 
 app.get('/newguinea', function(req,res){
 	ig.media_search(-6.733543, 147.001667, 5000, function(err, medias, remaining, limit) {
