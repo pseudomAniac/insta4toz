@@ -138,3 +138,61 @@ div.emphasize {
     border-bottom: 6px black solid;
     background-image:linear-gradient(45deg,white 2px,navy 5px,transparent 50%),linear-gradient(90deg,white 12px,darkorange 15px, transparent 105%),linear-gradient(-90deg,gold 25px, azure 215px,transparent 45%)
 }
+.black-gold {
+    background-image: linear-gradient(45deg, silver 25%, transparent 25%),linear-gradient(135deg, gold 25%, transparent 25%), linear-gradient(225deg, red 25%, transparent 25%), linear-gradient(315deg, black 25%, transparent 25%);
+    border: 2px solid black;
+    background-size: 100px 100px;
+}
+.png-flag {
+    background-image: linear-gradient(31deg,black 50%,red 50%);
+    border: 2px solid black;
+    background-size: 500px 300px;
+    height: 300px;
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+}
+.stars {
+    width: 500px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3em;
+    border: 2px solid black;
+    background: linear-gradient(25deg,black 5%,black 5%, transparent 5%),linear-gradient(115deg,black 5%,black 10%, transparent 12%),linear-gradient(245deg,darkgray 5%, gray 10%, transparent 12%),linear-gradient(337deg,gray 5%,black 5%, transparent 5%),radial-gradient(purple, azure)darkgrey;
+    background-size: 45px;
+    background-position: 20px 20px;
+}
+.png-flag > .glyphicon-star {
+    color: #ffffff;
+    float: left;
+    position: relative;
+}
+.star-1, .star-2, .star-3, .star-5 {
+    font-size: 3em;
+}
+.star-1, .star-3 {
+    top: 4em;
+    left: 1em;
+}
+.star-2 {
+    top: 2.5em;
+    left: 1em;
+}
+.star-4 {
+    top: 16em;
+}
+.star-5 {
+    top: 5.75em;
+    left: -1.5em;
+}
+span.fourtieth {
+    color: gold;
+    font-family: Ubuntu;
+    font-size: 8em;
+    float: left;
+    position: relative;
+    display: block;
+    left: 40px;
+}
