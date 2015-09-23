@@ -2,11 +2,23 @@ var express = require("express");
 var app = express();
 var ig = require("instagram-node").instagram();
 var weather = require("openweather-apis");
+var pg = require("pg");
 
 app.use(express.static(__dirname + "/public"));
 
 app.set('view engine','ejs');
 app.set('port', (process.env.PORT || 5000))
+
+app.get('/db', function (req, res) {
+	pg.connect(process.env.DATABASE_URL, function (err, client, done) {
+		client.query('SELECT * FROM test_table', function (err, result) {
+			done();
+			if (err) { console.error(err); response.send("Error " + err); }
+			else { response.render('pages/db', { results: result.rows }); }
+		});
+	});
+});
+
 
 app.get('/', function(req,res){
 	// res.render('pages/index');
@@ -26,7 +38,14 @@ app.get('/instacarousel', function(req, res) {
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
 		res.render('pages/instacarousel', {grams: medias, tag_used: tagged, tag: tags });
-		console.log(medias);
+	})
+})
+
+app.get('/pngindependence', function(req, res) {
+	var tags = ['papuanewguinea','pngindependence','40thindependence','independencefever','sept16','september16'];
+	var tagged = tags[Math.floor(Math.random()*tags.length)];
+	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
+		res.render('pages/instacarousel', {grams: medias, tag_used: tagged, tag: tags });
 	})
 })
 

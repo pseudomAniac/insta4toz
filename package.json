@@ -9,6 +9,7 @@
   "author": "sylvery45@!",
   "license": "MIT",
   "dependencies": {
+    "pg":"^4.x",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "instagram-node": "^0.5.7",
