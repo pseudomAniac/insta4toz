@@ -9,23 +9,7 @@ app.use(express.static(__dirname + "/public"));
 app.set('view engine','ejs');
 app.set('port', (process.env.PORT || 5000))
 
-app.get('/db', function (req, res) {
-	pg.connect(process.env.DATABASE_URL, function (err, client, done) {
-		client.query('SELECT * FROM test_table', function (err, result) {
-			done();
-			if (err) { console.error(err); response.send("Error " + err); }
-			else { response.render('pages/db', { results: result.rows }); }
-		});
-	});
-});
-
-
 app.get('/', function(req,res){
-	// res.render('pages/index');
-
-	// ig.media_popular(function (err, medias, remaining, limit) {
-	// 	res.render('pages/index', {grams: medias});
-	// });
 	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {

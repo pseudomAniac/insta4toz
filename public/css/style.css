@@ -105,17 +105,15 @@ span.weather-data-detail {
     background-size: cover;
     background-position-y: 0em;
     border-radius: 0 !IMPORTANT;
-    background-image: url("https://slyvestery.files.wordpress.com/2015/08/20150314_071544-editted2.jpg");
+    background-image: linear-gradient(45deg, red 9%, black 8%, transparent 50%), linear-gradient(180deg, black 25%, transparent 100%),linear-gradient(90deg, white 20%, transparent 22%);
 }
 .text-white {
     color: white;
 }
 div.emphasize {
-    padding-bottom: 2em;
+    padding: 0.5em 0;
     background-color: #772953;
-    padding-top: 2em;
-    margin-bottom: 2em;
-    border-top: 2px solid darkgray;
+    border-top: 2px solid #cccccc;
     border-bottom: 12px solid black;
 }
 .tag-list-container {
@@ -199,4 +197,12 @@ span.fourtieth {
     position: relative;
     display: block;
     left: 40px;
+}
+.instagram-bar .author {
+    right: 0.5em;
+    top: 1em;
+    position: absolute;
+    background-color: black;
+    padding: 0.5em 1em;
+    color: white;
 }
