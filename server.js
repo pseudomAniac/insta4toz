@@ -49,7 +49,8 @@ app.get('/template', function(req,res) {
 });
 
 app.post('/template', function(req,res) {
-	res.send(console.log("hello wordl! mAniac's here :D :)"));
+	res.render('pages/template');
+	// res.send(console.log("hello wordl! mAniac's here :D :)"));
 })
 
 app.get('/weather', function(req,res) {
