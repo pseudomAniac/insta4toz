@@ -60,20 +60,5 @@
 	</body>
 	<script>
 		$(".item:first").removeClass('left next').addClass('active');
-		var invocation = new XMLHttpRequest(),
-				method = 'GET',
-				url = 'http://www.looppng.com/section/40068/rss';
-   
-    invocation.open(method, url, true);
-    invocation.onreadystatechange = function () {
-	    if ( 4 != invocation.readyState ) {
-	        return "!4";
-	    }
-	    if ( 200 != invocation.status ) {
-	        return "!200";
-	    }
-	    console.log( invocation.responseText );
-		};
-    invocation.send();
 	</script>
 </html>
