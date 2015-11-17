@@ -16,7 +16,14 @@ app.get('/', function(req,res){
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
 	}); 
 });
-
+app.get('/tag/:tag?', function (req, res) {
+	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
+	var tagged = tags[Math.floor(Math.random()*tags.length)];
+	var tag = req.params.tag;
+	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
+		res.render('pages/index', {grams: medias, tag_used: tag, tag: tags});
+	})
+})
 app.get('/instacarousel', function(req, res) {
 	var tags = ['cityphotography', 'landscapephotography', 'architectures', 'paratroopers'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
