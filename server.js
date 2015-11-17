@@ -21,7 +21,7 @@ app.get('/tag/:tag?', function (req, res) {
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	var tag = req.params.tag;
 	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
-		res.render('pages/index', {grams: medias, tag_used: tag, tag: tags});
+		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
 	})
 })
 app.get('/instacarousel', function(req, res) {
