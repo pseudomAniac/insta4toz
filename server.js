@@ -10,15 +10,21 @@ app.set('view engine','ejs');
 app.set('port', (process.env.PORT || 5000))
 
 app.get('/', function(req,res){
-	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
+	var tags = ['pngup','samoa','nauru','tahiti','vanuatu','islandjewel', 'tonga', 'kiribati', 'shark'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
 	}); 
 });
-app.get('/tag/:tag?', function (req, res) {
-	var tags = ['manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'], tags_query = new Object();
+app.get('/app', function(req,res){
+	var tags = ['pngup','samoa','nauru','tahiti','vanuatu','islandjewel', 'tonga', 'kiribati', 'shark'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
+	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
+		res.render('pages/app', {grams: medias, tag_used: tagged, tag:tags});
+	}); 
+});
+app.get('/tag/:tag?', function (req, res) {
+	var tags = ['paris', 'france', 'explosion', 'bombings', 'manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'];
 	var tag = req.params.tag;
 	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
 		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
