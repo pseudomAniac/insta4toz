@@ -16,20 +16,13 @@ app.get('/', function(req,res){
 		res.render('pages/index', {grams: medias, tag_used: tagged, tag:tags});
 	}); 
 });
-app.get('/app', function(req,res){
-	var tags = ['pngup','samoa','nauru','tahiti','vanuatu','islandjewel', 'tonga', 'kiribati', 'shark'];
-	var tagged = tags[Math.floor(Math.random()*tags.length)];
-	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
-		res.render('pages/app', {grams: medias, tag_used: tagged, tag:tags});
-	}); 
-});
-app.get('/tag/:tag?', function (req, res) {
-	var tags = ['paris', 'france', 'explosion', 'bombings', 'manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'];
-	var tag = req.params.tag;
-	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
-		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
-	})
-})
+// app.get('/tag/:tag?', function (req, res) {
+// 	var tags = ['paris', 'france', 'explosion', 'bombings', 'manusday', 'pngup', 'nipsday', 'sepikday','gulfday','pngswag','pnggirl','tahiti','pacificjewel','islandjewel', 'sudo', 'instapng', 'yesyabarrah'];
+// 	var tag = req.params.tag;
+// 	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
+// 		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
+// 	})
+// })
 app.get('/instacarousel', function(req, res) {
 	var tags = ['cityphotography', 'landscapephotography', 'architectures', 'paratroopers'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
@@ -60,11 +53,6 @@ ig.use({
 app.get('/template', function(req,res) {
 	res.render('pages/template');
 });
-
-app.post('/template', function(req,res) {
-	res.render('pages/template');
-	// res.send(console.log("hello wordl! mAniac's here :D :)"));
-})
 
 app.get('/weather', function(req,res) {
 
