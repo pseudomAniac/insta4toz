@@ -61,25 +61,41 @@ app.get('/weather', function(req,res) {
 	weather.setCity('Lae');
 	weather.setUnits('metric');
 	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
+	// set group info here - only 3city IDs accepted atm
+	weather.setGroup([2088122,2092740,2087894]);
 	
 	// getter methods
 	weather.getAllWeather(function (err, data) {
-		// console.log(data);
-		res.render('pages/weather', {laewd: data});
+		if (!err) {
+			// console.log(data);
+			res.render('pages/weather', {laewd: data});
+		} else {
+			console.log('ERROR ENCOUNTERED!\n\n',err);
+		}
 	});
+});
 
+app.get('/weather-group', function (req, res) {
+	weather.setLang('en');
+	weather.setUnits('metric');
+	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
+	var tags = ['cityphotography', 'landscapephotography', 'architectures'],
+			tagged = tags[Math.floor(Math.random()*tags.length)],
+			instacarousel = function () {
+				ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
+					return {grams: medias, tag_used: tagged, tag: tags };
+			});
+			}
 
-	// weather.setCity('Goroka');
-	// weather.getAllWeather(function (err, data) {
-	// 		// console.log(data);
-	// 		res.render('pages/weather', {gkawd: data});
-	// 	});
-
-	// weather.setCity('Rabaul');
-	// weather.getAllWeather(function (err, data) {
-	// 	// console.log(data);
-	// 	res.render('pages/weather', {rabwd: data});
-	// });
+	weather.getGroupWeather(function (err, data) {
+		if (!err) {
+			console.log(data);
+			res.render('pages/weather-group', {all: data});
+			// res.send(instacarousel())
+		} else {
+			console.log('ERROR ENCOUNTERED!\n\n',err);
+		}
+	})
 });
 
 app.listen(app.get('port'), function() {

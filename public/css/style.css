@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Rufina|Josefin+Sans);
 body {
-	padding-top: 50px;
+	padding-top: 60px;
 }
 footer {
 	padding: 50px;
@@ -47,11 +47,6 @@ div.comments {
     list-style: none;
 }
 
-.weather-data-widget>ul>li {
-    list-style: none;
-    padding-left: 3em;
-}
-
 .bordered-circle {
     background-color: black;
     border-radius: 50%;
@@ -59,9 +54,21 @@ div.comments {
     width: 5em;
     border: 1px solid white;    
     float: left;
-    position: absolute;
-    padding-left: 2px !IMPORTANT;
+    position: relative;
+    padding-left: 10px !IMPORTANT;
     padding-top: 25px;
+}
+
+.bordered-rectangle {
+    background-color: black;
+    border-radius: 0%;
+    width: 12em;
+    border: 1px solid white;
+    float: left;
+    position: relative;
+    padding: 10px 10px;
+    top: 1em;
+    right: 1em;
 }
 
 li.city{
@@ -205,4 +212,7 @@ span.fourtieth {
     background-color: black;
     padding: 0.5em 1em;
     color: white;
+}
+.extra-padding {
+    border-right: 25px solid azure;
 }

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/head %>
+	</head>
+	<body class="container">
+		<header class="row">
+			<% include ../partials/header %>
+		</header>
+		<main class="container text-capitalize text-info">
+			<div class="row">
+			<% for (var i=0; i<all.cnt; i++) {%>
+				<div class="col-md-4 well-lg weather-data-widget extra-padding">
+					<ul class="weather-data-list text-lowercase list-unstyled">
+						<li class="desc"><span class="text-uppercase weather-data-detail">DESCRIPTION:</span> <%= all.list[i].weather[0].description %></li>
+						<li class="press"><span class="text-uppercase weather-data-detail">PRESSURE:</span> <%= all.list[i].main.pressure %> hPa</li>
+						<li class="clouds"><span class="text-uppercase weather-data-detail">CLOUD COVER:</span> <%= all.list[i].clouds.all %> %</li>
+						<li class="humi"><span class="text-uppercase weather-data-detail">HUMIDITY:</span> <%= all.list[i].main.humidity %> %</li>
+						<li class="w_speed"><span class="text-uppercase weather-data-detail">WIND SPEED:</span> <%= all.list[i].wind.speed %> m/sec</li>
+						<li class="w_dir"><span class="text-uppercase weather-data-detail">WIND DIRECTION:</span> <%= all.list[i].wind.deg %> deg</li>
+						<li class="rain_volume"><span class="text-uppercase weather-data-detail">RAIN VOLUME:</span> <%= all.list[i].main.pressure %> mm</li>
+						<li class="date"><span class="text-uppercase weather-data-detail"><%= all.list[i].dt %></span></li>
+						<div class="pull-right list-unstyled">
+							<li class="bordered-rectangle text-uppercase text-center" title="<%= all.list[i].name %>"><%= all.list[i].name %> </li>
+							<li class="bordered-circle text-uppercase text-center" title="Temperature"><%= all.list[i].main.temp %> &#176;C</li>
+						</div>
+					</ul>
+				</div>
+			<% } %>
+			</div>
+		</main>
+		<footer class="clear container-fluid">
+			<% include ../partials/footer %>
+		</footer>
+		<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function() {
+			// CITY NAME
+			var city = $("li.city").text();
+			for (var j=0; j<city.length; j++) {
+				if (city.length > 3) {
+					var tempCity = city;
+					city = "";
+					for (var i=0; i<3; i++) {
+						city += tempCity.charAt(i);
+					}
+				}
+				$("li.city:nth-child("+j +1 +")").text(city);
+			}
+
+			// timestamp
+			var unxdate = $("li.date>span").text();
+			var date = new Date(unxdate*1000);
+			var month = date.getMonth();
+			var day = date.getDate();
+			var hours = date.getHours();
+
+			var newDate = hours + ":00 HOURS "; 
+			$("li.date>span").text("Last Updated: " + newDate);
+		});
+		</script>
+	</body>
+</html>
