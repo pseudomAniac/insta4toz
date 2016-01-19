@@ -54,6 +54,8 @@ app.get('/template', function(req,res) {
 	res.render('pages/template');
 });
 
+// weather - deprecated
+/* 
 app.get('/weather', function(req,res) {
 
 	// setter methods
@@ -74,7 +76,7 @@ app.get('/weather', function(req,res) {
 		}
 	});
 });
-
+*/
 app.get('/weather-group', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
