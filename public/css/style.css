@@ -216,3 +216,8 @@ span.fourtieth {
 .extra-padding {
     border-right: 25px solid azure;
 }
+@media (min-width:320px){
+  .weather-data-widget.extra-padding {
+      margin-bottom: 4em;
+  }
+}

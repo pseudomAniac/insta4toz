@@ -49,14 +49,17 @@
 			}
 
 			// timestamp
-			var unxdate = $("li.date>span").text();
-			var date = new Date(unxdate*1000);
-			var month = date.getMonth();
-			var day = date.getDate();
-			var hours = date.getHours();
+			var date = $("li.date"), unxdate, date, month, day, hours, newDate;
+			for (var i=0; i<date.length; i++) {
+				unxdate = date[i].innerText;
+				date = new Date(unxdate*1000);
+				month = date.getMonth();
+				day = date.getDate();
+				hours = date.getHours();
 
-			var newDate = hours + ":00 HOURS "; 
-			$("li.date>span").text("Last Updated: " + newDate);
+				newDate = hours + ":00 HOURS "; 
+				$("li.date>span").text("Last Updated: " + newDate);
+			}
 		});
 		</script>
 	</body>
