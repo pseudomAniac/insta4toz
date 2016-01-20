@@ -23,6 +23,12 @@ app.get('/tag/:tag?', function (req, res) {
 		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
 	})
 })
+app.get('/:takemethere?', function (req, res) {
+	var city = req.params.takemethere;
+	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
+		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
+	})
+})
 app.get('/instacarousel', function(req, res) {
 	var tags = ['cityphotography', 'landscapephotography', 'architectures', 'paratroopers'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
@@ -91,7 +97,6 @@ app.get('/weather-group', function (req, res) {
 
 	weather.getGroupWeather(function (err, data) {
 		if (!err) {
-			console.log(data);
 			res.render('pages/weather-group', {all: data});
 			// res.send(instacarousel())
 		} else {

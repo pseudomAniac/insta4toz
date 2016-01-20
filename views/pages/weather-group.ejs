@@ -4,11 +4,25 @@
 		<% include ../partials/head %>
 	</head>
 	<body class="container">
+		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
 		<header class="row">
 			<% include ../partials/header %>
 		</header>
 		<main class="container text-capitalize text-info">
 			<div class="row">
+			<div class="col-sm-9">
+				<h1 class="text-primary">Weather Data</h1>
+			</div>
+			<div class="col-sm-3 well bg-danger">
+				<ul class="list-inline list-unstyled">
+					<li>
+						<div class="fb-like" data-href="https://insta4toz.herokuapp.com/weather-group&quot;" data-layout="box_count" data-action="like" data-show-faces="true" data-share="false"></div>
+					</li>
+					<li>
+						<div class="fb-share-button col-sm-6" data-href="https://insta4toz.herokuapp.com/weather-group" data-layout="box_count"></div>
+					</li>
+				</ul>
+			</div>
 			<% for (var i=0; i<all.cnt; i++) {%>
 				<div class="col-md-4 well-lg weather-data-widget extra-padding">
 					<ul class="weather-data-list text-lowercase list-unstyled">
@@ -27,6 +41,7 @@
 					</ul>
 				</div>
 			<% } %>
+			<div class="fb-comments" data-href="http://insta4toz.herokuapp.com/weather-group" data-width="100%" data-numposts="5"></div>
 			</div>
 		</main>
 		<footer class="clear container-fluid">
