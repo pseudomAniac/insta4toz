@@ -23,12 +23,6 @@ app.get('/tag/:tag?', function (req, res) {
 		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
 	})
 })
-app.get('/:takemethere?', function (req, res) {
-	var city = req.params.takemethere;
-	ig.tag_media_recent(tag, function (err, medias, pagination, remaining, limit) {
-		res.render('pages/tags', {grams: medias, tag_used: tag, tag: tags});
-	})
-})
 app.get('/instacarousel', function(req, res) {
 	var tags = ['cityphotography', 'landscapephotography', 'architectures', 'paratroopers'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
@@ -59,46 +53,21 @@ ig.use({
 app.get('/template', function(req,res) {
 	res.render('pages/template');
 });
-
-// weather - deprecated
-/* 
-app.get('/weather', function(req,res) {
-
-	// setter methods
-	weather.setLang('en');
-	weather.setCity('Lae');
-	weather.setUnits('metric');
-	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
-	// set group info here - only 3city IDs accepted atm
-	weather.setGroup([2088122,2092740,2087894]);
-	
-	// getter methods
-	weather.getAllWeather(function (err, data) {
-		if (!err) {
-			// console.log(data);
-			res.render('pages/weather', {laewd: data});
-		} else {
-			console.log('ERROR ENCOUNTERED!\n\n',err);
-		}
-	});
-});
-*/
-app.get('/weather-group', function (req, res) {
+app.get('/weather-group/', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
 	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
 	var tags = ['cityphotography', 'landscapephotography', 'architectures'],
 			tagged = tags[Math.floor(Math.random()*tags.length)],
-			instacarousel = function () {
-				ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
-					return {grams: medias, tag_used: tagged, tag: tags };
-			});
-			}
+			grams;
+	// ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
+	// 	console.log(grams);
+	// 	return {grams: medias};
+	// });
 
 	weather.getGroupWeather(function (err, data) {
 		if (!err) {
 			res.render('pages/weather-group', {all: data});
-			// res.send(instacarousel())
 		} else {
 			console.log('ERROR ENCOUNTERED!\n\n',err);
 		}

@@ -29,6 +29,7 @@ window.fbAsyncInit = function() {
       }, {scope: 'user_friends'});
     }
   });
+
 };
 
 (function(d, s, id){
