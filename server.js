@@ -53,7 +53,7 @@ ig.use({
 app.get('/template', function(req,res) {
 	res.render('pages/template');
 });
-app.get('/weather-group/', function (req, res) {
+app.get('/weather-group', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
 	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
@@ -74,9 +74,25 @@ app.get('/weather-group/', function (req, res) {
 	})
 });
 app.post('/weather-group/', function (req, res) {
-	res.send("post successfully received");
-})
+	weather.setLang('en');
+	weather.setUnits('metric');
+	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
+	var tags = ['cityphotography', 'landscapephotography', 'architectures'],
+			tagged = tags[Math.floor(Math.random()*tags.length)],
+			grams;
+	// ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
+	// 	console.log(grams);
+	// 	return {grams: medias};
+	// });
 
+	weather.getGroupWeather(function (err, data) {
+		if (!err) {
+			res.render('pages/weather-group', {all: data});
+		} else {
+			console.log('ERROR ENCOUNTERED!\n\n',err);
+		}
+	})
+});
 app.listen(app.get('port'), function() {
 	console.log("app started at " + app.get('port'));
 });
