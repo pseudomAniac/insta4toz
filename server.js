@@ -73,6 +73,9 @@ app.get('/weather-group/', function (req, res) {
 		}
 	})
 });
+app.post('/weather-group/', function (req, res) {
+	res.send("post successfully received");
+})
 
 app.listen(app.get('port'), function() {
 	console.log("app started at " + app.get('port'));
