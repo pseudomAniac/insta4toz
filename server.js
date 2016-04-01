@@ -9,7 +9,7 @@ app.use(express.static(__dirname + "/public"));
 app.set('view engine','ejs');
 app.set('port', (process.env.PORT || 5000))
 
-app.get('/', function(req,res){
+app.get('/home', function(req,res){
 	var tags = ['pngup','samoa','nauru','tahiti','vanuatu','islandjewel', 'tonga', 'kiribati', 'shark'];
 	var tagged = tags[Math.floor(Math.random()*tags.length)];
 	ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
@@ -53,7 +53,7 @@ ig.use({
 app.get('/template', function(req,res) {
 	res.render('pages/template');
 });
-app.get('/weather-group', function (req, res) {
+app.get('/', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
 	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
@@ -73,6 +73,7 @@ app.get('/weather-group', function (req, res) {
 		}
 	})
 });
+
 app.post('/weather-group/', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
