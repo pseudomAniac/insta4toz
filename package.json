@@ -9,10 +9,11 @@
   "author": "sylvery45@!",
   "license": "MIT",
   "dependencies": {
-    "pg":"^4.x",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "instagram-node": "^0.5.7",
-    "openweather-apis": "^2.0.1"
+    "openweather-apis": "^2.0.1",
+    "pg": "^4.x",
+    "q": "^1.4.1"
   }
 }

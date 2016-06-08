@@ -57,9 +57,9 @@ app.get('/', function (req, res) {
 	weather.setLang('en');
 	weather.setUnits('metric');
 	weather.setAPPID('375cc7f16728bf0dddde9ec5c3a33f0b');
-	var tags = ['cityphotography', 'landscapephotography', 'architectures'],
-			tagged = tags[Math.floor(Math.random()*tags.length)],
-			grams;
+	// var tags = ['cityphotography', 'landscapephotography', 'architectures'],
+	// 		tagged = tags[Math.floor(Math.random()*tags.length)],
+	// 		grams;
 	// ig.tag_media_recent(tagged, function (err, medias, pagination, remaining, limit) {
 	// 	console.log(grams);
 	// 	return {grams: medias};
