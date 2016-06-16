@@ -7,7 +7,7 @@ var pg = require("pg");
 app.use(express.static(__dirname + "/public"));
 
 app.set('view engine','ejs');
-app.set('port', (process.env.PORT || 5000))
+app.set('port', (process.env.PORT || 3000))
 
 app.get('/home', function(req,res){
 	var tags = ['pngup','samoa','nauru','tahiti','vanuatu','islandjewel', 'tonga', 'kiribati', 'shark'];

@@ -221,3 +221,16 @@ span.fourtieth {
       margin-bottom: 4em;
   }
 }
+footer {
+    background: indigo;
+}
+
+footer .footer-glyph {
+    border: 2px solid white;
+    border-radius: 50%;
+    padding: 0.5em;
+    font-size: 6em;
+}
+footer .col-md-5 {
+  padding-top: 3.5em;
+}
