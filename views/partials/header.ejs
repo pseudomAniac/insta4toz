@@ -1,22 +1,24 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-	<div class="container-fluid">
-		<div class="navbar-header">
-			<a href="/" class="navbar-brand site-title"><i class="glyphicon glyphicon-tower"></i> Insta4toz</a>
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile">
-        <span class="sr-only"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
+<header class="row">
+	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a href="/" class="navbar-brand site-title"><i class="glyphicon glyphicon-tower"></i> Sudo GetWeatherReport</a>
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile">
+	        <span class="sr-only"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+			</div>
+			<div class="collapse navbar-collapse text-uppercase" id="mobile">
+				<ul class="nav navbar-nav" role="menu">
+					<li><a class="active" href="/"><i class="glyphicon glyphicon-home"></i></a></li>
+					<form class="form-inline navbar-form pull-left" action="/api/weather/" method="get">
+						<input class="form-control" type="text" name="city" placeholder="City Name">
+						<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-send"></i></button>
+					</form>
+				</ul>
+			</div>
 		</div>
-		<div class="collapse navbar-collapse text-uppercase" id="mobile">
-			<ul class="nav navbar-nav" role="menu">
-				<li><a class="active" href="/">home</a></li>
-				<li><a href="/newguinea">New Guinea</a></li>
-				<li><a href="/weather-group">Weather</a></li>
-				<li><a href="/pngindependence">independence</a></li>
-				<li><a href="/instacarousel">Carousel</a></li>
-			</ul>
-		</div>
-	</div>
-</nav>
+	</nav>
+</header>

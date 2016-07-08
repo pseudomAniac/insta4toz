@@ -1,0 +1,16 @@
+<script src="/scripts/jquery.min.js"></script>
+<script src="/scripts/bootstrap.min.js"></script>
+<script>
+	function unxConverter(ele) {
+		var unxdate = $(ele).text();
+		var date = new Date(unxdate*1000);
+		var hours = date.getHours();
+		var newDate = hours + ":00"; 
+		$(ele).text(newDate);
+	}
+	$(document).ready(function() {
+		unxConverter(".date-sunset");
+		unxConverter(".date-sunrise");
+		unxConverter(".date-update");
+	});
+</script>

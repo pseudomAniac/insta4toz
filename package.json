@@ -6,14 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "sylvery45@!",
+  "author": "sylvery",
   "license": "MIT",
   "dependencies": {
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "instagram-node": "^0.5.7",
     "openweather-apis": "^2.0.1",
-    "pg": "^4.x",
     "q": "^1.4.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7"
   }
 }
