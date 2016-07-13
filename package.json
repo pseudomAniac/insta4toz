@@ -4,7 +4,8 @@
   "description": "first instagram app",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "gulp",
+    "start": "node server.js"
   },
   "author": "sylvery",
   "license": "MIT",

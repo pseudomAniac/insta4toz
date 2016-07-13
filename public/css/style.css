@@ -42,10 +42,11 @@ h3 {
 /* weather data styling */
 .weather-data-widget{
     border: 1px solid black;
-    border-radius: 2px;
-    top: 1em;
+    border-radius: 0px;
+    border-bottom: 12px solid black;
+    margin: 1em 0;
+    text-align: right;
     background-color: darkorange;
-    color: white;
     list-style: none;
 }
 
@@ -224,7 +225,7 @@ span.fourtieth {
   }
 }
 footer {
-    background: indigo;
+    background: black;
 }
 
 footer .footer-glyph {
@@ -238,4 +239,9 @@ footer .col-md-5 {
 }
 .col-xs-12.text-right, .col-xs-12.text-left {
   text-align: center;
+}
+.circle-img {
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 2px;
 }
