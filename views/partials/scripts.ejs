@@ -5,7 +5,8 @@
 		var unxdate = $(ele).text();
 		var date = new Date(unxdate*1000);
 		var hours = date.getHours();
-		var newDate = hours + ":00"; 
+		var mins = date.getMinutes();
+		var newDate = hours + ":" + mins; 
 		$(ele).text(newDate);
 	}
 	$(document).ready(function() {

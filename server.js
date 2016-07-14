@@ -15,7 +15,7 @@ app.get('/template', function(req,res) {
 
 app.get('/', function (req, res) {
 	weather.getAllWeather(function(err,data) {
-		console.log(data);
+		console.log("response code: " + data.cod);
 		res.render('pages/weather',{weda: data});
 	});
 });
