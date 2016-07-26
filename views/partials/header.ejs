@@ -13,8 +13,8 @@
 			<div class="collapse navbar-collapse text-uppercase" id="mobile">
 				<ul class="nav navbar-nav" role="menu">
 					<li><a class="active" href="/"><i class="glyphicon glyphicon-home"></i></a></li>
-					<form class="form-inline navbar-form pull-left" action="/api/weather/" method="get">
-						<input class="form-control" type="text" name="city" placeholder="City Name">
+					<form class="form-inline navbar-form pull-left" action="/api/weather/" method="get" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" >
+						<input id="f_elem_city" class="form-control" type="text" name="city" placeholder="City Name">
 						<button class="btn btn-success-outline" required title="Get city data" type="submit"><i class="glyphicon glyphicon-send"></i></button>
 					</form>
 				</ul>

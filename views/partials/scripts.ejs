@@ -1,6 +1,36 @@
 <script src="/scripts/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="/scripts/bootstrap.min.js"></script>
 <script>
+	
+	jQuery(function () {
+	 jQuery("#f_elem_city").autocomplete({
+		source: function (request, response) {
+		 jQuery.getJSON(
+			"http://gd.geobytes.com/AutoCompleteCity?callback=?&q="+request.term,
+			function (data) {
+			 console.log(data);
+			 response(data);
+			}
+		 );
+		},
+		minLength: 3,
+		select: function (event, ui) {
+		 var selectedObj = ui.item;
+		 jQuery("#f_elem_city").val(selectedObj.value);
+		getcitydetails(selectedObj.value);
+		 return false;
+		},
+		open: function () {
+		 jQuery(this).removeClass("ui-corner-all").addClass("ui-corner-top");
+		},
+		close: function () {
+		 jQuery(this).removeClass("ui-corner-top").addClass("ui-corner-all");
+		}
+	 });
+	 jQuery("#f_elem_city").autocomplete("option", "delay", 100);
+	});
+	
 	function unxConverter(ele) {
 		var unxdate = $(ele).text();
 		var date = new Date(unxdate*1000);
@@ -14,4 +44,5 @@
 		unxConverter(".date-sunrise");
 		unxConverter(".date-update");
 	});
+	
 </script>
