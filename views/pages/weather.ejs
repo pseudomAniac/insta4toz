@@ -8,7 +8,6 @@
 		<% include ../partials/header %>
 		<main class="container">
 			<div class="row">
-				<% include ../partials/fb-like %>
 				<section class="col-md-4 well-sm weather-data-widget">
 					<article>
 						<h3 class=""><%= weda.name %> Weather Report - <span class="date-update"><%= weda.dt %></span></h3>
@@ -39,6 +38,7 @@
 						</section>
 					</article>
 				</section>
+				<% include ../partials/fb-like %>
 			</div>
 			<div class="row">
 				<section class="col-md-12">
