@@ -2,13 +2,14 @@
 <html lang="en">
 	<head>
 		<% include ../partials/head %>
+		<% include ../partials/fb-pixels %>
 	</head>
 	<body class="container-fluid">
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
 		<% include ../partials/header %>
 		<main class="container">
 			<div class="row">
-				<section class="col-md-4 well-sm weather-data-widget">
+				<section class="col-sm-4 well-sm weather-data-widget">
 					<article>
 						<h3 class=""><%= weda.name %> Weather Report - <span class="date-update"><%= weda.dt %></span></h3>
 						<p>The current temperature on the ground is <%= weda.main.temp %> &deg;C. <%= weda.clouds.all %>% of the sky is covered with <%= weda.weather[0].description%>.</p>
@@ -38,12 +39,17 @@
 						</section>
 					</article>
 				</section>
+				<section class="col-sm-8">
+					<form class="form-inline navbar-form pull-left" action="/:city" method="get" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" >
+						<input id="f_elem_city" class="form-control" type="text" name="city" placeholder="City Name">
+						<button class="btn btn-success-outline" required title="Get city data" type="submit"><i class="glyphicon glyphicon-send"></i></button>
+					</form>
+					<% include ../partials/fb-like %>
+					<div class="fb-comments" data-sort="newest" data-href="http://sudoweather.herokuapp.com/" data-width="100%" data-numposts="3" ></div>
+				</section>
 			</div>
 			<div class="row">
-				<% include ../partials/fb-like %>
-				<section class="col-md-12">
-					<div class="fb-comments" data-sort="newest" data-href="http://sudoweather.herokuapp.com/" data-width="100%" data-numposts="3" data-collapse="false"></div>
-				</section>
+				
 			</div>
 		</main>
 		<% include ../partials/footer %>

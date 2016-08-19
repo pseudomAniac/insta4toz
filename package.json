@@ -1,7 +1,7 @@
 {
-  "name": "insta4toz",
-  "version": "1.0.0",
-  "description": "first instagram app",
+  "name": "sudotech-weatherapp",
+  "version": "2.0.0",
+  "description": "This weather data presentation web application aims to present accurate and current weather data to its visitors through the use of simple but powerful api calls to the Open Weather Map Project.",
   "main": "server.js",
   "scripts": {
     "test": "gulp",
@@ -10,10 +10,14 @@
   "author": "sylvery",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "cookie-session": "^2.0.0-alpha.1",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
     "instagram-node": "^0.5.7",
+    "node-webkit-screenshot": "^0.3.2",
     "openweather-apis": "^2.0.1",
+    "openweathermap-js": "^1.0.1",
     "q": "^1.4.1"
   },
   "devDependencies": {

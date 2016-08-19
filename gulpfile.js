@@ -10,12 +10,8 @@ gulp.task('server', function() {
 	})
 });
 
-gulp.task('default', function() {
-	gulp.run('server')
-
-	gulp.watch(['./server.js','./views/pages/*.ejs','./views/partials/*.ejs','./weather-forecast/*.js'], function() {
-		gulp.run('server');
-	})
+gulp.task('default', ['server'], function() {
+	gulp.watch(['./server.js','./views/*/*.*','./lib/*.*'], ['server']);
 });
 
 process.on('exit', function() {
