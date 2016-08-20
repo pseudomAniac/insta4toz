@@ -11,7 +11,7 @@ app.use(cookieSession({
 	img: "http://www.google.com"
 }));
 
-app.post("/", function (req, res) {
+app.all("/", function (req, res) {
 	res.redirec("/");
 });
 app.get('/', function(req,res) {
