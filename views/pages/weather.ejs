@@ -40,13 +40,13 @@
 					</article>
 				</section>
 				<section class="col-sm-8">
-					<form class="form-inline navbar-form pull-left" action="/:city" method="get" name="form_citydetails" id="form_citydetails" enctype="multipart/form-data" >
-						<input id="f_elem_city" class="form-control" type="text" name="city" placeholder="City Name">
+					<% include ../partials/fb-like %>
+					<div id="fb-welcome"></div>
+					<form class="form-inline navbar-form" action="/:city" method="get" name="form_citydetailsbyname" id="form_citydetailsbyname" enctype="multipart/form-data" >
+						<input id="f_elem_city_name" class="form-control" type="text" name="city" placeholder="City Name">
 						<button class="btn btn-success-outline" required title="Get city data" type="submit"><i class="glyphicon glyphicon-send"></i></button>
 					</form>
-					<div id="fb-welcome"></div>
-					<% include ../partials/fb-like %>
-					<div class="fb-comments" data-sort="newest" data-href="http://sudoweather.herokuapp.com/" data-colorscheme="light" data-width="100%" data-numposts="5" ></div>
+					<div class="fb-comments" data-sort="newest" data-href="http://sudoweather.herokuapp.com" data-colorscheme="light" data-width="100%" data-numposts="5" ></div>
 				</section>
 			</div>
 			<div class="row">
