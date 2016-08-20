@@ -11,6 +11,9 @@ app.use(cookieSession({
 	img: "http://www.google.com"
 }));
 
+app.post("/", function (req, res) {
+	res.redirec("/");
+});
 app.get('/', function(req,res) {
 	weather.getCurrent("Lae", function(err, data) {
 		res.render("pages/weather",{weda:data});
