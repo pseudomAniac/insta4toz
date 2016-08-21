@@ -11,6 +11,7 @@
 		var newDate = hours + ":" + mins; 
 		$(ele).text(newDate);
 	}
+	
 	function listTown() {
 		var townsList = ["Port Moresby","Lae","Arawa","Mount Hagen","Madang","Wewak","Goroka","Kokopo","Popondetta","Aitape","Rabaul","Kimbe","Tabubil","Daru","Kavieng","Alotau","Vanimo","Bulolo","Kiunga","Kundiawa","Mendi","Kainantu","Lorengau","Ialibu","Kerema","Ningerum","Wau","Wabag","Rabaul"];
 		for (var i=0; i<townsList.length; i++) {
@@ -23,7 +24,8 @@
 			callback(data);
 		})
 	}
-	nv.addGraph({
+	
+	/* nv.addGraph({
 		generate: function() {
 			var width = nv.utils.windowSize().width() - 40,
 				height = nv.utils.windowSize().height() - 40;
@@ -71,12 +73,13 @@
                     .call(graph);
             };
 		}
-	})
+	}); */
+	
 	$(document).ready(function() {
-		unxConverter(".date-sunset");
+/* 		unxConverter(".date-sunset");
 		unxConverter(".date-sunrise");
 		unxConverter(".date-update");
-		listTown();
+ */		listTown();
 		getForecast(function(data){
 			console.log(data)
 		});

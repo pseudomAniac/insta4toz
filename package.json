@@ -1,6 +1,6 @@
 {
   "name": "sudotech-weatherapp",
-  "version": "2.1.0",
+  "version": "2.1.2",
   "description": "This weather data presentation web application aims to present accurate and current weather data to its visitors through the use of simple but powerful api calls to the Open Weather Map Project.",
   "main": "server.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cheerio": "^0.20.0",
     "cookie-session": "^2.0.0-alpha.1",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
