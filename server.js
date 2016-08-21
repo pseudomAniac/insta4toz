@@ -20,8 +20,9 @@ app.get('/', function(req,res) {
 	});
 });
 
-app.get('/:city', function (req, res) {
-	weather.getCurrent(req.params.city, function(err, data) {
+app.get('/api/', function (req, res) {
+	console.log(req.query.city);
+	weather.getCurrent(req.query.city, function(err, data) {
 		err ? res.send(err) : res.render("pages/weather",{weda:data});
 	});
 });
