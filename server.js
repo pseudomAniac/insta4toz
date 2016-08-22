@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(cookieSession({
 	name: "sampleSession",
 	secret: "monobelle",
-	img: "http://www.google.com"
+	img: "/public/img/app-logo.png"
 })); 
 
 app.post("/", function (req, res) {
