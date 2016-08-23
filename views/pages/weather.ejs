@@ -2,9 +2,10 @@
 <html lang="en">
 	<head>
 		<% include ../partials/head %>
-		<% include ../partials/fb-pixels %>
+		<!-- <% /* include ../partials/fb-pixels */ %> -->
 	</head>
 	<body class="container-fluid">
+		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
 		<% include ../partials/header %>
 		<main class="container">
@@ -51,7 +52,12 @@
 							<input id="f_elem_city_name" class="form-control" type="text" name="city" placeholder="City Name">
 							<button class="btn btn-success-outline" required title="Get city data" type="submit"><i class="glyphicon glyphicon-send"></i></button>
 						</form>
-						<div class="fb-comments" data-sort="newest" data-href="http://sudoweather.herokuapp.com" data-colorscheme="light" data-width="100%" data-numposts="5" ></div>
+						<div class="fb-page" data-href="https://www.facebook.com/sudodez" data-tabs="timeline" data-width="100%" data-height="310" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+							<blockquote cite="https://www.facebook.com/sudodez" class="fb-xfbml-parse-ignore">
+								<a href="https://www.facebook.com/sudodez">Sudo Dezigns</a>
+							</blockquote>
+						</div>
+						<div class="fb-comments" data-href="https://sudoweather.herokuapp.com" data-width="100%" data-numposts="5"></div>
 					</div>
 				</section>
 			</div>
