@@ -234,8 +234,11 @@ footer .footer-glyph {
     padding: 0.5em;
     font-size: 6em;
 }
-footer .col-md-5 {
+footer .col-md-5.text-left {
   padding-top: 3.5em;
+}
+footer .col-md-5.text-right {
+	padding-top: 15px;
 }
 .col-xs-12.text-right, .col-xs-12.text-left {
   text-align: center;
