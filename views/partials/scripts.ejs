@@ -20,8 +20,8 @@
 	
 	nv.addGraph({
 		generate: function() {
-			var width = nv.utils.windowSize().width() - 40,
-				height = nv.utils.windowSize().height() - 40;
+			var width = nv.utils.windowSize().width(),
+				height = nv.utils.windowSize().height();
 			
 			var chart = nv.models.line()
 				.width(width)

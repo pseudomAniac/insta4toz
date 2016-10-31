@@ -13,7 +13,7 @@ window.fbAsyncInit = function() {
       FB.api('/me','GET',{"fields":"id,name,devices,security_settings,timezone,location"},function(response) {
           // Insert your code here
         var welcomeBlock = document.getElementById('fb-welcome');
-        welcomeBlock.innerHTML = 'Greetings ' + response.fields.first_name + '!';
+        welcomeBlock.innerHTML = 'Greetings ' + response.fields.name + '!';
         var locationBlock = document.getElementById('fb-location');
         welcomeBlock.innerHTML = 'You are in ' + response.fields.location;
       });
