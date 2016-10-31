@@ -4,22 +4,36 @@
 		<% include ../partials/head %>
 		<!-- <% /* include ../partials/fb-pixels */ %> -->
 	</head>
-	<body class="container-fluid">
+	<body class="container-fluid text-left">
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
 		<% include ../partials/header %>
-		<main class="container">
+		<main class="container-fluid">
 			<div class="row">
 				<section class="col-sm-4 well-sm weather-data-widget">
-					<article>
-						<h3 class=""><%= weda.name %> Weather Report - <span class="date-update"><%= weda.dt %></span></h3>
-						<figure class="col-md-6">
+					<article class="row">
+						<figure class="col-sm-4">
 							<img class="pull-left img-responsive" src="../img/app-logo.png" title="application logo" />
 						</figure>
-						<p>The current temperature on the ground is <%= weda.main.temp %> &deg;C. <%= weda.clouds.all %>% of the sky is covered with <%= weda.weather[0].description%>.</p>
-						<p>The wind is blowing into the city from <%= weda.wind.deg %> &deg;North at an average speed of <%= weda.wind.speed %> km/h</p>
-						<p>The atmospheric pressure and humidity are <%= weda.main.pressure %> hPa and <%= weda.main.humidity %>% respectively.</p>
-						<section>
+						<div class="col-sm-8">
+							<div class="row">
+								<h3 id="fb-welcome"></h3>
+								<h1 id="fb-location"></h1>
+								<div class="text-left"><%= weda.name %> weather served below</div>
+							</div>
+							<div class="row"><% include ../partials/fb-like %></div>
+						</div>
+					</article>
+					<hr />
+					<article class="row text-left">
+					<div class="col-sm-12">
+						<p>Ground Temperature is <%= weda.main.temp %> &deg;C. With <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
+						<p>Wind averages <%= weda.wind.speed %> km/h blowing in from <%= weda.wind.deg %> &deg;North</p>
+						<p>Atmospheric pressure is <%= weda.main.pressure %> hPa and <%= weda.main.humidity %>% humidity.</p>
+					</div>
+					</article>
+					<article class="row">
+						<section class="col-sm-12">
 							<table class="table">
 								<thead>
 									<tr>
@@ -42,21 +56,16 @@
 							</table>
 						</section>
 					</article>
-				</section>
-				<section class="col-sm-8">
-					<div class="row"><div id="forecast-graph"></div></div>
-					<div class="row">
-						<% include ../partials/fb-like %>
-						<div id="fb-welcome"></div>
+					<article class="row">
 						<form class="form-inline navbar-form" action="/api/" method="get" name="form_citydetailsbyname" id="form_citydetailsbyname" enctype="multipart/form-data" >
 							<input id="f_elem_city_name" class="form-control" type="text" name="city" placeholder="City Name">
 							<button class="btn btn-success-outline" required title="Get city data" type="submit"><i class="glyphicon glyphicon-send"></i></button>
 						</form>
-					</div>
+					</article>
 				</section>
-			</div>
-			<div class="row">
-				
+				<section class="col-sm-8">
+					<div class="row"><div id="forecast-graph"></div></div>
+				</section>
 			</div>
 		</main>
 		<% include ../partials/footer %>

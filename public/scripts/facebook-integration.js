@@ -2,7 +2,7 @@ window.fbAsyncInit = function() {
   FB.init({
     appId      : '1476643879330794',
     xfbml      : true,
-    version    : 'v2.7'
+    version    : 'v2.8'
   });
 
   // ADD ADDITIONAL FACEBOOK CODE HERE
@@ -10,9 +10,12 @@ window.fbAsyncInit = function() {
 
   function onLogin(response) {
     if (response.status == 'connected') {
-      FB.api('/me?fields=first_name', function(data) {
+      FB.api('/me','GET',{"fields":"id,name,devices,security_settings,timezone,location"},function(response) {
+          // Insert your code here
         var welcomeBlock = document.getElementById('fb-welcome');
-        welcomeBlock.innerHTML = 'Hi, ' + data.first_name + '!';
+        welcomeBlock.innerHTML = 'Greetings ' + response.fields.first_name + '!';
+        var locationBlock = document.getElementById('fb-location');
+        welcomeBlock.innerHTML = 'You are in ' + response.fields.location;
       });
     }
   }
@@ -36,6 +39,6 @@ window.fbAsyncInit = function() {
    var js, fjs = d.getElementsByTagName(s)[0];
    if (d.getElementById(id)) {return;}
    js = d.createElement(s); js.id = id;
-   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.7&appId=1476643879330794";
+   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1476643879330794";
    fjs.parentNode.insertBefore(js, fjs);
  }(document, 'script', 'facebook-jssdk'));

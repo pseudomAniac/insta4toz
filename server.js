@@ -12,7 +12,6 @@ app.use(cookieSession({
 	secret: "monobelle",
 	img: "/public/img/app-logo.png"
 })); 
-
 app.post("/", function (req, res) {
 	res.redirect("/");
 });
