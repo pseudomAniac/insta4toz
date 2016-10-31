@@ -1,21 +1,20 @@
 window.fbAsyncInit = function() {
-  FB.init({
-    appId      : '1476643879330794',
-    xfbml      : true,
-    version    : 'v2.8'
-  });
-
+    FB.init({
+      appId      : '1476643879330794',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
   // ADD ADDITIONAL FACEBOOK CODE HERE
   // Place following code after FB.init call.
 
   function onLogin(response) {
     if (response.status == 'connected') {
-      FB.api('/me','GET',{"fields":"id,name,timezone,location"},function(response) {
+      FB.api('/me','GET',{"fields":"first_name,location"}, function(response) {
           // Insert your code here
         var welcomeBlock = document.getElementById('fb-welcome');
-        welcomeBlock.innerHTML = 'Greetings ' + response.name + '!';
-        // var locationBlock = document.getElementById('fb-location');
-        // welcomeBlock.innerHTML = 'You are in ' + response.fields.location;
+        welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
+        var locationBlock = document.getElementById('fb-location');
+        welcomeBlock.innerHTML = 'You are in ' + response.location.name;
       });
     }
   }
