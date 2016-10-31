@@ -14,7 +14,7 @@ window.fbAsyncInit = function() {
         var welcomeBlock = document.getElementById('fb-welcome');
         welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
         var locationBlock = document.getElementById('fb-location');
-        welcomeBlock.innerHTML = 'You are in ' + response.location.name;
+        locationBlock.innerHTML = 'You are in ' + response.location.name;
       });
     }
   }
