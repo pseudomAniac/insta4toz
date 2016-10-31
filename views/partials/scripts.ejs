@@ -3,6 +3,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
 <script src="/scripts/nv.d3.min.js"></script>
 <script>
+	var weatherData = '';
 	function unxConverter(ele) {
 		var unxdate = $(ele).text();
 		var date = new Date(unxdate*1000);
@@ -18,59 +19,34 @@
 		})
 	}
 	
-	nv.addGraph({
-		generate: function() {
-			var width = nv.utils.windowSize().width(),
-				height = nv.utils.windowSize().height();
-			
-			var chart = nv.models.line()
-				.width(width)
-				.height(height)
-				.margin({
-					top: 20,
-					right: 20,
-					bottom: 20,
-					left: 20
-				})
-				
-			chart.dispatch.on("renderEnd", function() { console.log("render complete")});
-			
-			d3.select("#forecast-graph")
-				.attr("width", width)
-				.attr("height", height)
-				.data(getForecast((data) => {
-					return [{
-						value: data.list.deg,
-						key: "temp"
-					}]
-					// return JSON.stringify(data.list);
-				}))
-				// .datum(getForecast((data) => {return JSON.stringify(data.list);}))
-				.call(chart);
-			
-			return chart;
-		},
-		callback: function(graph) {
-			window.onresize = function() {
-                var width = nv.utils.windowSize().width - 40,
-                    height = nv.utils.windowSize().height - 40,
-                    margin = graph.margin();
-                if (width < margin.left + margin.right + 20)
-                    width = margin.left + margin.right + 20;
-                if (height < margin.top + margin.bottom + 20)
-                    height = margin.top + margin.bottom + 20;
-                graph.width(width).height(height);
-                d3.select('#forecast-graph')
-                    .attr('width', width)
-                    .attr('height', height)
-                    .call(graph);
-            };
-		}
+	nv.addGraph(function() {
+		var chart = nv.models.lineChart()
+			.margin({left: 100})
+			// .userInteractiveGuideline(true)
+			// .transitionDuration(350)
+			.showLegend(true)
+			.showYAxis(true)
+			.showXAxis(true);
+
+		chart.xAxis
+			.axisLabel("Time (ms)")
+			.tickFormat(d3.format(',r'));
+
+		chart.yAxis
+			.axisLabel("Voltage (v)")
+			.tickFormat(d3.format('.02f'));
+
+		var wedata = weatherData;
+
+		d3.select("#forecastGraph svg")
+			.datum(wedata.list)
+			.call(chart);
 	});
 	
 	$(document).ready(function() {
 		getForecast(function(data){
-			console.log(data)
+			weatherData = data;
+			console.log(data);
 		});
 	});
 	
