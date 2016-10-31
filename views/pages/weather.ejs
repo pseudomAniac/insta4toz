@@ -4,26 +4,24 @@
 		<% include ../partials/head %>
 		<!-- <% /* include ../partials/fb-pixels */ %> -->
 	</head>
-	<body class="container-fluid text-left">
+	<body class="container-fluid">
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
 		<% include ../partials/header %>
 		<main class="container-fluid">
 			<div class="row">
-				<section class="col-sm-4 well-sm weather-data-widget">
+				<section class="col-sm-6 well-sm weather-data-widget">
 					<article class="row">
-						<figure class="col-sm-4">
+						<figure class="col-sm-4 pull-left">
 							<img class="pull-left img-responsive" src="../img/app-logo.png" title="application logo" />
 						</figure>
+						<h1 id="fb-welcome" class="col-sm-8 text-center pull-right"></h1>
 						<div class="col-sm-8">
-							<div class="row">
-								<h3 id="fb-welcome"></h3>
-								<h1 id="fb-location"></h1>
-								<div class="text-left"><%= weda.name %> weather served below</div>
-							</div>
-							<div class="row"><% include ../partials/fb-like %></div>
+							<h3 id="fb-location" class="col-sm-12"></h3>
+							<div class="col-sm-12"><% include ../partials/fb-like %></div>
 						</div>
 					</article>
+					<div class="text-left" style="font-family: monospace;"><%= weda.name %> weather served below</div>
 					<hr />
 					<article class="row text-left">
 					<div class="col-sm-12">
@@ -63,7 +61,7 @@
 						</form>
 					</article>
 				</section>
-				<section class="col-sm-8">
+				<section class="col-sm-6">
 					<div class="row"><div id="forecast-graph"></div></div>
 				</section>
 			</div>
