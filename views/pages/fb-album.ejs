@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
 	<head>
 		<% include ../partials/head %>
 		<!-- <% /* include ../partials/fb-pixels */ %> -->
@@ -21,10 +21,11 @@
 							<div class="col-sm-12"><% include ../partials/fb-like %></div>
 						</div>
 					</article>
+					<div class="text-left" style="font-family: monospace;"><%= weda.name %> weather served below</div>
 					<hr />
 					<article class="row text-left">
 					<div class="col-sm-12">
-						<p>In <%= weda.name %> right now! Ground Temperature is <%= weda.main.temp %> &deg;C. With <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
+						<p>Ground Temperature is <%= weda.main.temp %> &deg;C. With <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
 						<p>Wind averages <%= weda.wind.speed %> km/h blowing in from <%= weda.wind.deg %> &deg;North</p>
 						<p>Atmospheric pressure is <%= weda.main.pressure %> hPa and <%= weda.main.humidity %>% humidity.</p>
 					</div>

@@ -20,17 +20,41 @@ app.get("/", function(req,res) {
 		data.dt = unxConv(data.dt);
 		data.sys.sunrise = unxConv(data.sys.sunrise);
 		data.sys.sunset = unxConv(data.sys.sunset);
-		err ? res.send(err) : res.render("pages/weather",{weda:data});
+		err ? res.send(err) : res.render("pages/weather",{
+			weda:data,
+			appInfo: {
+				url: "http://sudoweatherreport.herokuapp.com",
+				type: "article",
+				title: "Lae Weather Report",
+				description: "This neat little app provides you with an up to the minute update on your local weather.",
+				img: {
+					title: "Sudo Weather Reoprt - Logo",
+					url: "/public/img/app-logo.png"
+				}
+			}
+	});
 	});
 });
 
 app.get('/api/', function (req, res) {
-	console.log(req.query.city);
+	var city = req.query.city;
 	weather.getCurrent(req.query.city, function(err, data) {
 		data.dt = unxConv(data.dt);
 		data.sys.sunrise = unxConv(data.sys.sunrise);
 		data.sys.sunset = unxConv(data.sys.sunset);
-		err ? res.send(err) : res.render("pages/weather",{weda:data});
+		err ? res.send(err) : res.render("pages/weather",{
+			weda:data,
+			appInfo: {
+				url: "http://sudoweatherreport.herokuapp.com/api/?city="+city,
+				type: "article",
+				title: city + " Weather Report",
+				description: "This neat little app provides you with an up to the minute update on your local weather.",
+				img: {
+					title: "Sudo Weather Reoprt - Logo",
+					url: "/public/img/app-logo.png"
+				}
+			}
+		});
 	});
 });
 

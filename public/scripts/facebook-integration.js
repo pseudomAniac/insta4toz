@@ -18,7 +18,18 @@ window.fbAsyncInit = function() {
       });
     }
   }
-
+  // FB.api(
+  //   '/763588130417824/albums',
+  //   'POST',
+  //   {"name":"73k",photos:{
+  //     data: [{
+  //       url: 
+  //     }]
+  //   }},
+  //   function(response) {
+  //       // Insert your code here
+  //   }
+  // );
   FB.getLoginStatus(function(response) {
     // Check login status on load, and if the user is
     // already logged in, go directly to the welcome message.
