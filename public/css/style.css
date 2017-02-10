@@ -1,6 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Rufina|Josefin+Sans|Lobster);
 body {
-    background-image: linear-gradient(0, white 95%, black);
+    font-family: Josefin Sans
 }
 footer {
 	padding: 50px;

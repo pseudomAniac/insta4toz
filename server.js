@@ -4,7 +4,8 @@ var bodyParser = require("body-parser");
 var cheerio = require("cheerio");
 var cookieSession = require("cookie-session");
 var weather = require("./lib/weather-config.js");
-var unxConv = require("./lib/unixdate-converter.js");
+var moment = require('moment');
+// var unxConv = require("./lib/unixdate-converter.js");
 
 app.use(bodyParser.json());
 app.use(cookieSession({
@@ -17,10 +18,31 @@ app.post("/", function (req, res) {
 });
 app.get("/", function(req,res) {
 	weather.getCurrent("Lae", function(err, data) {
-		data.dt = unxConv(data.dt);
-		data.sys.sunrise = unxConv(data.sys.sunrise);
-		data.sys.sunset = unxConv(data.sys.sunset);
+		data.dt = moment(data.dt).format("DD MM YYYY");
+		data.sys.sunrise = moment(data.sys.sunrise).format("LLL");
+		data.sys.sunset = moment(data.sys.sunset).format("LLL");
 		err ? res.send(err) : res.render("pages/weather",{
+			weda:data,
+			appInfo: {
+				url: "http://sudoweatherreport.herokuapp.com",
+				type: "article",
+				title: "Lae Weather Report",
+				description: "This neat little app provides you with an up to the minute update on your local weather.",
+				img: {
+					title: "Sudo Weather Reoprt - Logo",
+					url: "/public/img/app-logo.png"
+				}
+			}
+	});
+	});
+});
+
+app.get("/flexbox", function(req,res) {
+	weather.getCurrent("Lae", function(err, data) {
+		data.dt = moment(data.dt).format("DD MMMM");
+		data.sys.sunrise = moment(data.sys.sunrise).format("HH:SS");
+		data.sys.sunset = moment(data.sys.sunset).format("HH:SS");
+		err ? res.send(err) : res.render("pages/flexbox",{
 			weda:data,
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
@@ -39,9 +61,9 @@ app.get("/", function(req,res) {
 app.get('/api/', function (req, res) {
 	var city = req.query.city;
 	weather.getCurrent(req.query.city, function(err, data) {
-		data.dt = unxConv(data.dt);
-		data.sys.sunrise = unxConv(data.sys.sunrise);
-		data.sys.sunset = unxConv(data.sys.sunset);
+		data.dt = moment(data.dt).format();
+		data.sys.sunrise = moment(data.sys.sunrise).format();
+		data.sys.sunset = moment(data.sys.sunset).format();
 		err ? res.send(err) : res.render("pages/weather",{
 			weda:data,
 			appInfo: {

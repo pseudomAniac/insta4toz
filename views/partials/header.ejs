@@ -1,48 +1,39 @@
 <header class="row">
-	<nav class="navbar navbar-default navbar-static-top" role="navigation">
-		<div class="">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mobile">
-					<span class="sr-only"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="collapse navbar-collapse text-uppercase" id="mobile">
-				<ul class="nav navbar-nav towns-list-group" role="menu">
-					<li><a href="/api/?city=Port Moresby" title="Port Moresby">Port Moresby</a></li>
-					<li><a href="/api/?city=Lae" title="Lae">Lae</a></li>
-					<li><a href="/api/?city=Arawa" title="Arawa">Arawa</a></li>
-					<li><a href="/api/?city=Mount Hagen" title="Mount Hagen">Mount Hagen</a></li>
-					<li><a href="/api/?city=Madang" title="Madang">Madang</a></li>
-					<li><a href="/api/?city=Wewak" title="Wewak">Wewak</a></li>
-					<li><a href="/api/?city=Goroka" title="Goroka">Goroka</a></li>
-					<li><a href="/api/?city=Kokopo" title="Kokopo">Kokopo</a></li>
-					<li><a href="/api/?city=Popondetta" title="Popondetta">Popondetta</a></li>
-					<li><a href="/api/?city=Aitape" title="Aitape">Aitape</a></li>
-					<li><a href="/api/?city=Rabaul" title="Rabaul">Rabaul</a></li>
-					<li><a href="/api/?city=Kimbe" title="Kimbe">Kimbe</a></li>
-					<li><a href="/api/?city=Tabubil" title="Tabubil">Tabubil</a></li>
-					<li><a href="/api/?city=Daru" title="Daru">Daru</a></li>
-					<li><a href="/api/?city=Kavieng" title="Kavieng">Kavieng</a></li>
-					<li><a href="/api/?city=Alotau" title="Alotau">Alotau</a></li>
-					<li><a href="/api/?city=Vanimo" title="Vanimo">Vanimo</a></li>
-					<li><a href="/api/?city=Bulolo" title="Bulolo">Bulolo</a></li>
-					<li><a href="/api/?city=Kiunga" title="Kiunga">Kiunga</a></li>
-					<li><a href="/api/?city=Kundiawa" title="Kundiawa">Kundiawa</a></li>
-					<li><a href="/api/?city=Mendi" title="Mendi">Mendi</a></li>
-					<li><a href="/api/?city=Kainantu" title="Kainantu">Kainantu</a></li>
-					<li><a href="/api/?city=Lorengau" title="Lorengau">Lorengau</a></li>
-					<li><a href="/api/?city=Ialibu" title="Ialibu">Ialibu</a></li>
-					<li><a href="/api/?city=Kerema" title="Kerema">Kerema</a></li>
-					<li><a href="/api/?city=Ningerum" title="Ningerum">Ningerum</a></li>
-					<li><a href="/api/?city=Wau" title="Wau">Wau</a></li>
-					<li><a href="/api/?city=Wabag" title="Wabag">Wabag</a></li>
-					<li><a href="/api/?city=Rabaul" title="Rabaul">Rabaul</a></li>
-					<li><a href="/#" title="Geo Location">@My Loc</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<div class="col-xs-10 col-xs-offset-1">
+		<form class="form-group" action="/api/">
+			<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or begin typing to filter cities" id="seach_city" autocomplete="true" list="cities">
+			<datalist id="cities">
+				<option value="Port Moresby">
+				<option value="Lae">
+				<option value="Arawa">
+				<option value="Mount Hagen">
+				<option value="Madang">
+				<option value="Wewak">
+				<option value="Goroka">
+				<option value="Kokopo">
+				<option value="Popondetta">
+				<option value="Aitape">
+				<option value="Rabaul">
+				<option value="Kimbe">
+				<option value="Tabubil">
+				<option value="Daru">
+				<option value="Kavieng">
+				<option value="Alotau">
+				<option value="Vanimo">
+				<option value="Bulolo">
+				<option value="Kiunga">
+				<option value="Kundiawa">
+				<option value="Mendi">
+				<option value="Kainantu">
+				<option value="Lorengau">
+				<option value="Ialibu">
+				<option value="Kerema">
+				<option value="Ningerum">
+				<option value="Wau">
+				<option value="Wabag">
+				<option value="Rabaul">
+				<li><a href="/#" title="Geo Location">@My Loc</a></li>
+			</datalist>
+		</form>
+	</div>
 </header>

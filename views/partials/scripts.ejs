@@ -4,14 +4,6 @@
 <script src="/scripts/nv.d3.min.js"></script>
 <script>
 	var weatherData = '', displayData = '';
-	function unxConverter(ele) {
-		var unxdate = $(ele).text();
-		var date = new Date(unxdate*1000);
-		var hours = date.getHours();
-		var mins = date.getMinutes();
-		var newDate = Number.parseInt(hours)+10 + ":" + mins; 
-		$(ele).text(newDate);
-	}
 	function getForecast(callback) {
 		$.get("/forecast/lae", function (data) {
 			callback(data);
@@ -38,6 +30,7 @@
 				.call(chart);
 		});
 	}
+	
 	function sortWeatherData() {
 		var threeHourly = [];
 		for (var i=0; i<weatherData.list.length; i++) {

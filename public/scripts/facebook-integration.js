@@ -9,12 +9,13 @@ window.fbAsyncInit = function() {
 
   function onLogin(response) {
     if (response.status == 'connected') {
-      FB.api('/me','GET',{"fields":"first_name,location"}, function(response) {
-          // Insert your code here
+      FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
         var welcomeBlock = document.getElementById('fb-welcome');
-        welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
         var locationBlock = document.getElementById('fb-location');
+        var propicBlock = document.getElementById('fb-propic');
+        welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
         locationBlock.innerHTML = 'You are in ' + response.location.name;
+        propicBlock.innerHTML = '<img class="img-responsive" src="'+response.picture.url+'" />';
       });
     }
   }
