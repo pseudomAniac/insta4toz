@@ -25,5 +25,20 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.7"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sylvery/sudoweather.git"
+  },
+  "keywords": [
+    "weather",
+    "report",
+    "open",
+    "weather",
+    "map"
+  ],
+  "bugs": {
+    "url": "https://github.com/sylvery/sudoweather/issues"
+  },
+  "homepage": "https://github.com/sylvery/sudoweather#readme"
 }
