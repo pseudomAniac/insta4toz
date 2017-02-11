@@ -82,7 +82,7 @@ app.get('/api/', function (req, res) {
 
 app.get("/forecast/:city", function (req, res) {
 	weather.getForecast(req.params.city, function(err, data) {
-		err ? res.send(err) : res.send(data);
+		err ? res.send(err) : console.log(data.city.name); res.send(data);
 	});
 });
 

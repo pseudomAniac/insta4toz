@@ -1,11 +1,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script>
-<script src="/scripts/nv.d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.5/nv.d3.js"></script>
 <script>
 	var weatherData = '', displayData = '';
 	function getForecast(callback) {
 		$.get("/forecast/lae", function (data) {
+			console.log(data.city.name)
 			callback(data);
 		})
 	}
@@ -21,10 +23,11 @@
 				.showXAxis(true);
 			chart.xAxis
 				.axisLabel("Time (ms)")
-				.tickFormat(d3.format(',r'));
+				.tickFormat(d3.format('r'));
 			chart.yAxis
 				.axisLabel("Voltage (v)")
 				.tickFormat(d3.format('.02f'));
+			displayData = sortWeatherData();
 			var lineChart = d3.select("#forecastGraph").append("svg");
 			lineChart.datum(displayData)
 				.call(chart);
@@ -35,7 +38,7 @@
 		var threeHourly = [];
 		for (var i=0; i<weatherData.list.length; i++) {
 			// threeHourly.push({x: i, y: weatherData.list[i].temp.day});
-			threeHourly.push({x: weatherData.list[i].dt, y: weatherData.list[i].temp.day});
+			threeHourly.push({x: weatherData.list[i].dt_txt, y: weatherData.list[i].main.temp});
 		}
 		return [{
 			values: threeHourly,
@@ -43,13 +46,14 @@
 			color: 'cadetblue'
 		}];
 	}
+
 	$(document).ready(function() {
-		getForecast(function(data){
-			data ? displayData = sortWeatherData() : console.log(data);
+		// getForecast(function(data){
+			// data ? displayData = data: console.log("err");
 			createGraph();
 			// weatherData = data;
 			console.log(data);
 			// return data;
-		})
+		// })
 	});
 </script>
