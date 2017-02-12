@@ -17,16 +17,14 @@ app.post("/", function (req, res) {
 	res.redirect("/");
 });
 app.get("/", function(req,res) {
-	weather.getCurrent("Lae", function(err, data) {
-		data.dt = moment.unix(data.dt).format("DD MMMM - HH:MM");
-		data.sys.sunrise = moment.unix(data.sys.sunrise).format("HH:MM");
-		data.sys.sunset = moment.unix(data.sys.sunset).format("HH:MM");
-		err ? res.send(err) : res.render("pages/weather",{
+	var city = "lae"
+	weather.getCurrent(city, function(data) {
+		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
 				type: "article",
-				title: "Lae Weather Report",
+				title: city.toUpperCase + " WEATHER REPORT",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
@@ -38,23 +36,21 @@ app.get("/", function(req,res) {
 });
 
 app.get("/flexbox", function(req,res) {
-	weather.getCurrent("Lae", function(err, data) {
-		data.dt = moment(data.dt).format("DD MMMM");
-		data.sys.sunrise = moment(data.sys.sunrise).format("HH:SS");
-		data.sys.sunset = moment(data.sys.sunset).format("HH:SS");
-		err ? res.send(err) : res.render("pages/flexbox",{
+	var city = "lae"
+	weather.getCurrent(city, function(data) {
+		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
 				type: "article",
-				title: "Lae Weather Report",
+				title: city.toUpperCase + " WEATHER REPORT",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
 					url: "/public/img/app-logo.png"
 				}
 			}
-	});
+		});
 	});
 });
 
@@ -66,7 +62,7 @@ app.get('/api/', function (req, res) {
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
 				type: "article",
-				title: "Lae Weather Report",
+				title: city.toUpperCase + " WEATHER REPORT",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
