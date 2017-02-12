@@ -11,7 +11,7 @@ gulp.task('server', function() {
 });
 
 gulp.task('default', ['server'], function() {
-	gulp.watch(['./server.js','./views/*/*.*','./lib/*.*'], ['server']);
+	gulp.watch(['./*.js','./lib/*.js'], ['server']);
 });
 
 process.on('exit', function() {

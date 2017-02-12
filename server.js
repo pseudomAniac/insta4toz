@@ -18,9 +18,9 @@ app.post("/", function (req, res) {
 });
 app.get("/", function(req,res) {
 	weather.getCurrent("Lae", function(err, data) {
-		data.dt = moment(data.dt).format("DD MM YYYY");
-		data.sys.sunrise = moment(data.sys.sunrise).format("LLL");
-		data.sys.sunset = moment(data.sys.sunset).format("LLL");
+		data.dt = moment.unix(data.dt).format("DD MMMM - HH:MM");
+		data.sys.sunrise = moment.unix(data.sys.sunrise).format("HH:MM");
+		data.sys.sunset = moment.unix(data.sys.sunset).format("HH:MM");
 		err ? res.send(err) : res.render("pages/weather",{
 			weda:data,
 			appInfo: {
@@ -33,7 +33,7 @@ app.get("/", function(req,res) {
 					url: "/public/img/app-logo.png"
 				}
 			}
-	});
+		});
 	});
 });
 
@@ -60,16 +60,13 @@ app.get("/flexbox", function(req,res) {
 
 app.get('/api/', function (req, res) {
 	var city = req.query.city;
-	weather.getCurrent(req.query.city, function(err, data) {
-		data.dt = moment(data.dt).format();
-		data.sys.sunrise = moment(data.sys.sunrise).format();
-		data.sys.sunset = moment(data.sys.sunset).format();
-		err ? res.send(err) : res.render("pages/weather",{
+	weather.getCurrent(city, function(data) {
+		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
-				url: "http://sudoweatherreport.herokuapp.com/api/?city="+city,
+				url: "http://sudoweatherreport.herokuapp.com",
 				type: "article",
-				title: city + " Weather Report",
+				title: "Lae Weather Report",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
@@ -80,15 +77,16 @@ app.get('/api/', function (req, res) {
 	});
 });
 
-app.get("/forecast/:city", function (req, res) {
-	weather.getForecast(req.params.city, function(err, data) {
-		err ? res.send(err) : console.log(data.city.name); res.send(data);
-	});
-});
+// app.get("/forecast/", function (req, res) {
+// 	weather.getForecast(req.query.city, function(err, data) {
+// 		err ? res.send(err) : console.log(data.city.name, ",\t", data.list.temp); res.send(data);
+// 	});
+// });
 
 app.use(express.static(__dirname + "/public"));
 app.set('view engine','ejs');
-app.set('port', (process.env.PORT || 3000))
+app.set('views','./client/views');
+app.set('port', (process.env.PORT || 3001))
 app.listen(app.get('port'), function() {
 	console.log("app started at " + app.get('port'));
 });
