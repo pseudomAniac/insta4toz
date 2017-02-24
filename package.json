@@ -15,7 +15,6 @@
     "cookie-session": "^2.0.0-alpha.1",
     "ejs": "^2.3.3",
     "express": "^4.13.3",
-    "instagram-node": "^0.5.7",
     "moment": "^2.17.1",
     "node-webkit-screenshot": "^0.3.2",
     "openweather-apis": "^2.0.1",
