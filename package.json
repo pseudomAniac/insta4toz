@@ -1,6 +1,9 @@
 {
   "name": "sudotech-weatherapp",
   "version": "2.2.0",
+  "engines": {
+    "node": "6.9.2"
+  },
   "description": "This weather data presentation web application aims to present accurate and current weather data to its visitors through the use of simple but powerful api calls to the Open Weather Map Project.",
   "main": "server.js",
   "scripts": {
