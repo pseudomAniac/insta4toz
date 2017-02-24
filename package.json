@@ -2,7 +2,7 @@
   "name": "sudotech-weatherapp",
   "version": "2.2.0",
   "engines": {
-    "node": "6.9.2"
+    "node": "6.x"
   },
   "description": "This weather data presentation web application aims to present accurate and current weather data to its visitors through the use of simple but powerful api calls to the Open Weather Map Project.",
   "main": "server.js",
@@ -42,5 +42,5 @@
   "bugs": {
     "url": "https://github.com/sylvery/sudoweather/issues"
   },
-  "homepage": "https://github.com/sylvery/sudoweather#readme"
+  "homepage": "https://sudoweather.herokuapp.com"
 }
