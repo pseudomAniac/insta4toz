@@ -82,7 +82,7 @@ app.get('/api/', function (req, res) {
 app.use(express.static(__dirname + "/public"));
 app.set('view engine','ejs');
 app.set('views','./client/views');
-app.set('port', (process.env.PORT || 3001))
+app.set('port', (process.env.PORT || 3000))
 app.listen(app.get('port'), function() {
 	console.log("app started at " + app.get('port'));
 });
