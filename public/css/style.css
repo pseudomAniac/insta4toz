@@ -262,3 +262,8 @@ footer .col-md-5.text-right {
 svg.nvd3-svg {
     height: 500px;
 }
+/* flex-box */
+.flexbox-center{
+    display: flex;
+    align-items: center;
+}
