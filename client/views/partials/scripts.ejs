@@ -2,11 +2,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-alpha.47/angular2.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-alpha.47/angular2.js"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.5/nv.d3.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script> -->
 <script>
-	// var weatherData = '', displayData = '';
+	var weatherData = '', displayData = '';
 	var createGraph = function (sortedData) {
 		nv.addGraph(function(sortedData) {
 			var chart = nv.models.lineChart()
@@ -24,11 +24,11 @@
 				.call(chart);
 		});
 	}
-	
 	$(document).ready(function() {
-		// $.get("/forecast/lae", function (err, data) {
-		// 	weatherData = data;
-			console.log("hooray!")
-		// })
+		$.get("/api/forecast/?city=lae", function (err, data) {
+			weatherData = data;
+			// createGraph(data);
+			console.log("hooray!\n",data)
+		})
 	});
 </script>

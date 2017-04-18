@@ -7,16 +7,16 @@
 	<body class="container-fluid">
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
-		<main class="">
-			<div class="row text-left">
-				<section class="col-sm-3 well-sm weather-data-widget">
+		<main class="row">
+			<div class="text-left">
+				<section class="col-sm-4 well-sm weather-data-widget">
 					<% include ../partials/header %>
 					<article class="row">
-						<figure class="col-sm-4 pull-left">
+						<!-- <figure class="col-sm-4 pull-left">
 							<img class="pull-left img-responsive" src="../img/app-logo.png" title="application logo" />
-						</figure>
-						<h1 id="fb-welcome" class="col-sm-8 text-center pull-right"></h1>
-						<div class="col-sm-8">
+						</figure> -->
+						<h3 id="fb-welcome" class="col-sm-12 text-center pull-right"></h3>
+						<div class="col-sm-12">
 							<h3 id="fb-location" class="col-sm-12"></h3>
 							<div class="col-sm-12"><% include ../partials/fb-like %></div>
 						</div>
@@ -51,7 +51,7 @@
 						</section>
 					</article>
 				</section>
-				<section class="col-sm-9">
+				<section class="col-sm-8">
 					<div class="row">
 						<div id="forecast-graph">
 							<svg></svg>
