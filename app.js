@@ -60,12 +60,20 @@ app.get("/flexbox", function(req,res) {
 
 app.use((req,res,next)=>{
 	res.locals.city = req.query.city;
-	console.log(res.locals.city);
+	// console.log(res.locals.city);
 	// next({a:"test"});
 	next()
 });
+router.get("/forecast", function (req, res) {
+	weather.getForecast(res.locals.city, function(err, data) {
+		err ?
+			res.send(err) :
+			// console.log("city",data.city.name,data.list[0]);
+			res.locals.forecastData = data;
+			res.send(data);
+	});
+});
 router.get('/', function (req, res) {
-	console.log(a);
 	weather.getCurrent(res.locals.city, function(data) {
 	// weather.getCurrent(city, function(data) {
 		res.render("pages/weather",{
@@ -81,14 +89,6 @@ router.get('/', function (req, res) {
 				}
 			}
 		});
-	});
-});
-router.get("/forecast/", function (req, res) {
-	weather.getForecast(res.locals.city, function(err, data) {
-		err ?
-			res.send(err) :
-			console.log(data.city.name, ",\t", data.list.temp);
-			res.send(data);
 	});
 });
 app.use('/api',router);

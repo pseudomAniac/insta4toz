@@ -3,32 +3,37 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-alpha.47/angular2.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.5/nv.d3.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.5/nv.d3.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script>
 <script>
-	var weatherData = '', displayData = '';
-	var createGraph = function (sortedData) {
-		nv.addGraph(function(sortedData) {
+	var weatherData = null;
+	function createGraph(forecastData) {
+		nv.addGraph(function() {
 			var chart = nv.models.lineChart()
+				.margin({left:120})
 				.userInteractiveGuideline(true)
-				.transitionDuration(350);
+				.transitionDuration(350)
+				.showLegend(true)
+				.showXAxis(true)
+				.showYAxis(true);
 			chart.xAxis
 				.axisLabel("Time (s)")
-				.tickFormat(d3.format('r'));
+				.tickFormat(d3.format(',r'));
 			chart.yAxis
 				.axisLabel("Temp (^C)")
 				.tickFormat(d3.format('.02f'));
-			displayData = sortWeatherData();
-			var lineChart = d3.select("#graph svg");
-			lineChart.datum(sortedData)
+			var chartData = forecastData();
+			d3.select("#graph svg")
+				.datum(chartData)
 				.call(chart);
+			nv.utils.windowResize(function(){chart.update()});
+			return chart;
 		});
 	}
 	$(document).ready(function() {
-		$.get("/api/forecast/?city=lae", function (err, data) {
-			weatherData = data;
-			// createGraph(data);
-			console.log("hooray!\n",data)
+		$.get("/api/forecast", function (data, response) {
+			console.log(response,data[0]);
+			createGraph(data[0]);
 		})
 	});
 </script>
