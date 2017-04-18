@@ -15,7 +15,7 @@ window.fbAsyncInit = function() {
         var propicBlock = document.getElementById('fb-propic');
         welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
         locationBlock.innerHTML = 'You are in ' + response.location.name;
-        propicBlock.innerHTML = '<img class="img-responsive" src="'+response.picture.url+'" />';
+        propicBlock.innerHTML = '<img class="img-responsive" src="'+response.picture.data.url+'" />';
       });
     }
   }
