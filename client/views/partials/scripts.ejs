@@ -1,30 +1,29 @@
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.5.0/d3.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-alpha.47/angular2.js"></script> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.5/nv.d3.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script>
 <script>
 	var weatherData = null;
 	function createGraph(forecastData) {
 		nv.addGraph(function() {
 			var chart = nv.models.lineChart()
-				.margin({left:120})
-				.userInteractiveGuideline(true)
-				.transitionDuration(350)
-				.showLegend(true)
-				.showXAxis(true)
-				.showYAxis(true);
+				.height(500)
+				.useInteractiveGuideline(true);
 			chart.xAxis
-				.axisLabel("Time (s)")
-				.tickFormat(d3.format(',r'));
+				.axisLabel("Day")
+				// .tickFormat(d3.time.format('%Y-%m-%dT%H%M%S+%Z'));
+				.tickFormat(d3.format('g'));
 			chart.yAxis
-				.axisLabel("Temp (^C)")
-				.tickFormat(d3.format('.02f'));
-			var chartData = forecastData();
-			d3.select("#graph svg")
-				.datum(chartData)
+				.axisLabel(null)
+				.tickFormat(d3.format('g'));
+			console.log("chartData -",forecastData)
+			d3.select("#forecast-graph>svg")
+				.datum(forecastData)
 				.call(chart);
 			nv.utils.windowResize(function(){chart.update()});
 			return chart;
@@ -33,7 +32,7 @@
 	$(document).ready(function() {
 		$.get("/api/forecast", function (data, response) {
 			console.log(response,data[0]);
-			createGraph(data[0]);
+			createGraph(data);
 		})
 	});
 </script>
