@@ -12,7 +12,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieSession({
-	name: "sampleSession",
+	name: "superSecretSession",
 	secret: "monobelle",
 	img: "/public/img/app-logo.png"
 }));
@@ -20,10 +20,10 @@ app.use(morgan('dev'));
 app.post("/", function (req, res) {
 	res.redirect("/");
 });
-router.get("/", function(req,res) {
+app.get("/", function(req,res) {
 	var city = "lae"
 	weather.getCurrent(city, function(data) {
-		res.render("pages/weather",{
+		res.render("pages/index",{
 			weda:data,
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
@@ -32,13 +32,12 @@ router.get("/", function(req,res) {
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/public/img/app-logo.png"
+					url: "/public/img/background image files (4).jpg"
 				}
 			}
 		});
 	});
 });
-app.use('/',router);
 app.get("/flexbox", function(req,res) {
 	var city = "lae"
 	weather.getCurrent(city, function(data) {
@@ -57,7 +56,6 @@ app.get("/flexbox", function(req,res) {
 		});
 	});
 });
-
 app.use((req,res,next)=>{
 	res.locals.city = req.query.city;
 	// console.log(res.locals.city);
@@ -74,18 +72,18 @@ router.get("/forecast", function (req, res) {
 	});
 });
 router.get('/', function (req, res) {
+	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
 	weather.getCurrent(res.locals.city, function(data) {
-	// weather.getCurrent(city, function(data) {
 		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
-				url: "http://sudoweatherreport.herokuapp.com",
+				url: "http://sudoweatherreport.herokuapp.com"+req.originalUrl,
 				type: "article",
-				title: res.locals.city.toUpperCase() + " WEATHER REPORT",
-				description: "This neat little app provides you with an up to the minute update on your local weather.",
+				title: mycity,
+				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/public/img/app-logo.png"
+					url: "/public/img/background image files (2).jpg"
 				}
 			}
 		});

@@ -3,109 +3,41 @@
 	<head>
 		<% include ../partials/head %>
 	</head>
-	<body class="app">
+	<body class="container-fluid">
+		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
-		<header class="row">
-			<% include ../partials/header %>
-		</header>
-		<main class="container-fluid text-info">
-			<div class="row">
-				<div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-				<div class="emphasize text-center col-xs-12">
-					<strong class="text-info h4">"#<%= tag_used %>"</strong>
-					<div class="text-warning">All photos shown in this page were randomly generated with this tag.</div>
-				</div>
-				<div class="jumbotron col-sm-5 col-md-8">
-					<!-- <div class="row"> -->
-						<div>
-							<span id="slogan" class="text-lowercase description">sudo dezigns | wow is just the beginning | www.facebook.com/sudodez</span>
-						</div>
-						<div>
-							<!-- <h2 class="text-uppercase headline"><i class='glyphicon glyphicon-fire small' style="color: purple;text-shadow: 2px 2px 2px azure;"></i>Welcome</h2> -->
-							<p class="description text-white">Welcome to the first sudo dezigns online app. I have tried to pack it with more the one awesome feature so that it will keep you coming back for more. <br /><br /><i class="glyphicon glyphicon-globe"></i><span class="text-black text-info"> Please feel free to leave a comment on our facebook page <a href="http://www.facebook.com/sudodez">www.facebook.com/sudodez</a>.</span></p>
-						</div>
-					<!-- </div> -->
-				</div>
-
-				<!-- instagram photos will be displayed here -->
-				<!-- <div class="row"> -->
-					<div class="col-sm-7 col-md-4">
-						<div id="instacarousel" class="carousel slide" data-ride="carousel">
-							<ol class="carousel-indicators">
-								<% var numberOfSlides = 5; %>
-								<% for (var count=0; count<numberOfSlides; count++) {%>
-									<li data-target="#instacarousel" data-slide-to="<% count %>"></li>
-								<% }; %>
-							</ol>
-							<div class="carousel-inner">
-								<% grams.forEach(function (gram) { %>
-									<div class="item instagram-pic">
-										<a href="<%= gram.link %>" target="_blank">
-											<img class="img-responsive" src="<%= gram.images.standard_resolution.url %>"></img>
-										</a>
-										<div class="instagram-bar" id="<%= gram.id %>">
-											<div class="likes">
-												<span class="glyphicon glyphicon-heart"></span>
-												<%= gram.likes.count %>
-											</div>
-											<div class="author"><span><%= gram.user.full_name %></span></div>
-											<div class="comments">
-												<span class="glyphicon glyphicon-comment"></span>
-												<%= gram.comments.count %>
-											</div>
-										</div>
-									</div>
-								<%	}) %>
-							</div>
-						</div>
-						<a class="left carousel-control" href="#instacarousel" data-slide="prev">
-							<span class="glyphicon glyphicon-chevron-left"></span>
-						</a>
-						<a class="right carousel-control" href="#instacarousel" data-slide="next">
-							<span class="glyphicon glyphicon-chevron-right"></span>
-						</a>
+		<section id="header">
+			<header class="row">
+				<% include ../partials/header %>
+			</header>
+			<article class="row flexbox-center">
+				<div class="col-sm-12"><% include ../partials/fb-like %></div>
+				<div id="fb-propic" class="col-sm-12"></div>
+				<h3 id="fb-welcome" class="col-sm-12"></h3>
+			</article>
+		</section>
+		<section id="main">
+			<div class="well-lg">
+				<h1 class="page-header">Sudo Weather Reports <span class="small text-muted pull-right">by Sudo Tech</span></h1>
+				<section class="text-center">
+					<div class="col-sm-4">
+						<i class="glyphicon glyphicon-search"></i><br>
+						<h3><a href="/api/?city=Port Moresby">Port Moresby</a></h3>
+						<p>7 day weather forecast including weather update</p>
 					</div>
-				<!-- </div> -->
-			</div>	
-			<div class="row">
-				<button id="tag-plus" class="btn-lg btn-tag btn-danger" data-toggle="modal" data-target="#tagslist"><span class="glyphicon glyphicon-plus"></span></button>
-				<div class="modal fade" role="dialog" id="tagslist">
-					<div class="modal-dialog">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button class="close" data-dismiss="modal" type="button">&times;</button>
-								<h4 class="modal-title">Available Tags</h4>
-							</div>
-							<div class="modal-body">
-										<ul class="list-inline tag-list-container">
-								<% for(var i=0; i<tag.length; i++){ %>
-									<% if (tag[i] === tag_used) {} else { %>
-											<li><a href="/tag/<%=tag[i] %>"><%=tag[i] %></li>
-									<%}%>
-								<%};%>
-										</ul>
-							</div>
-							<div class="modal-footer">
-								<button class="btn btn-default" type="button" data-dismiss="modal"><span class="glyphicon glyphicon-trash"></span></button>
-							</div>
-						</div>
+					<div class="col-sm-4">
+						<i class="glyphicon glyphicon-search"></i><br>
+						<h3><a href="/api/?city=Lae">Lae</a></h3>
+						<p>7 day weather forecast including weather update</p>
 					</div>
-				</div>
+					<div class="col-sm-4">
+						<i class="glyphicon glyphicon-search"></i><br>
+						<h3><a href="/api/?city=Mount Hagen">Mount Hagen</a></h3>
+						<p>7 day weather forecast including weather update</p>
+					</div>
+				</section>
 			</div>
-		</main>
-		<div class="container">
-			<div class="row">
-				<h1 id="fb-welcome"></h1><span>Care to leave a comment?</span>
-				<div class="fb-comments" data-href="http://insta4toz.herokuapp.com/template" data-width="100%" data-numposts="5"></div>
-			</div>
-		</div>
-		<footer class="clear container-fluid">
-			<% include ../partials/footer %>
-		</footer>
-		<script>
-			$(".item:first").removeClass('left next').addClass('active');
-			var hgt = jQuery("#instacarousel").height();
-			$(".jumbotron").height(hgt-95);
-		</script>
+		</section>
+		<section id="footer"></section>
 	</body>
 </html>
