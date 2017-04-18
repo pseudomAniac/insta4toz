@@ -5,14 +5,16 @@ var cheerio = require("cheerio");
 var cookieSession = require("cookie-session");
 var weather = require("./lib/weather-config.js");
 var moment = require('moment');
+var morgan = require('morgan');
 // var unxConv = require("./lib/unixdate-converter.js");
-
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cookieSession({
 	name: "sampleSession",
 	secret: "monobelle",
 	img: "/public/img/app-logo.png"
-})); 
+}));
+app.use(morgan('dev'));
 app.post("/", function (req, res) {
 	res.redirect("/");
 });
