@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(cookieSession({
 	name: "superSecretSession",
 	secret: "monobelle",
-	img: "/public/img/app-logo.png"
+	img: "/img/background image files (4).png"
 }));
 app.use(morgan('dev'));
 app.post("/", function (req, res) {
@@ -32,7 +32,7 @@ app.get("/", function(req,res) {
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/public/img/background image files (4).jpg"
+					url: "/img/background image files (2).jpg"
 				}
 			}
 		});
@@ -50,7 +50,7 @@ app.get("/flexbox", function(req,res) {
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/public/img/app-logo.png"
+					url: "/img/background image files (1)"
 				}
 			}
 		});
@@ -66,7 +66,7 @@ router.get("/forecast", function (req, res) {
 	weather.getForecast(res.locals.city, function(err, data) {
 		err ?
 			res.send(err) :
-			// console.log("city",data.city.name,data.list[0]);
+			console.log("city -",data.list);
 			res.locals.forecastData = data;
 			res.send(data);
 	});
@@ -83,7 +83,7 @@ router.get('/', function (req, res) {
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/public/img/background image files (2).jpg"
+					url: "/img/background image files (3).jpg"
 				}
 			}
 		});
@@ -108,7 +108,7 @@ router.all((req,res,next)=>{
 			description: "Get up to the minute update on your local weather using this app now!",
 			img: {
 				title: "Sudo Weather Reoprt - Logo",
-				url: "/public/img/app-logo.png"
+				url: "/img/app-logo.png"
 			}
 		}
 	});
