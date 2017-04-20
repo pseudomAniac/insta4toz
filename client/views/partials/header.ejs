@@ -1,51 +1,42 @@
-<header class="row">
-	<nav class="navbar navbar-default bg-faded">
-		<a class="navbar-brand" href="">PNG.W.RPT</a>
-		<ul class="nav navbar-nav text-uppercase">
-			<li class="nav-item">
-				<a class="nav-link" href="/">home</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="/">home</a>
-			</li>
-			<li class="nav-item nav-right item-last text-center">
-				<% include ../partials/fb-like %>
-			</li>
-		</ul>
-		<form class="form-inline navbar-form pull-right form-group" action="/api/">
-			<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or begin typing to filter cities" id="seach_city" autocomplete="true" list="cities">
-			<datalist id="cities">
-				<option value="Port Moresby">
-				<option value="Lae">
-				<option value="Arawa">
-				<option value="Mount Hagen">
-				<option value="Madang">
-				<option value="Wewak">
-				<option value="Goroka">
-				<option value="Kokopo">
-				<option value="Popondetta">
-				<option value="Aitape">
-				<option value="Rabaul">
-				<option value="Kimbe">
-				<option value="Tabubil">
-				<option value="Daru">
-				<option value="Kavieng">
-				<option value="Alotau">
-				<option value="Vanimo">
-				<option value="Bulolo">
-				<option value="Kiunga">
-				<option value="Kundiawa">
-				<option value="Mendi">
-				<option value="Kainantu">
-				<option value="Lorengau">
-				<option value="Ialibu">
-				<option value="Kerema">
-				<option value="Ningerum">
-				<option value="Wau">
-				<option value="Wabag">
-				<option value="Rabaul">
-			</datalist>
-			<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-		</form>
-	</nav>
-</header>
+<nav class="navbar navbar-default navbar-fixed-top bg-faded">
+	<a class="navbar-brand" href="/"><span id="fb-propic"></span>PNG.W.RPT</a>
+	<form class="form-inline navbar-form nav navbar-nav navbar-right form-group" action="/api/">
+		<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or begin typing to filter cities" id="seach_city" autocomplete="true" list="cities">
+		<datalist id="cities">
+			<option value="Port Moresby">
+			<option value="Lae">
+			<option value="Arawa">
+			<option value="Mount Hagen">
+			<option value="Madang">
+			<option value="Wewak">
+			<option value="Goroka">
+			<option value="Kokopo">
+			<option value="Popondetta">
+			<option value="Aitape">
+			<option value="Rabaul">
+			<option value="Kimbe">
+			<option value="Tabubil">
+			<option value="Daru">
+			<option value="Kavieng">
+			<option value="Alotau">
+			<option value="Vanimo">
+			<option value="Bulolo">
+			<option value="Kiunga">
+			<option value="Kundiawa">
+			<option value="Mendi">
+			<option value="Kainantu">
+			<option value="Lorengau">
+			<option value="Ialibu">
+			<option value="Kerema">
+			<option value="Ningerum">
+			<option value="Wau">
+			<option value="Wabag">
+			<option value="Rabaul">
+		</datalist>
+		<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+	</form>
+	<div class="nav navbar-nav navbar-right flexbox-center">
+		<h3 id="fb-welcome"></h3>
+		<% include ../partials/fb-like %>
+	</div>
+</nav>

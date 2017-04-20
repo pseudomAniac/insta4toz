@@ -260,7 +260,18 @@ footer .col-md-5.text-right {
 }
 /* nvd3 styles */
 svg.nvd3-svg {
-    height: 500px;
+    height: 300px;
+}
+/* fixed navbar styles */
+@media (max-width:769px){
+    main {
+        margin-top: 175px;
+    }
+}
+@media (min-width:770px) {
+    main {
+        margin-top: 35px;
+    }
 }
 /* flex-box */
 .flexbox-center{

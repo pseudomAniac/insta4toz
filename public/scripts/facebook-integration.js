@@ -13,7 +13,7 @@ window.fbAsyncInit = function() {
         var welcomeBlock = document.getElementById('fb-welcome');
         var locationBlock = document.getElementById('fb-location');
         var propicBlock = document.getElementById('fb-propic');
-        welcomeBlock.innerHTML = 'Greetings ' + response.first_name + '!';
+        welcomeBlock.innerHTML = 'Yo ' + response.first_name + '!';
         locationBlock.innerHTML = 'You are in ' + response.location.name;
         propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
       });

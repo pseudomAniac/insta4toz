@@ -66,7 +66,7 @@ router.get("/forecast", function (req, res) {
 	weather.getForecast(res.locals.city, function(err, data) {
 		err ?
 			res.send(err) :
-			console.log("city -",data.list);
+			// console.log("city -",data.list);
 			res.locals.forecastData = data;
 			res.send(data);
 	});
