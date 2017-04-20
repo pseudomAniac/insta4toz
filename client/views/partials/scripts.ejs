@@ -8,7 +8,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script>
 <script>
-	var weatherData = null;
+	var weatherData = null,
+		cityURL = document.URL.split('?')[1];
 	function createGraph(forecastData) {
 		nv.addGraph(function() {
 			var chart = nv.models.lineChart()
@@ -33,7 +34,7 @@
 		});
 	}
 	$(document).ready(function() {
-		$.get("/api/forecast", function (data, response) {
+		$.get("/api/forecast/?"+cityURL, function (data, response) {
 			// console.log(response,data[0]);
 			createGraph(data);
 		})

@@ -58,12 +58,13 @@ app.get("/flexbox", function(req,res) {
 });
 app.use((req,res,next)=>{
 	res.locals.city = req.query.city;
-	// console.log(res.locals.city);
+	console.log('res.locals.city -',res.locals.city);
 	// next({a:"test"});
 	next()
 });
 router.get("/forecast", function (req, res) {
-	weather.getForecast(res.locals.city, function(err, data) {
+	console.log('req.query.city -',req.query.city);
+	weather.getForecast(req.query.city, function(err, data) {
 		err ?
 			res.send(err) :
 			// console.log("city -",data.list);
