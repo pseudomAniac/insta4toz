@@ -12,16 +12,19 @@
 	function createGraph(forecastData) {
 		nv.addGraph(function() {
 			var chart = nv.models.lineChart()
-				.height(500)
+				.height(300)
 				.useInteractiveGuideline(true);
 			chart.xAxis
-				.axisLabel("Day")
-				// .tickFormat(d3.time.format('%Y-%m-%dT%H%M%S+%Z'));
-				.tickFormat(d3.format('g'));
+				.axisLabel("Date & Time")
+				.tickFormat((d)=>{
+					// console.log("date time fx =",new Date(d*1000))
+					return d3.time.format('%d/%m %H:%M')(new Date(d*1000));
+				})
+				// .tickFormat(d3.format('g'));
 			chart.yAxis
 				.axisLabel(null)
 				.tickFormat(d3.format('g'));
-			console.log("chartData -",forecastData)
+			// console.log("chartData -",forecastData)
 			d3.select("#forecast-graph>svg")
 				.datum(forecastData)
 				.call(chart);
@@ -31,7 +34,7 @@
 	}
 	$(document).ready(function() {
 		$.get("/api/forecast", function (data, response) {
-			console.log(response,data[0]);
+			// console.log(response,data[0]);
 			createGraph(data);
 		})
 	});

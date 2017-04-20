@@ -6,54 +6,52 @@
 	<body class="container-fluid">
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
+		<% include ../partials/header %>
 		<main class="row">
-			<div class="">
-				<section class="col-sm-4 well-sm weather-data-widget">
-					<% include ../partials/header %>
-					<article class="row flexbox-center">
-						<div class="col-sm-12"><% include ../partials/fb-like %></div>
-						<div id="fb-propic" class="col-sm-12"></div>
-						<h3 id="fb-welcome" class="col-sm-12"></h3>
-					</article>
-					<article id="weather-info" class="row text-primary bg-warning text-center">
-						<div class="col-sm-10 col-sm-offset-1">
-							<p>The ground temperature is <%= weda.main.temp %> &deg;C. with <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
-							<p>The wind is averaging speeds of up to <%= weda.wind.speed %> km/h blowing in from the North at <%= weda.wind.deg %> &deg;</p>
-							<p>Atmospheric pressure is measuring up to <%= weda.main.pressure %> hPa with humidity measuring at <%= weda.main.humidity %>%.</p>
-						</div>
-					</article>
-					<article class="row">
-						<section class="col-sm-12 ">
-							<table class="table table-hover table-striped text-center">
-								<thead>
-									<tr>
-										<th>latitude</th>
-										<th>longitude</th>
-										<th>sunrises</th>
-										<th>sunsets</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td><%= weda.coord.lat %></td>
-										<td><%= weda.coord.lon %></td>
-										<td class="date-sunrise"><%= weda.sys.sunrise %></td>
-										<td class="date-sunset"><%= weda.sys.sunset %></td>
-									</tr>
-								</tbody>
-							</table>
-							<p id="fb-location" class="col-sm-12 text-default small text-center"></p>
-						</section>
-					</article>
-				</section>
-				<section class="col-sm-8">
-					<div class="row">
-						<div id="forecast-graph">
-							<svg></svg>
-						</div>
+			<section class="col-sm-4 well-sm">
+				<article class="row flexbox-center">
+					<div id="fb-propic" class="col-sm-12"></div>
+					<h3 id="fb-welcome" class="col-sm-12"></h3>
+					<p id="fb-location" class="col-sm-12 text-default small text-center"></p>
+				</article>
+				<article id="weather-info" class="row text-primary bg-warning text-center">
+					<div class="col-sm-10 col-sm-offset-1">
+						<p>The ground temperature is <%= weda.main.temp %> &deg;C. with <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
+						<p>The wind is averaging speeds of up to <%= weda.wind.speed %> km/h blowing in from the North at <%= weda.wind.deg %> &deg;</p>
+						<p>Atmospheric pressure is measuring up to <%= weda.main.pressure %> hPa with humidity measuring at <%= weda.main.humidity %>%.</p>
 					</div>
-				</section>
-			</div>
+				</article>
+				<article class="row">
+					<section class="col-sm-12 ">
+						<table class="table table-hover table-striped text-center">
+							<thead>
+								<tr>
+									<th>latitude</th>
+									<th>longitude</th>
+									<th>sunrises</th>
+									<th>sunsets</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><%= weda.coord.lat %></td>
+									<td><%= weda.coord.lon %></td>
+									<td class="date-sunrise"><%= weda.sys.sunrise %></td>
+									<td class="date-sunset"><%= weda.sys.sunset %></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</article>
+			</section>
+			<section class="col-sm-8">
+				<div class="row">
+					<h2 class="page-header">7 Day Weather Forecast <br><span class="small text-muted">3 hourly updates</span></h2>
+					<div id="forecast-graph">
+						<svg></svg>
+					</div>
+				</div>
+			</section>
 		</main>
 		<!-- <% include ../partials/footer %> -->
 	</body>
