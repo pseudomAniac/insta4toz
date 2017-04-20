@@ -1,7 +1,8 @@
-<nav class="navbar navbar-default navbar-fixed-top bg-faded">
-	<a class="navbar-brand" href="/"><span id="fb-propic"></span>PNG.W.RPT</a>
+<nav class="navbar navbar-default navbar-fixed-top flexbox-center">
+	<a class="navbar-brand" href="/"><span id="fb-propic"></span></a>
+	<h3 id="fb-welcome" class="navbar-brand"></h3>
 	<form class="form-inline navbar-form nav navbar-nav navbar-right form-group" action="/api/">
-		<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or begin typing to filter cities" id="seach_city" autocomplete="true" list="cities">
+		<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or start typing to filter cities" id="seach_city" autocomplete="true" list="cities">
 		<datalist id="cities">
 			<option value="Port Moresby">
 			<option value="Lae">
@@ -35,8 +36,4 @@
 		</datalist>
 		<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	</form>
-	<div class="nav navbar-nav navbar-right flexbox-center">
-		<h3 id="fb-welcome"></h3>
-		<% include ../partials/fb-like %>
-	</div>
 </nav>
