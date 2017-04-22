@@ -59,7 +59,7 @@ router.get("/flexbox", function(req,res) {
 router.get('/webhook',(req,res)=>{
 	// enter webhook code here
 	if(req.query['hub.mode'] === 'subscribe' &&
-		 req.query['hub.verify_token'] === <VERIFY_TOKEN>){
+		 req.query['hub.verify_token'] === 'monobelle101516'){
 		console.log("validating webhook");
 	res.status(200).send(req.query['hub.challenge']);
 	} else {
