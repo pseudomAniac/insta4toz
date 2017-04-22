@@ -88,11 +88,11 @@ router.get('/webhook',(req,res)=>{
 function receivedMessage(event) {
 	// console.log("Message data: ",event.message);
 	var senderID = event.sender.id;
-	var receipientID = event.receipient.id;
+	var recipientID = event.recipient.id;
 	var timeOfMessage = event.timestamp;
 	var message = event.message;
 
-	console.log('Received message from user %d and page %d at %d wiht message:', senderID, receipientID, timestamp);
+	console.log('Received message from user %d and page %d at %d wiht message:', senderID, recipientID, timestamp);
 	console.log(JSON.stringify(message));
 
 	var messageID = message.mid;
@@ -111,10 +111,10 @@ function receivedMessage(event) {
 		sendTextMessage(senderID, "Message with attachments received!");
 	}
 }
-function sendGenericMessage(receipientID, messageText) {
+function sendGenericMessage(recipientID, messageText) {
 	var messageData = {
-		receipient: {
-			id: receipientID
+		recipient: {
+			id: recipientID
 		},
 		message: {
 			text: messageText
@@ -130,10 +130,10 @@ function callSendAPI(messageData) {
 		json: messageData
 	}, function(error, response, body) {
 		if (!error && response.statusCode === 200) {
-			var receipientID = body.receipient_id;
+			var recipientID = body.recipient_id;
 			var messageID = body.message_id;
 
-			console.log("Successfully sent generic message with id %s to receipient %s", messageID, receipientID);
+			console.log("Successfully sent generic message with id %s to recipient %s", messageID, recipientID);
 		} else {
 			console.error("Unable to send message");
 			console.error(response);
