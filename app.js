@@ -111,7 +111,8 @@ function receivedMessage(event) {
 		sendTextMessage(senderID, "Message with attachments received!");
 	}
 }
-function sendGenericMessage(recipientID, messageText) {
+function sendGenericMessage(recipientID, messageText) {}
+function sendTextMessage(recipientID, messageText) {
 	var messageData = {
 		recipient: {
 			id: recipientID
