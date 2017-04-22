@@ -7,6 +7,7 @@ var cookieSession = require("cookie-session");
 var weather = require("./lib/weather-config.js");
 var moment = require('moment');
 var morgan = require('morgan');
+var request = require('request');
 // var unxConv = require("./lib/unixdate-converter.js");
 app.use(express.static(__dirname + "/public"));
 app.use(morgan("dev"));
