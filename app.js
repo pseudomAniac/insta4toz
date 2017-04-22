@@ -67,6 +67,80 @@ router.get('/webhook',(req,res)=>{
 		res.sendStatus(403);
 	}
 })
+.post('/webhook',(req,res)=>{
+	var data = req.body;
+	if (data.object = 'page') {
+		data.entry.forEach((entry)=>{
+			var pageID = entry.id;
+			var timeOfEvent = entry.time;
+
+			entry.messaging.forEach((event)=>{
+				if (event.message) {
+					receivedMessage(event);
+				} else {
+					console.log("Webhook received unknown event!",event);
+				}
+			});
+		});
+		res.sendStatus(200);
+	}
+});
+function receivedMessage(event) {
+	// console.log("Message data: ",event.message);
+	var senderID = event.sender.id;
+	var receipientID = event.receipient.id;
+	var timeOfMessage = event.timestamp;
+	var message = event.message;
+
+	console.log('Received message from user %d and page %d at %d wiht message:', senderID, receipientID, timestamp);
+	console.log(JSON.stringify(message));
+
+	var messageID = message.mid;
+	var messageText = message.text;
+	var messageAttachments = message.attachments;
+
+	if (messageText) {
+		switch(messageText) {
+			case 'generic':
+				sendGenericMessage(senderID);
+				break;
+			default:
+				sendTextMessage(senderID, messageText);
+		}
+	} else if (messageAttachments) {
+		sendTextMessage(senderID, "Message with attachments received!");
+	}
+}
+function sendGenericMessage(receipientID, messageText) {
+	var messageData = {
+		receipient: {
+			id: receipientID
+		},
+		message: {
+			text: messageText
+		}
+	}
+	callSendAPI(messageData);
+}
+function callSendAPI(messageData) {
+	request ({
+		uri: 'https://graph.facebook.com/v2.6/me/messages',
+		qs: { access_token: 'monobelle101516'},
+		method: 'POST',
+		json: messageData
+	}, function(error, response, body) {
+		if (!error && response.statusCode === 200) {
+			var receipientID = body.receipient_id;
+			var messageID = body.message_id;
+
+			console.log("Successfully sent generic message with id %s to receipient %s", messageID, receipientID);
+		} else {
+			console.error("Unable to send message");
+			console.error(response);
+			console.error(error);
+		}
+	})
+}
 app.use('/',router);
 app.use((req,res,next)=>{
 	res.locals.city = req.query.city;
