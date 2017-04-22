@@ -20,7 +20,7 @@ app.use(morgan('dev'));
 app.post("/", function (req, res) {
 	res.redirect("/");
 });
-app.get("/", function(req,res) {
+router.get("/", function(req,res) {
 	var city = "lae"
 	weather.getCurrent(city, function(data) {
 		res.render("pages/index",{
@@ -38,7 +38,7 @@ app.get("/", function(req,res) {
 		});
 	});
 });
-app.get("/flexbox", function(req,res) {
+router.get("/flexbox", function(req,res) {
 	var city = "lae"
 	weather.getCurrent(city, function(data) {
 		res.render("pages/weather",{
@@ -56,6 +56,18 @@ app.get("/flexbox", function(req,res) {
 		});
 	});
 });
+router.get('/webhook',(req,res)=>{
+	// enter webhook code here
+	if(req.query['hub.mode'] === 'subscribe' &&
+		 req.query['hub.verify_token'] === <VERIFY_TOKEN>){
+		console.log("validating webhook");
+	res.status(200).send(req.query['hub.challenge']);
+	} else {
+		console.error("Failed Validation! Make sure the Validation tokens match.");
+		res.sendStatus(403);
+	}
+})
+app.use('/',router);
 app.use((req,res,next)=>{
 	res.locals.city = req.query.city;
 	console.log('res.locals.city -',res.locals.city);
