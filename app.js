@@ -92,7 +92,8 @@ router.get('/', function (req, res) {
 		});
 	});
 });
-router.get('/webhook',(req,res)=>{
+app.use('/api',router);
+app.get('/api/webhook',(req,res)=>{
 	// enter webhook code here
 	if(req.query['hub.mode'] === 'subscribe' &&
 		 req.query['hub.verify_token'] === 'monobelle101516'){
@@ -103,7 +104,7 @@ router.get('/webhook',(req,res)=>{
 		res.sendStatus(403);
 	}
 });
-router.post('/webhook',(req,res)=>{
+app.post('/api/webhook',(req,res)=>{
 	var data = req.body;
 	if (data.object = 'page') {
 		data.entry.forEach((entry)=>{
@@ -120,31 +121,6 @@ router.post('/webhook',(req,res)=>{
 		res.sendStatus(200);
 	}
 });
-app.use('/api',router);
-// test api
-router.all((req,res,next)=>{
-	res.locals.city = req.params.city;
-	weather.getCurrent(res.locals.city, (data)=>{
-		res.locals.weatherdata = data;
-	})
-	next();
-})
-.get("/", function(req,res,next) {
-	res.render("pages/weather",{
-		weda:res.locals.weatherdata,
-		appInfo: {
-			url: "http://sudoweatherreport.herokuapp.com",
-			type: "article",
-			title: res.locals.city.toUpperCase() + " WEATHER REPORT",
-			description: "Get up to the minute update on your local weather using this app now!",
-			img: {
-				title: "Sudo Weather Reoprt - Logo",
-				url: "/img/app-logo.png"
-			}
-		}
-	});
-});
-app.use('/test',router);
 // functions
 function receivedMessage(event) {
 	// console.log("Message data: ",event.message);
