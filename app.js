@@ -8,6 +8,7 @@ var weather = require("./lib/weather-config.js");
 var moment = require('moment');
 var morgan = require('morgan');
 var request = require('request');
+var fbmsg = require('./lib/fb-messenger');
 // var unxConv = require("./lib/unixdate-converter.js");
 app.use(express.static(__dirname + "/public"));
 app.use(morgan("dev"));
@@ -93,7 +94,7 @@ router.get('/', function (req, res) {
 	});
 });
 app.use('/api',router);
-app.get('/api/webhook',(req,res)=>{
+app.get('/messenger/webhook',(req,res)=>{
 	// enter webhook code here
 	if(req.query['hub.mode'] === 'subscribe' &&
 		 req.query['hub.verify_token'] === 'monobelle101516'){
@@ -104,7 +105,7 @@ app.get('/api/webhook',(req,res)=>{
 		res.sendStatus(403);
 	}
 });
-app.post('/api/webhook',(req,res)=>{
+app.post('/messenger/webhook',(req,res)=>{
 	var data = req.body;
 	if (data.object = 'page') {
 		data.entry.forEach((entry)=>{
@@ -112,7 +113,7 @@ app.post('/api/webhook',(req,res)=>{
 			var timeOfEvent = entry.time;
 			entry.messaging.forEach((event)=>{
 				if (event.message) {
-					receivedMessage(event);
+					fbmsg.receivedMessage(event);
 				} else {
 					console.log("Webhook received unknown event!",event);
 				}
@@ -121,64 +122,6 @@ app.post('/api/webhook',(req,res)=>{
 		res.sendStatus(200);
 	}
 });
-// functions
-function receivedMessage(event) {
-	// console.log("Message data: ",event.message);
-	var senderID = event.sender.id;
-	var recipientID = event.recipient.id;
-	var timeOfMessage = event.timestamp;
-	var message = event.message;
-
-	console.log('Received message from user %d and page %d at %d with message:', senderID, recipientID, timeOfMessage);
-	console.log(JSON.stringify(message));
-
-	var messageID = message.mid;
-	var messageText = message.text;
-	var messageAttachments = message.attachments;
-
-	if (messageText) {
-		switch(messageText) {
-			case 'generic':
-				sendGenericMessage(senderID);
-				break;
-			default:
-				sendTextMessage(senderID, messageText);
-		}
-	} else if (messageAttachments) {
-		sendTextMessage(senderID, "Message with attachments received!");
-	}
-}
-function sendGenericMessage(recipientID, messageText) {}
-function sendTextMessage(recipientID, messageText) {
-	var messageData = {
-		recipient: {
-			id: recipientID
-		},
-		message: {
-			text: messageText
-		}
-	}
-	callSendAPI(messageData);
-}
-function callSendAPI(messageData) {
-	request({
-		uri: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: { access_token: 'EAAUZBZCZCHjIZBoBAOqONyO9DbcJsleezDQZB2Qkxl9pAS7V4RNsNv9lFsv2YzjtFzrr7BrDi3uZAuYYAZBSleH5AWvcIVzwZCns9qCGeLFjRkecQbe2xWSWSwUUKLNYSbpnnBZAE3dRsoU1RuqZByboYZBioaWdHcBOV1apV0vFTbKbAZDZD'},
-		method: 'POST',
-		json: messageData
-	}, function(error, response, body) {
-		if (!error && response.statusCode === 200) {
-			var recipientID = body.recipient_id;
-			var messageID = body.message_id;
-
-			console.log("Successfully sent generic message with id %s to recipient %s", messageID, recipientID);
-		} else {
-			console.error("Unable to send message");
-			console.error("response =>",response);
-			console.error("error =>",error);
-		}
-	})
-}
 app.set('view engine','ejs');
 app.set('views','./client/views');
 app.set('port', (process.env.PORT || 3000))
