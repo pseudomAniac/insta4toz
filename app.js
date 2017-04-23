@@ -127,7 +127,7 @@ function sendTextMessage(recipientID, messageText) {
 function callSendAPI(messageData) {
 	request({
 		uri: 'https://graph.facebook.com/v2.6/me/messages',
-		qs: { access_token: 'monobelle101516'},
+		qs: { access_token: 'EAAUZBZCZCHjIZBoBAOqONyO9DbcJsleezDQZB2Qkxl9pAS7V4RNsNv9lFsv2YzjtFzrr7BrDi3uZAuYYAZBSleH5AWvcIVzwZCns9qCGeLFjRkecQbe2xWSWSwUUKLNYSbpnnBZAE3dRsoU1RuqZByboYZBioaWdHcBOV1apV0vFTbKbAZDZD'},
 		method: 'POST',
 		json: messageData
 	}, function(error, response, body) {
