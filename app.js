@@ -29,7 +29,7 @@ router.get("/", function(req,res) {
 			appInfo: {
 				url: "https://sudoweather.herokuapp.com",
 				type: "article",
-				title: city.toUpperCase + " WEATHER REPORT",
+				title: city.toUpperCase() + " WEATHER REPORT",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
@@ -47,7 +47,7 @@ router.get("/flexbox", function(req,res) {
 			appInfo: {
 				url: "http://sudoweatherreport.herokuapp.com",
 				type: "article",
-				title: city.toUpperCase + " WEATHER REPORT",
+				title: city.toUpperCase() + " WEATHER REPORT",
 				description: "This neat little app provides you with an up to the minute update on your local weather.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
