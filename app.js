@@ -18,7 +18,7 @@ app.use(cookieSession({
 	img: "/img/background image files (4).png"
 }));
 app.use(morgan('dev'));
-app.post("/", function (req, res) {
+router.post("/", function (req, res) {
 	res.redirect("/");
 });
 router.get("/", function(req,res) {
@@ -58,27 +58,22 @@ router.get("/flexbox", function(req,res) {
 	});
 });
 app.use('/',router);
-app.use((req,res,next)=>{
+router.use((req,res,next)=>{
 	res.locals.city = req.query.city;
-	console.log('res.locals.city -',res.locals.city);
+	// console.log('res.locals.city -',res.locals.city);
 	// next({a:"test"});
 	next()
 });
 router.get("/forecast", function (req, res) {
-	console.log('req.query.city -',req.query.city);
+	// console.log('req.query.city -',req.query.city);
 	weather.getForecast(req.query.city, function(err, data) {
-		err ?
-			res.send(err) :
-			// console.log("city -",data.list);
-			res.locals.forecastData = data;
-			res.send(data);
+		err ? res.send(err) : res.send(data);
 	});
 });
-router.get('/test',(req,res)=>{
-	res.send("success");//.render('/');
-})
-router.get('/', function (req, res) {
+router.get('/weather/', function (req, res) {
 	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
+	console.log('req.originalUrl -',req.originalUrl);
+	console.log('weather city -',mycity)
 	weather.getCurrent(res.locals.city, function(data) {
 		res.render("pages/weather",{
 			weda:data,
@@ -89,15 +84,17 @@ router.get('/', function (req, res) {
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/img/background image files (3).jpg"
+					url: "/img/app-logo.png"
 				}
 			}
 		});
 	});
 });
+router.get('/test',(req,res)=>{
+	res.send("success");//.render('/');
+})
 app.use('/api',router);
 app.get('/webhook',(req,res)=>{
-	// enter webhook code here
 	if(req.query['hub.mode'] === 'subscribe' &&
 		 req.query['hub.verify_token'] === 'monobelle101516'){
 		console.log("validating webhook");

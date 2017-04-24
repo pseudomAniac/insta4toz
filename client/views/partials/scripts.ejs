@@ -10,6 +10,7 @@
 <script>
 	var weatherData = null,
 		cityURL = document.URL.split('?')[1];
+	// console.log('cityURL',cityURL)
 	function createGraph(forecastData) {
 		nv.addGraph(function() {
 			var chart = nv.models.lineChart()
@@ -34,8 +35,8 @@
 		});
 	}
 	$(document).ready(function() {
-		$.get("/api/forecast/?"+cityURL, function (data, response) {
-			// console.log(response,data[0]);
+		$.get("/api/forecast/?"+cityURL, function (data) {
+			console.log('forecast data -',data);
 			createGraph(data);
 		})
 	});
