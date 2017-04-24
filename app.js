@@ -75,6 +75,9 @@ router.get("/forecast", function (req, res) {
 			res.send(data);
 	});
 });
+router.get('/test',(req,res)=>{
+	res.send("success");//.render('/');
+})
 router.get('/', function (req, res) {
 	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
 	weather.getCurrent(res.locals.city, function(data) {
@@ -94,7 +97,7 @@ router.get('/', function (req, res) {
 	});
 });
 app.use('/api',router);
-app.get('/messenger/webhook',(req,res)=>{
+app.get('/webhook',(req,res)=>{
 	// enter webhook code here
 	if(req.query['hub.mode'] === 'subscribe' &&
 		 req.query['hub.verify_token'] === 'monobelle101516'){
@@ -105,7 +108,7 @@ app.get('/messenger/webhook',(req,res)=>{
 		res.sendStatus(403);
 	}
 });
-app.post('/messenger/webhook',(req,res)=>{
+app.post('/webhook',(req,res)=>{
 	var data = req.body;
 	if (data.object = 'page') {
 		data.entry.forEach((entry)=>{
