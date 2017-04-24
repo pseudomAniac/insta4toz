@@ -84,7 +84,7 @@ router.get('/weather/', function (req, res) {
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "/img/app-logo.png"
+					url: "https://sudoweather.herokuapp.com/img/app-logo-2.png"
 				}
 			}
 		});
