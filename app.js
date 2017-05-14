@@ -91,7 +91,8 @@ router.get('/weather/', function (req, res) {
 	});
 });
 router.get('/test',(req,res)=>{
-	res.send("success");//.render('/');
+	// res.send("success")
+	res.render('pages/force-graph');
 })
 app.use('/api',router);
 app.get('/webhook',(req,res)=>{

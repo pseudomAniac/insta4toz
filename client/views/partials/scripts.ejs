@@ -39,5 +39,12 @@
 			console.log('forecast data -',data);
 			createGraph(data);
 		})
+		.done(function(){
+			let a = $('#forecast-graph>svg')[0];
+			svgAsPngUri(a,{},function(uri){
+				console.log(uri);
+				$('meta[property="og:image"]').context.URL = uri;
+			})			
+		})
 	});
 </script>

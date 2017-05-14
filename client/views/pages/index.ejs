@@ -18,56 +18,91 @@
 		</section>
 		<section id="main" class="row">
 			<div class="well-lg">
-				<h1 class="page-header">Sudo Weather Reports <span class="small text-muted pull-right">by Sudo Tech</span></h1>
+				<section class="row">
+					<div class="col-sm-6">
+						<h1 class="page-header">PNG Weather Reports <span class="small text-muted">by Sudo Tech</span></h1>
+					</div>
+					<div class="col-sm-6">
+						<h3 id="fb-welcome" class="navbar-brand"></h3>
+						<form class="form-horizontal navbar-form nav navbar-nav navbar-right form-group" action="/api/weather/">
+							<div class="col-xs-9">
+								<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or start typing to filter cities" id="seach_city" autocomplete="true" list="cities">
+							</div>
+							<datalist id="cities">
+								<a href="/api/weather/?city=Port Moresby"><option value="Port Moresby"></a>
+								<option value="Lae">
+								<option value="Arawa">
+								<option value="Mount Hagen">
+								<option value="Madang">
+								<option value="Wewak">
+								<option value="Goroka">
+								<option value="Kokopo">
+								<option value="Popondetta">
+								<option value="Aitape">
+								<option value="Rabaul">
+								<option value="Kimbe">
+								<option value="Tabubil">
+								<option value="Daru">
+								<option value="Kavieng">
+								<option value="Alotau">
+								<option value="Vanimo">
+								<option value="Bulolo">
+								<option value="Kiunga">
+								<option value="Kundiawa">
+								<option value="Mendi">
+								<option value="Kainantu">
+								<option value="Lorengau">
+								<option value="Ialibu">
+								<option value="Kerema">
+								<option value="Ningerum">
+								<option value="Wau">
+								<option value="Wabag">
+								<option value="Rabaul">
+							</datalist>
+							<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+						</form>
+					</div>
+				</section>
 				<section class="row text-center">
-					<div class="col-xs-4 col-sm-2">
+					<div class="col-xs-6 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
 						<h3><a href="/api/weather/?city=Port Moresby">Port Moresby</a></h3>
 						<p>7 day weather forecast including weather update</p>
 					</div>
-					<div class="col-xs-4 col-sm-2">
+					<div class="col-xs-6 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
 						<h3><a href="/api/weather/?city=Lae">Lae</a></h3>
 						<p>7 day weather forecast including weather update</p>
 					</div>
-					<div class="col-xs-4 col-sm-2">
+					<hr class="col-xs-6 col-xs-offset-3 hidden-sm hidden-md hidden-lg">
+					<div class="col-xs-3 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
-						<h3><a href="/api/weather/?city=Mount Hagen">Mount Hagen</a></h3>
-						<p>7 day weather forecast including weather update</p>
+						<h3><a href="/api/weather/?city=Mount Hagen">Mt. Hagen</a></h3>
+						<p class="hidden-xs">7 day weather forecast including weather update</p>
 					</div>
-					<div class="col-xs-4 col-sm-2">
+					<div class="col-xs-3 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
 						<h3><a href="/api/weather/?city=Rabaul">Rabaul</a></h3>
-						<p>7 day weather forecast including weather update</p>
+						<p class="hidden-xs">7 day weather forecast including weather update</p>
 					</div>
-					<div class="col-xs-4 col-sm-2">
+					<div class="col-xs-3 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
 						<h3><a href="/api/weather/?city=Lorengau">Lorengau</a></h3>
-						<p>7 day weather forecast including weather update</p>
+						<p class="hidden-xs">7 day weather forecast including weather update</p>
 					</div>
-					<div class="col-xs-4 col-sm-2">
+					<div class="col-xs-3 col-sm-2 well">
 						<i class="glyphicon glyphicon-search"></i>
 						<h3><a href="/api/weather/?city=Kerema">Kerema</a></h3>
-						<p>7 day weather forecast including weather update</p>
+						<p class="hidden-xs">7 day weather forecast including weather update</p>
 					</div>
 				</section>
 			</div>
+			<!-- <section class="container-fluid jumbotron" style="background: url('https://scontent.cdninstagram.com/t51.2885-15/e35/18382040_1966053463614872_4248821054975246336_n.jpg');"> -->
+			<!-- </section> -->
 			<section class="container-fluid bg-info">
 				<div class="row">
 					<div class="container">
-						<h2 class="page-header">About <span class="small text-muted pull-right">Sudo Weather Reports</span></h2>
-						<div class="col-sm-6 text-center text-muted">
-							<h3><i class="glyphicon glyphicon-star"></i> Facts</h3>
-							<ul class="list list-unstyled">
-								<li>All data are sourced from <a href="http://openweathermap.org">Open Weather Map</a></li>
-							</ul>
-						</div>
-						<div class="col-sm-6 text-center text-muted">
-							<h3><i class="glyphicon glyphicon-star"></i> Figures</h3>
-							<ul class="list list-unstyled">
-								<li></li>
-							</ul>
-						</div>
+						<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfFTIqNgLLGRCGqCwLlnxzlZb3FX51ccyQot87xdBc1KqcE1w/viewform?embedded=true" width="100%" height="860" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe> -->
 					</div>
 				</div>
 			</section>
