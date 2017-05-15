@@ -263,7 +263,7 @@ svg.nvd3-svg {
     height: 350px;
 }
 /* fixed navbar styles */
-@media (max-width:769px){
+/*@media (max-width:769px){
     main {
         margin-top: 215px;
     }
@@ -273,7 +273,7 @@ svg.nvd3-svg {
         margin-top: 75px;
     }
 }
-/* flex-box */
+*//* flex-box */
 .flexbox-center{
     display: flex;
     align-items: center;
