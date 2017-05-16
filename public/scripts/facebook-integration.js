@@ -13,7 +13,7 @@ window.fbAsyncInit = function() {
         var welcomeBlock = document.getElementById('fb-welcome');
         var locationBlock = document.getElementById('fb-location');
         var propicBlock = document.getElementById('fb-propic');
-        welcomeBlock.innerHTML = 'Yo ' + response.first_name + '!';
+        welcomeBlock.innerHTML = 'Hello ' + response.first_name + '!';
         locationBlock.innerHTML = 'You are in ' + response.location.name;
         propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
       });
@@ -31,18 +31,19 @@ window.fbAsyncInit = function() {
   //       // Insert your code here
   //   }
   // );
-  FB.getLoginStatus(function(response) {
-    // Check login status on load, and if the user is
-    // already logged in, go directly to the welcome message.
-    if (response.status == 'connected') {
-      onLogin(response);
-    } else {
-      // Otherwise, show Login dialog first.
-      FB.login(function(response) {
+  function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      // Check login status on load, and if the user is already logged in, go directly to the welcome message.
+      if (response.status == 'connected') {
         onLogin(response);
-      }, {scope: 'user_friends'});
-    }
-  });
+      } else {
+        // Otherwise, show Login dialog first.
+        FB.login(function(response) {
+          onLogin(response);
+        }, {scope: 'public_profile,email,user_friends'});
+      }
+    });
+  }
 
 };
 (function(d, s, id) {
