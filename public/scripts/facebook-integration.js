@@ -10,6 +10,7 @@ window.fbAsyncInit = function() {
   function onLogin(response) {
     if (response.status == 'connected') {
       FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
+        console.log(response.first_name,"welcome");
         var welcomeBlock = document.getElementById('fb-welcome');
         var locationBlock = document.getElementById('fb-location');
         var propicBlock = document.getElementById('fb-propic');
