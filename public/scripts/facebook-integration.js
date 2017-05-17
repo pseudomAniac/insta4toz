@@ -43,7 +43,7 @@ window.fbAsyncInit = function() {
       }
     });
   }
-  checkLoginState();
+  checkLoginState
 };
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
