@@ -1,4 +1,5 @@
 <div class="pull-left">
 	<fb:login-button scope="public_profile,email,user_friends" onlogin="checkLoginState();"></fb:login-button>
+	<fb:logout-button onlogout="checkLoginState();"></fb:logout-button>
 	<div class="fb-like" data-href="<%= appInfo.url %>" data-width="810" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 </div>

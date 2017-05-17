@@ -18,6 +18,13 @@ window.fbAsyncInit = function() {
       });
     }
   }
+  function checkLoginStatus() {
+    FB.getLoginStatus((response)=>{
+      response.status === 'connected' ? onLogin(response) : FB.login((response)=>{
+        onLogin(response);
+      },{scope: 'public_profile,email,user_friends'})
+    })
+  }
   // FB.api(
   //   '/763588130417824/albums',
   //   'POST',
