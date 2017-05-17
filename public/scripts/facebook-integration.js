@@ -12,11 +12,9 @@ window.fbAsyncInit = function() {
       FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
         console.log(response.first_name,"welcome");
         var welcomeBlock = document.getElementById('fb-welcome');
-        var locationBlock = document.getElementById('fb-location');
-        var propicBlock = document.getElementById('fb-propic');
-        welcomeBlock.innerHTML = 'Hello ' + response.first_name + '!';
-        locationBlock.innerHTML = 'You are in ' + response.location.name;
-        propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
+        // var propicBlock = document.getElementById('fb-propic');
+        welcomeBlock.innerHTML = 'Hello ' + response.first_name + '! You are in ' + response.location.name;
+        // propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
       });
     }
   }
