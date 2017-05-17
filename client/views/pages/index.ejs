@@ -6,66 +6,66 @@
 	<body class="container-fluid">
 		<div id="fb-root"></div>
 		<script type="text/javascript" src="/scripts/facebook-integration.js"></script>
-		<section id="header">
-			<article class="row flexbox-center">
-				<div class="col-sm-12"><% include ../partials/fb-like %></div>
-				<div id="fb-propic" class="col-sm-12"></div>
-				<h3 id="fb-welcome" class="col-sm-12"></h3>
-			</article>
+		<section id="header" class="row bg-primary">
+			<div class="col-xs-2">
+				<% include ../partials/fb-like %>
+			</div>
+			<div class="col-xs-7">
+				<div class="row">
+					<div class="col-xs-12 text-center">
+						<h4>PNG Weather Reports &middot; <span class="small text-muted">by Sudo Tech</span></h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-3">
+				<form class="form-horizontal navbar-form nav navbar-nav navbar-right form-group" action="/api/weather/">
+					<div class="col-xs-9">
+						<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or start typing to filter cities" id="seach_city" autocomplete="true" list="cities">
+					</div>
+					<datalist id="cities">
+						<a href="/api/weather/?city=Port Moresby"><option value="Port Moresby"></a>
+						<option value="Lae">
+						<option value="Arawa">
+						<option value="Mount Hagen">
+						<option value="Madang">
+						<option value="Wewak">
+						<option value="Goroka">
+						<option value="Kokopo">
+						<option value="Popondetta">
+						<option value="Aitape">
+						<option value="Rabaul">
+						<option value="Kimbe">
+						<option value="Tabubil">
+						<option value="Daru">
+						<option value="Kavieng">
+						<option value="Alotau">
+						<option value="Vanimo">
+						<option value="Bulolo">
+						<option value="Kiunga">
+						<option value="Kundiawa">
+						<option value="Mendi">
+						<option value="Kainantu">
+						<option value="Lorengau">
+						<option value="Ialibu">
+						<option value="Kerema">
+						<option value="Ningerum">
+						<option value="Wau">
+						<option value="Wabag">
+						<option value="Rabaul">
+					</datalist>
+					<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				</form>
+			</div>
 		</section>
 		<section id="main" class="row">
+			<div class="col-xs-6">
+				<span id="fb-location"></span>
+			</div>
+			<div class="col-xs-6">
+				<div id="fb-propic" class="hidden"></div>
+				<p id="fb-welcome" class="col-sm-12"></p>
+			</div>
 			<div class="well-lg">
-				<section class="row">
-					<div class="col-sm-6">
-						<h1 class="page-header">PNG Weather Reports <span class="small text-muted">by Sudo Tech</span></h1>
-					</div>
-					<div class="col-sm-6">
-						<div class="row">
-							<div class="col-sm-3">
-								<h3 id="fb-welcome" class="navbar-brand"></h3>
-							</div>
-							<div class="col-sm-9">
-								<form class="form-horizontal navbar-form nav navbar-nav navbar-right form-group" action="/api/weather/">
-									<div class="col-xs-9">
-										<input class="form-control text-center text-info bg-success" type="text" name="city" placeholder="Pick a city or start typing to filter cities" id="seach_city" autocomplete="true" list="cities">
-									</div>
-									<datalist id="cities">
-										<a href="/api/weather/?city=Port Moresby"><option value="Port Moresby"></a>
-										<option value="Lae">
-										<option value="Arawa">
-										<option value="Mount Hagen">
-										<option value="Madang">
-										<option value="Wewak">
-										<option value="Goroka">
-										<option value="Kokopo">
-										<option value="Popondetta">
-										<option value="Aitape">
-										<option value="Rabaul">
-										<option value="Kimbe">
-										<option value="Tabubil">
-										<option value="Daru">
-										<option value="Kavieng">
-										<option value="Alotau">
-										<option value="Vanimo">
-										<option value="Bulolo">
-										<option value="Kiunga">
-										<option value="Kundiawa">
-										<option value="Mendi">
-										<option value="Kainantu">
-										<option value="Lorengau">
-										<option value="Ialibu">
-										<option value="Kerema">
-										<option value="Ningerum">
-										<option value="Wau">
-										<option value="Wabag">
-										<option value="Rabaul">
-									</datalist>
-									<button class="btn btn-success-outline" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</section>
 				<section class="row text-center">
 					<div class="col-sm-6 col-md-2 well">
 						<i class="glyphicon glyphicon-search hidden-xs"></i>
