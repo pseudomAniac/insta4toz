@@ -30,20 +30,17 @@ window.fbAsyncInit = function() {
   //       // Insert your code here
   //   }
   // );
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      // Check login status on load, and if the user is already logged in, go directly to the welcome message.
-      if (response.status == 'connected') {
+  FB.getLoginStatus(function(response) {
+    // Check login status on load, and if the user is already logged in, go directly to the welcome message.
+    if (response.status == 'connected') {
+      onLogin(response);
+    } else {
+      // Otherwise, show Login dialog first.
+      FB.login(function(response) {
         onLogin(response);
-      } else {
-        // Otherwise, show Login dialog first.
-        FB.login(function(response) {
-          onLogin(response);
-        }, {scope: 'public_profile,email,user_friends'});
-      }
-    });
-  }
-  checkLoginState
+      }, {scope: 'public_profile,email,user_friends'});
+    }
+  });
 };
 (function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
