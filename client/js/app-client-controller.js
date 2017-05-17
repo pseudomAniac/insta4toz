@@ -4,6 +4,7 @@ angular.constant('moment',moment)
 		var forecastData = $resource('/forecast/:city');
 		forecastData.query(function (data) {
 			$scope.weatherForecast = data;
+			
 		})
 	}
 ])
