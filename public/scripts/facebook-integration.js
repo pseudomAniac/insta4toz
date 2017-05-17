@@ -18,13 +18,6 @@ window.fbAsyncInit = function() {
       });
     }
   }
-  function checkLoginStatus() {
-    FB.getLoginStatus((response)=>{
-      response.status === 'connected' ? onLogin(response) : FB.login((response)=>{
-        onLogin(response);
-      },{scope: 'public_profile,email,user_friends'})
-    })
-  }
   // FB.api(
   //   '/763588130417824/albums',
   //   'POST',
@@ -50,9 +43,9 @@ window.fbAsyncInit = function() {
   });
 };
 (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1476643879330794";
-    fjs.parentNode.insertBefore(js, fjs);
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1476643879330794";
+  fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
