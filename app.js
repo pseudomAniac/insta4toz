@@ -9,6 +9,7 @@ var moment = require('moment');
 var morgan = require('morgan');
 var fbmsg = require('./lib/fb-messenger');
 // var unxConv = require("./lib/unixdate-converter.js");
+app.use(express.static(__dirname + "/assets/leaflet"));
 app.use(express.static(__dirname + "/public"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
@@ -123,6 +124,7 @@ app.post('/webhook',(req,res)=>{
 	}
 });
 app.set('view engine','ejs');
+// app.set('leaflet','/assets/leaflet');
 app.set('views','./client/views');
 app.set('port', (process.env.PORT || 3000))
 app.listen(app.get('port'), function() {

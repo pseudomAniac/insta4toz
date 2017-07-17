@@ -9,7 +9,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.js"></script>
 <script>
 	var weatherData = null,
-		cityURL = document.URL.split('?')[1];
+	cityURL = document.URL.split('?')[1];
 	// console.log('cityURL',cityURL)
 	function createGraph(forecastData) {
 		nv.addGraph(function() {
@@ -34,17 +34,23 @@
 			return chart;
 		});
 	}
+	$(()=>{
+		var weatherMap = L.map('map').setView([51.505,-0.09], 13);
+		L.tileLayer('http://{s}.title.osm.org/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+		}).addTo(weatherMap);
+		L.control.layers().addTo(weatherMap);
+	});
 	$(document).ready(function() {
-		$.get("/api/forecast/?"+cityURL, function (data) {
-			console.log('forecast data -',data);
-			createGraph(data);
-		})
-		.done(function(){
-			let a = $('#forecast-graph>svg')[0];
-			svgAsPngUri(a,{},function(uri){
-				console.log(uri);
-				$('meta[property="og:image"]').context.URL = uri;
-			})			
-		})
+		$.get("/api/forecast/?"+cityURL)
+			.done(function(data){
+				console.log('forecast data -',data);
+				createGraph(data);
+				let a = $('#forecast-graph>svg')[0];
+				// svgAsPngUri(a,{},function(uri){
+				// 	console.log(uri);
+				// 	$('meta[property="og:image"]').context.URL = uri;
+				// })			
+			});
 	});
 </script>
