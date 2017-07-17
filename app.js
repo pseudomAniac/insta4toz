@@ -9,7 +9,6 @@ var moment = require('moment');
 var morgan = require('morgan');
 var fbmsg = require('./lib/fb-messenger');
 // var unxConv = require("./lib/unixdate-converter.js");
-app.use(express.static(__dirname + "/assets/leaflet"));
 app.use(express.static(__dirname + "/public"));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
