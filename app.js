@@ -75,6 +75,7 @@ router.get('/weather/', function (req, res) {
 	console.log('req.originalUrl -',req.originalUrl);
 	console.log('weather city -',mycity)
 	weather.getCurrent(res.locals.city, function(data) {
+		console.log('data',data);
 		res.render("pages/weather",{
 			weda:data,
 			appInfo: {

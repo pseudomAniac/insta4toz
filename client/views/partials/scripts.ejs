@@ -35,11 +35,57 @@
 		});
 	}
 	$(()=>{
-		var weatherMap = L.map('map').setView([51.505,-0.09], 6);
-		// L.tileLayer('http://{s}.title.osm.org/{z}/{x}/{y}.png', {
-		// 	attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-		// }).addTo(weatherMap);
-		// L.control.weather().addTo(weatherMap);
+		// layers
+		var lae = L.marker([-6.7325896, 147.0021090]).bindPopup('Lae City'),
+			mdg = L.marker([-5.2295506, 145.7655979]).bindPopup('Madang'),
+			wwk = L.marker([-3.5719304, 143.6192672]).bindPopup('Wewak'),
+			van = L.marker([-2.6933613, 141.285896]).bindPopup('Vanimo'),
+			gka = L.marker([-6.0729261, 145.3943813]).bindPopup('Goroka'),
+			hgn = L.marker([-5.8568155, 144.2203615]).bindPopup('Mt. Hagen'),
+			men = L.marker([-6.1493443, 143.6401033]).bindPopup('Mendi'),
+			pog = L.marker([-5.4631945, 143.1390237]).bindPopup('Pogera'),
+			kor = L.marker([-5.3824032, 142.4562826]).bindPopup('Koroba'),
+			bnz = L.marker([-5.8007166, 144.6187019]).bindPopup('Banz'),
+			kwa = L.marker([-6.0215372, 144.9597501]).bindPopup('Kundiawa'),
+			pop = L.marker([-8.7652916, 148.2220457]).bindPopup('Popondeta'),
+			alo = L.marker([-10.3162914, 150.4555749]).bindPopup('Alotau'),
+			kiu = L.marker([-6.1218652, 141.2909603]).bindPopup('Kiunga'),
+			arw = L.marker([-6.2281365, 155.5577904]).bindPopup('Arawa'),
+			bka = L.marker([-5.4254673, 154.6637721]).bindPopup('Buka'),
+			dar = L.marker([-9.0809134, 143.1914661]).bindPopup('Daru'),
+			ker = L.marker([-7.9648534, 145.7633829]).bindPopup('Kerema'),
+			kop = L.marker([-4.3521554, 152.2641211]).bindPopup('Kokopo'),
+			kmb = L.marker([-5.5531189, 150.1313882]).bindPopup('Kimbe'),
+			kvg = L.marker([-2.5725321, 150.7896821]).bindPopup('Kavieng'),
+			rei = L.marker([-2.3979281, 147.1800852]).bindPopup('Rei Village');
+		// var cty = L.layerGroup([lae,gka,hgn,kop,pop,mdg,wwk,kmb,van,kvg,alo,kiu,arw,bka,dar,men,pog,kor,ker,bnz,kwa,rei]),
+		var hld = L.layerGroup([gka,hgn,men,pog,kor,bnz,kwa]),
+			mms = L.layerGroup([lae,mdg,wwk,van]),
+			isl = L.layerGroup([kop,kmb,kvg,rei]),
+			sth = L.layerGroup([pop,alo,kiu,arw,bka,dar,ker]);
+		var standard = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}),
+			topograph = L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+		var weatherMap = L.map('map',{
+			preferCanvas: true,
+			zoomSnap: 0.25,
+			// dragging: false,
+			center: [-6.7325896, 147.0021090],
+			minZoom: 6,
+			maxZoom: 8,
+			zoom: 6,
+			layers: [standard,hld,mms,isl,sth]
+		});
+		var basemaps = {
+			"Standard": standard,
+			"Topograph": topograph
+		};
+		var overlaymaps = {
+			"Highlands": hld,
+			"Momase": mms,
+			"Islands": isl,
+			"Southern": sth
+		}
+		L.control.layers(basemaps,overlaymaps).addTo(weatherMap);
 	});
 	$(document).ready(function() {
 		$.get("/api/forecast/?"+cityURL)

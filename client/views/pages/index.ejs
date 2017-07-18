@@ -2,8 +2,6 @@
 <html lang="en">
 	<head>
 		<% include ../partials/head %>
-		<link rel="stylesheet" href="/css/leaflet.css">
-		<script src="/scripts/leaflet.js"></script>
 	</head>
 	<body class="container-fluid">
 		<div id="fb-root"></div>
@@ -63,48 +61,26 @@
 			<div class="col-xs-6">
 				<span id="fb-welcome"></span>
 			</div>
-			<div class="well-lg">
-				<section class="row text-center">
-					<div class="col-sm-6 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Port Moresby">Port Moresby</a></h3>
-						<p class="text-muted">7 day weather forecast including weather update</p>
-					</div>
-					<div class="col-sm-6 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Lae">Lae</a></h3>
-						<p class="text-muted">7 day weather forecast including weather update</p>
-					</div>
-					<div class="col-sm-3 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Mount Hagen">Mt. Hagen</a></h3>
-						<p class="hidden-sm text-muted">7 day weather forecast including weather update</p>
-					</div>
-					<div class="col-sm-3 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Rabaul">Rabaul</a></h3>
-						<p class="hidden-sm text-muted">7 day weather forecast including weather update</p>
-					</div>
-					<div class="col-sm-3 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Lorengau">Lorengau</a></h3>
-						<p class="hidden-sm text-muted">7 day weather forecast including weather update</p>
-					</div>
-					<div class="col-sm-3 col-md-2 well">
-						<i class="glyphicon glyphicon-search hidden-xs"></i>
-						<h3><a href="/api/weather/?city=Kerema">Kerema</a></h3>
-						<p class="hidden-sm text-muted">7 day weather forecast including weather update</p>
-					</div>
-				</section>
-			</div>
-			<!-- <section class="container-fluid jumbotron" style="background: url('https://scontent.cdninstagram.com/t51.2885-15/e35/18382040_1966053463614872_4248821054975246336_n.jpg');"> -->
-			<!-- </section> -->
 			<section class="container-fluid bg-info">
 				<div class="row">
-					<div class="container">
-						<div id="map" style="height: 400px; width: auto;"></div>
-						<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfFTIqNgLLGRCGqCwLlnxzlZb3FX51ccyQot87xdBc1KqcE1w/viewform?embedded=true" width="100%" height="860" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe> -->
+					<div class="col-xs-12 col-sm-9" >
+						<div id="map" style="height: 500px; width: 100%;"></div>
 					</div>
+					<div class="col-xs-12 col-sm-3">
+						<div class="col-xs-12 well">
+							<h3><a href="/api/weather/?city=Port Moresby">Port Moresby</a></h3>
+						</div>
+						<div class="col-xs-12 well">
+							<h3><a href="/api/weather/?city=Lae">Lae</a></h3>
+						</div>
+						<div class="col-xs-12 well">
+							<h3><a href="/api/weather/?city=Mount Hagen">Mt. Hagen</a></h3>
+						</div>
+						<div class="col-xs-12 well">
+							<h3><a href="/api/weather/?city=Rabaul">Rabaul</a></h3>
+						</div>
+					</div>
+						<!-- <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfFTIqNgLLGRCGqCwLlnxzlZb3FX51ccyQot87xdBc1KqcE1w/viewform?embedded=true" width="100%" height="860" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe> -->
 				</div>
 			</section>
 		</section>
