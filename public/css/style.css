@@ -290,7 +290,7 @@ svg.nvd3-svg {
     top: 17.5%;
     right: 1em;
     position: absolute;
-    color: white;
+    color: goldenrod;
     padding: 0.25em .1em;
 }
 #menu-list{
@@ -299,7 +299,7 @@ svg.nvd3-svg {
     align-items: center;
     place-content: center;
 }
-.nv-axis {
+.nv-axis, text.nv-legend-text {
     stroke: none;
     fill: white;
 }
