@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Rufina|Josefin+Sans|Lobster);
 body {
-    font-family: Josefin Sans
+    font-family: Josefin Sans;
 }
 footer {
-	padding: 50px;
+	padding: 1em 0;
 }
 div.likes {
 	position: relative;
@@ -255,12 +255,13 @@ footer .col-md-5.text-right {
 	}
 .ui-autocomplete-loading { background: white url("/images/ui-anim_basic_16x16.gif") right center no-repeat; }
 #weather-info {
-    padding: 2em 0;
+    padding: 1em 0;
     margin: 1em 0;
 }
 /* nvd3 styles */
 svg.nvd3-svg {
-    height: 350px;
+    height: 230px;
+    background: black;
 }
 /* fixed navbar styles */
 /*@media (max-width:769px){
@@ -283,4 +284,22 @@ svg.nvd3-svg {
 .forecast-title {
     border-bottom: 2px solid gold;
     padding-bottom: 1em;
+}
+#forecast-title{
+    display: block;
+    top: 17.5%;
+    right: 1em;
+    position: absolute;
+    color: white;
+    padding: 0.25em .1em;
+}
+#menu-list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    place-content: center;
+}
+.nv-axis {
+    stroke: none;
+    fill: white;
 }

@@ -72,10 +72,10 @@ router.get("/forecast", function (req, res) {
 });
 router.get('/weather/', function (req, res) {
 	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
-	console.log('req.originalUrl -',req.originalUrl);
-	console.log('weather city -',mycity)
+	// console.log('req.originalUrl -',req.originalUrl);
+	// console.log('weather city -',mycity)
 	weather.getCurrent(res.locals.city, function(data) {
-		console.log('data',data);
+		// console.log('data',data);
 		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
