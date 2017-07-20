@@ -79,7 +79,7 @@ router.get('/weather/', function (req, res) {
 		res.render("pages/weather",{
 			weda:data,
 			appInfo: {
-				url: "https://sudoweather.herokuapp.com"+req.originalUrl,
+				url: "https://sudoweather.herokuapp.com",
 				type: "article",
 				title: mycity,
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",

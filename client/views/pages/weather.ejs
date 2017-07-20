@@ -5,6 +5,7 @@
 	</head>
 	<body class="container-fluid">
 		<% include ../partials/facebook-integration %>
+		<div id="message"></div>
 		<main class="row">
 			<section id="weather-section" class="col-xs-12 col-sm-5 well-sm">
 				<div class="row">
@@ -20,8 +21,12 @@
 								<p>Atmospheric pressure is measuring up to <%= weda.main.pressure %> hPa with humidity measuring at <%= weda.main.humidity %>%.</p>
 							</div>
 						</article>
+
 						<article class="row">
 							<section class="col-sm-12 ">
+								<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1" data-scope="publish_actions"></div>
+								<input type="button" class="btn btn-info btn-sm" value="tell your friends on facebook" onClick="postLike()">
+<!-- 								
 								<table class="table table-hover table-striped text-center">
 									<thead>
 										<tr>
@@ -41,8 +46,10 @@
 									</tbody>
 								</table>
 								<p id="fb-location" class="col-sm-12 text-default small text-center"></p>
+ -->
 							</section>
 						</article>
+
 					</div>
 				</div>
 			</section>

@@ -3,23 +3,14 @@
   window.fbAsyncInit = function() {
       FB.init({
         appId      : '1476643879330794',
+        status     : true,
+        cookie     : true,
         xfbml      : true,
         version    : 'v2.8'
       });
     // ADD ADDITIONAL FACEBOOK CODE HERE
     // Place following code after FB.init call.
 
-    function onLogin(response) {
-      if (response.status == 'connected') {
-        FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
-          console.log(response.first_name,"welcome");
-          var welcomeBlock = document.getElementById('fb-welcome');
-          // var propicBlock = document.getElementById('fb-propic');
-          welcomeBlock.innerHTML = 'Hello ' + response.first_name + '! You are in ' + response.location.name;
-          // propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
-        });
-      }
-    }
     // FB.api(
     //   '/763588130417824/albums',
     //   'POST',
@@ -40,7 +31,7 @@
         // Otherwise, show Login dialog first.
         FB.login(function(response) {
           onLogin(response);
-        }, {scope: 'public_profile,email,user_friends'});
+        }, {scope: 'public_profile,email,user_friends,publish'});
       }
     });
   };
@@ -51,4 +42,37 @@
     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1476643879330794";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+  function onLogin(response) {
+    if (response.status == 'connected') {
+      FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
+        console.log(response.first_name,"welcome");
+        var welcomeBlock = document.getElementById('fb-welcome');
+        // var propicBlock = document.getElementById('fb-propic');
+        welcomeBlock.innerHTML = 'Hello ' + response.first_name + '! You are in ' + response.location.name;
+        // propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
+      });
+    }
+  }
+  function postLike() {
+    FB.api(
+       'https://graph.facebook.com/me/og.likes',
+       'post',
+       { object: document.URL,
+         privacy: {'value': 'SELF'} },
+       function(response) {
+         if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('message').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('message').innerHTML =
+             '<a href=\"https://www.facebook.com/me/activity/' +
+             response.id + '\">' +
+             'Story created.  ID is ' +
+             response.id + '</a>';
+         }
+       }
+    );
+  }
 </script>
