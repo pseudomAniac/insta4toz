@@ -97,13 +97,12 @@ router.get('/test',(req,res)=>{
 })
 app.use('/api',router);
 app.get('/webhook',(req,res)=>{
-	if(req.query['hub.mode'] === 'subscribe' &&
-		 req.query['hub.verify_token'] === 'monobelle101516'){
-		console.log("validating webhook");
-	res.status(200).send(req.query['hub.challenge']);
+	if(req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === 'monobelle101516'){
+		console.log("validated webhook");
+		res.status(200).send(req.query['hub.challenge']);
 	} else {
 		console.error("Failed Validation! Make sure the Validation tokens match.");
-		res.sendStatus(403);
+		res.status(403).send('Error, invalid validation token!');
 	}
 });
 app.post('/webhook',(req,res)=>{
