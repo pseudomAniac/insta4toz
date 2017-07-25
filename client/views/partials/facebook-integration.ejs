@@ -46,9 +46,9 @@
     if (response.status == 'connected') {
       FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
         console.log(response.first_name,"welcome");
-        var welcomeBlock = document.getElementById('fb-welcome');
+        // var welcomeBlock = document.getElementById('fb-welcome');
         // var propicBlock = document.getElementById('fb-propic');
-        welcomeBlock.innerHTML = 'Hello ' + response.first_name + '! You are in ' + response.location.name;
+        // welcomeBlock.innerHTML = 'Hello ' + response.first_name + '! You are in ' + response.location.name;
         // propicBlock.innerHTML = '<img class="img-responsive text-center" src="'+response.picture.data.url+'" />';
       });
     }
