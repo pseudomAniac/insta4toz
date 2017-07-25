@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="WeatherReports">
 	<head>
-		<% include ../partials/head %><!-- <% /* include ../partials/fb-pixels */ %> -->
+		<% include ../partials/head %>
+		<!-- <% /* include ../partials/fb-pixels */ %> -->
 	</head>
 	<body class="container-fluid">
 		<% include ../partials/facebook-integration %>
@@ -26,27 +27,6 @@
 								<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1" data-scope="publish_actions"></div>
 								<input type="button" class="btn btn-info btn-sm" value="tell your friends on facebook" onClick="postLike()">
 								<span id="message"></span>
-<!-- 								
-								<table class="table table-hover table-striped text-center">
-									<thead>
-										<tr>
-											<th>latitude</th>
-											<th>longitude</th>
-											<th>sunrises</th>
-											<th>sunsets</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><%= weda.coord.lat %></td>
-											<td><%= weda.coord.lon %></td>
-											<td class="date-sunrise"><%= weda.sys.sunrise %></td>
-											<td class="date-sunset"><%= weda.sys.sunset %></td>
-										</tr>
-									</tbody>
-								</table>
-								<p id="fb-location" class="col-sm-12 text-default small text-center"></p>
- -->
 							</section>
 						</article>
 

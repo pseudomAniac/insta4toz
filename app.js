@@ -17,12 +17,11 @@ app.use(cookieSession({
 	secret: "monobelle",
 	img: "/img/background image files (4).png"
 }));
-app.use(morgan('dev'));
 router.post("/", function (req, res) {
 	res.redirect("/");
 });
 router.get("/", function(req,res) {
-	var city = "lae"
+	var city = "png"
 	weather.getCurrent(city, function(data) {
 		res.render("pages/index",{
 			weda:data,
@@ -30,28 +29,10 @@ router.get("/", function(req,res) {
 				url: "https://sudoweather.herokuapp.com",
 				type: "article",
 				title: city.toUpperCase() + " WEATHER REPORT",
-				description: "This neat little app provides you with an up to the minute update on your local weather.",
+				description: "Get your city's weather and forecast.",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
 					url: "/img/background image files (2).jpg"
-				}
-			}
-		});
-	});
-});
-router.get("/flexbox", function(req,res) {
-	var city = "lae"
-	weather.getCurrent(city, function(data) {
-		res.render("pages/weather",{
-			weda:data,
-			appInfo: {
-				url: "http://sudoweatherreport.herokuapp.com",
-				type: "article",
-				title: city.toUpperCase() + " WEATHER REPORT",
-				description: "This neat little app provides you with an up to the minute update on your local weather.",
-				img: {
-					title: "Sudo Weather Reoprt - Logo",
-					url: "/img/background image files (1)"
 				}
 			}
 		});
@@ -65,7 +46,7 @@ router.use((req,res,next)=>{
 	next()
 });
 router.get("/forecast", function (req, res) {
-	// console.log('req.query.city -',req.query.city);
+	console.log('req.query.city -',req.query.city);
 	weather.getForecast(req.query.city, function(err, data) {
 		err ? res.send(err) : res.send(data);
 	});
