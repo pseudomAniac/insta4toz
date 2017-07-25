@@ -102,7 +102,6 @@
 			svgAsPngUri(a,{},function(uri){
 				console.log(uri);
 				$('meta[property="og:image"]').removeAttr('content').attr('content',uri)				
-				$('head').append('<meta property="og:image" content="'+uri+'">');
 			})			
 		});
 	});
