@@ -98,11 +98,13 @@
 			createGraph(data);
 		})
 		.done(function(data){
-			let a = $('#forecast-graph>svg')[0];
-			svgAsPngUri(a,{},function(uri){
-				console.log(uri);
-				$('meta[property="og:image"]').removeAttr('content').attr('content',uri)				
-			})			
+			setTimeout(()=>{
+				let a = $('#forecast-graph>svg')[0];
+				svgAsPngUri(a,{},function(uri){
+					console.log(uri);
+					$('meta[property="og:image"]').removeAttr('content').attr('content',uri);
+				})			
+			},1000*2)
 		});
 	});
 </script>
