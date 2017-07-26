@@ -20,7 +20,7 @@
 				.axisLabel("Date & Time")
 				.tickFormat((d)=>{
 					// console.log("date time fx =",new Date(d*1000))
-					return d3.time.format('%d/%m')(new Date(d*1000));
+					return d3.time.format('%d/%m-%Hhrs')(new Date(d*1000));
 				})
 				// .tickFormat(d3.format('g'));
 			chart.yAxis
@@ -97,7 +97,7 @@
 			console.log('forecast data -',data);
 			createGraph(data);
 		})
-		.done(function(data){
+		// .done(function(data){
 			setTimeout(()=>{
 				let a = $('#forecast-graph>svg')[0];
 				svgAsPngUri(a,{},function(uri){
@@ -105,6 +105,6 @@
 					$('meta[property="og:image"]').removeAttr('content').attr('content',uri);
 				})			
 			},1000*2)
-		});
+		// });
 	});
 </script>
