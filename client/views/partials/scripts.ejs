@@ -93,18 +93,17 @@
 			console.log("get weather for",toCity);
 			$(location).attr('href', '/api/weather/?city='+toCity.toLowerCase());
 		});
-		$.get("/api/forecast/?"+cityURL,(data)=>{
+		$.get("/api/forecast/?"+cityURL)
+		 .done(function(data){
 			console.log('forecast data -',data);
 			createGraph(data);
-		})
-		// .done(function(data){
-			setTimeout(()=>{
-				let a = $('#forecast-graph>svg')[0];
-				svgAsPngUri(a,{},function(uri){
-					console.log(uri);
-					$('meta[property="og:image"]').removeAttr('content').attr('content',uri);
-				})			
-			},1000*2)
-		// });
+		});
+		setTimeout(()=>{
+			let a = $('#forecast-graph>svg')[0];
+			svgAsPngUri(a,{},function(uri){
+				console.log(uri);
+				$('meta[property="og:image"]').removeAttr('content').attr('content',uri);
+			})			
+		},1000*2)
 	});
 </script>

@@ -260,7 +260,8 @@ footer .col-md-5.text-right {
 }
 /* nvd3 styles */
 svg.nvd3-svg {
-    height: 230px;
+    height: 312px;
+    width: 820px;
     background: black;
 }
 /* fixed navbar styles */
