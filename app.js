@@ -61,12 +61,11 @@ router.get('/weather/', function (req, res) {
 			weda:data,
 			appInfo: {
 				url: "https://sudoweather.herokuapp.com/api/weather/?city="+res.locals.city.toLowerCase(),
-				type: "article",
 				title: mycity,
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "https://sudoweather.herokuapp.com/img/app-logo-2.png"
+					url: "https://sudoweather.herokuapp.com/img/bg2.jpg"
 				}
 			}
 		});
