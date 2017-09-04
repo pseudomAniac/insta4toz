@@ -51,6 +51,11 @@ router.get("/forecast", function (req, res) {
 		err ? res.send(err) : res.send(data);
 	});
 });
+router.get('/weather_json', (req,res)=>{
+	weather.getCurrent(res.locals.city,(err, data)=>{
+		err ? res.send(err) : res.send(data);
+	})
+});
 router.get('/weather/', function (req, res) {
 	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
 	// console.log('req.originalUrl -',req.originalUrl);
@@ -65,7 +70,7 @@ router.get('/weather/', function (req, res) {
 				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 				img: {
 					title: "Sudo Weather Reoprt - Logo",
-					url: "https://sudoweather.herokuapp.com/img/bg2.jpg"
+					url: "https://sudoweather.herokuapp.com/img/"+res.locals.city.toLowerCase()+".png"
 				}
 			}
 		});

@@ -259,10 +259,14 @@ footer .col-md-5.text-right {
     margin: 1em 0;
 }
 /* nvd3 styles */
+#forecast-graph{
+    overflow-x: auto;
+}
 svg.nvd3-svg {
     height: 312px;
     width: 820px;
     background: black;
+    /*background: url("/img/bg2.jpg");*/
 }
 /* fixed navbar styles */
 /*@media (max-width:769px){
