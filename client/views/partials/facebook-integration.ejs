@@ -53,4 +53,15 @@
       });
     }
   }
+  function postShare() {
+    FB.ui({
+      method: 'share',
+      href: document.URL,
+      quote: 'test quote',
+      hashtag: '#pngweather'
+    },(res)=>{
+      $('#message').html('<p>'+response+'</p>')
+      console.log(res);
+    })
+  }
 </script>
