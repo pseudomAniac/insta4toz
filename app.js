@@ -109,10 +109,10 @@ app.get('/webhook',(req,res)=>{
 });
 app.post('/webhook',(req,res)=>{
 	var data = req.body;
-	console.log("REQUEST BODY\n",req.body);
+	// console.log("REQUEST BODY\n",req.body);
 	if (data.object = 'page') {
 		data.entry.forEach((entry)=>{
-			console.log("REQUEST MESSAGING\n",entry);
+			// console.log("REQUEST MESSAGING\n",entry);
 			var pageID = entry.id;
 			var timeOfEvent = entry.time;
 			entry.messaging.forEach((event)=>{
