@@ -53,11 +53,12 @@
       });
     }
   }
+  // var city = document.url.split('/')
   function postShare() {
     FB.ui({
       method: 'share',
       href: document.URL,
-      quote: 'test quote',
+      quote: getWeather(),
       hashtag: '#pngweather'
     },(res)=>{
       $('#message').html('<p>'+response+'</p>')

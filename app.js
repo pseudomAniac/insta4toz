@@ -38,6 +38,9 @@ router.get("/", function(req,res) {
 		});
 	});
 });
+router.get('/test/fb', function(req,res) {
+	res.redirect("http://www.facebook.com/sudo.snapit");
+})
 app.use('/',router);
 router.use((req,res,next)=>{
 	res.locals.city = req.query.city;
@@ -77,10 +80,24 @@ router.get('/weather/', function (req, res) {
 	});
 });
 router.get('/test',(req,res)=>{
-	// res.send("success")
 	res.render('pages/force-graph');
 })
 app.use('/api',router);
+router.get('/calendar',(req,res)=>{
+	// res.send("success")
+	res.render('pages/calendar-app',{
+		appInfo: {
+				url: "https://sudoweather.herokuapp.com/app/calendar",
+				title: "Calendar App",
+				description: "Awesome app that appends a calendar to your profile picture!",
+				img: {
+					title: "Sudo Weather Report - City Weather n Forecase",
+					url: "https://sudoweather.herokuapp.com/img/bg5.jpg"
+				}
+			}
+	});
+});
+app.use('/app',router);
 app.get('/webhook',(req,res)=>{
 	if(req.query['hub.mode'] === 'subscribe' && req.query['hub.verify_token'] === 'monobelle101516'){
 		console.log("validated webhook");
@@ -92,6 +109,7 @@ app.get('/webhook',(req,res)=>{
 });
 app.post('/webhook',(req,res)=>{
 	var data = req.body;
+	console.log("REQUEST BODY\n",req.body);
 	if (data.object = 'page') {
 		data.entry.forEach((entry)=>{
 			var pageID = entry.id;

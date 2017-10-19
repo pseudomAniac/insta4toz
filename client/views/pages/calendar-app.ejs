@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WeatherReports">
+	<head>
+		<% include ../partials/head %>
+	</head>
+	<body class="container-fluid">
+		<% include ../partials/facebook-integration %>
+		<section id="header" class="row bg-primary">
+			<div class="col-xs-12">
+				<% include ../partials/header %>
+			</div>
+		</section>
+		<main class="row">
+			<section id="weather-section" class="col-xs-12 col-sm-5 well-sm">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 text-center">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- large mobile banner -->
+						<ins class="adsbygoogle"
+						     style="display:inline-block;width:320px;height:100px"
+						     data-ad-client="ca-pub-3511968554265090"
+						     data-ad-slot="3106215165"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+				</div>
+			</section>
+			<section id="calendar-section"><% include ../partials/templates/calendar-template %></section>
+			<section class="col-xs-12">
+				<div id="map" style="height: 230px; width: 100%;"></div>
+			</section>
+
+		</main>
+		<% include ../partials/footer %>
+	</body>
+	<% include ../partials/scripts %>
+	<script src="/scripts/saveSvgAsPng.js"></script>
+</html>
