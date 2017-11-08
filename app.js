@@ -81,7 +81,13 @@ router.get('/weather/', function (req, res) {
 });
 router.get('/test',(req,res)=>{
 	res.render('pages/force-graph');
-})
+});
+router.get('/test/dendrogram',(req,res)=>{
+	res.render('pages/dendrogram');
+});
+router.get('/test/tournament',(req,res)=>{
+	res.render('pages/tournament-graph');
+});
 app.use('/api',router);
 router.get('/calendar',(req,res)=>{
 	// res.send("success")
