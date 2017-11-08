@@ -124,6 +124,7 @@ app.post('/webhook',(req,res)=>{
 			entry.messaging.forEach((event)=>{
 				if (event.message) {
 					fbmsg.receivedMessage(event);
+					console.log("message event!",event)
 				} else {
 					console.log("Webhook received unknown event!",event);
 				}
