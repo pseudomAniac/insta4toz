@@ -126,8 +126,11 @@ app.post('/webhook',(req,res)=>{
 					fbmsg.receivedMessage(event);
 					console.log("message event!",event)
 				} else {
-					if (event.postback.payload) fbmsg.startBot(event);
-					console.log("Webhook received unknown event!",event);
+					if (event.postback.payload){
+						fbmsg.payloadHandler(event);
+						console.log("Webhook received payload event!",event);
+					}
+					console.log("Webhook received UNKNOWN event!",event);
 				}
 			});
 		});
