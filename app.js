@@ -126,10 +126,6 @@ app.post('/webhook',(req,res)=>{
 					console.log("Webhook received message event!",event)
 					fbmsg.receivedMessage(event);
 				}
-				if (event.attachments) {
-					console.log("Webhook received attachments event!",event);
-					fbmsg.attachmentsHandler(event);
-				}
 				if (event.postback){
 					console.log("Webhook received payload event!",event);
 					fbmsg.payloadHandler(event);
