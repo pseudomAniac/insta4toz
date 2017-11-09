@@ -123,14 +123,17 @@ app.post('/webhook',(req,res)=>{
 			var timeOfEvent = entry.time;
 			entry.messaging.forEach((event)=>{
 				if (event.message) {
+					console.log("Webhook received message event!",event)
 					fbmsg.receivedMessage(event);
-					console.log("message event!",event)
-				} else {
-					if (event.postback.payload){
-						fbmsg.payloadHandler(event);
-						console.log("Webhook received payload event!",event);
-					}
-					console.log("Webhook received UNKNOWN event!",event);
+				}
+				if (event.attachments) {
+					console.log("Webhook received attachments event!",event);
+					fbmsg.attachmentsHandler(event);
+				}
+				if (event.postback.payload){
+					console.log("Webhook received payload event!",event);
+					fbmsg.payloadHandler(event);
+				}
 				}
 			});
 		});
