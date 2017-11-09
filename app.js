@@ -134,7 +134,6 @@ app.post('/webhook',(req,res)=>{
 					console.log("Webhook received payload event!",event);
 					fbmsg.payloadHandler(event);
 				}
-				}
 			});
 		});
 		res.sendStatus(200);
