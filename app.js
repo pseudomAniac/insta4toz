@@ -42,6 +42,13 @@ router.get('/test/fb', function(req,res) {
 	res.redirect("http://www.facebook.com/sudo.snapit");
 })
 app.use('/',router);
+router.get('/fb-messenger',(req,res)=>{
+	res.send("You are now subscribed to received weather updates daily in your facebook messenger! Thank you!")
+})
+router.get('/email',(req,res)=>{
+	res.send("You are now subscribed to received weather updates daily in your email! Thank you!")
+})
+app.use('/subscribe',router);
 router.use((req,res,next)=>{
 	res.locals.city = req.query.city;
 	// console.log('res.locals.city -',res.locals.city);
