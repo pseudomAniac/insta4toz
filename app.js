@@ -38,6 +38,10 @@ router.get("/", function(req,res) {
 		});
 	});
 });
+router.get('/test/me/out',(req,res)=>{
+	console.log(req.originalUrl);
+	res.send(req.originalUrl);
+})
 router.get('/test/fb', function(req,res) {
 	res.redirect("http://www.facebook.com/sudo.snapit");
 })
@@ -67,24 +71,43 @@ router.get('/weather_json', (req,res)=>{
 	})
 });
 router.get('/weather/', function (req, res) {
-	var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
-	// console.log('req.originalUrl -',req.originalUrl);
-	// console.log('weather city -',mycity)
-	weather.getCurrent(res.locals.city, function(data) {
-		// console.log('data',data);
-		res.render("pages/weather",{
-			weda:data,
-			appInfo: {
-				url: "https://sudoweather.herokuapp.com/api/weather/?city="+res.locals.city.toLowerCase(),
-				title: mycity,
-				description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
-				img: {
-					title: "Sudo Weather Reoprt - Logo",
-					url: "https://sudoweather.herokuapp.com/img/"+res.locals.city.toLowerCase()+".png"
+	if (req.query.city)	{
+		var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
+		weather.getCurrent(res.locals.city, function(data) {
+			// console.log('data',data);
+			res.render("pages/weather",{
+				weda:data,
+				appInfo: {
+					url: "https://sudoweather.herokuapp.com/api/weather/?city="+res.locals.city.toLowerCase(),
+					title: mycity,
+					description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
+					img: {
+						title: "Sudo Weather Reoprt - Logo",
+						url: "https://sudoweather.herokuapp.com/img/"+res.locals.city.toLowerCase()+".png"
+					}
 				}
-			}
+			});
 		});
-	});
+	}
+	if (req.query.lat && req.query.lon) {
+		weather.getCurrentCoord({lat:req.query.lat,long:req.query.lon},(err,cb)=>{
+			if(err) console.log("error retrieving data from coordinates",err);
+			if (cb) {
+				res.render('pages/weather',{
+					weda:cb,
+					appInfo: {
+						url: req.baseUrl+req.originalUrl,
+						title: cb.name.toUpperCase()+" WEATHER",
+						description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
+						img: {
+							title: "Sudo Weather Reoprt - Logo",
+							url: "https://sudoweather.herokuapp.com/img/"+cb.name.toLowerCase()+".png"
+						}
+					}
+				})
+			}
+		})
+	}
 });
 router.get('/test',(req,res)=>{
 	res.render('pages/force-graph');
