@@ -70,6 +70,28 @@ router.get('/weather_json', (req,res)=>{
 		err ? res.send(err) : res.send(data);
 	})
 });
+router.get('/weather/calebniara/', function (req, res) {
+	if (req.query.lat && req.query.lon) {
+		var latitude=req.query.lat,longitude=req.query.lon;
+		weather.getCurrentCoord({lat:latitude,lon:longitude},(cb)=>{
+			if (cb) {
+				// console.log("info retrieved",cb);
+				res.render('pages/weather-calebniara',{
+					weda:cb,
+					appInfo: {
+						url: req.baseUrl+req.originalUrl,
+						title: cb.name.toUpperCase()+" WEATHER",
+						description: cb.name + " temp: "+cb.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
+						img: {
+							title: "Sudo Weather Reoprt - Logo",
+							url: "https://sudoweather.herokuapp.com/img/"+cb.name.toLowerCase()+".png"
+						}
+					}
+				})
+			}
+		})
+	}	
+});
 router.get('/weather/', function (req, res) {
 	if (req.query.city)	{
 		var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
@@ -90,15 +112,16 @@ router.get('/weather/', function (req, res) {
 		});
 	}
 	if (req.query.lat && req.query.lon) {
-		weather.getCurrentCoord({lat:req.query.lat,long:req.query.lon},(err,cb)=>{
-			if(err) console.log("error retrieving data from coordinates",err);
+		var latitude=req.query.lat,longitude=req.query.lon;
+		weather.getCurrentCoord({lat:latitude,lon:longitude},(cb)=>{
 			if (cb) {
+				console.log("info retrieved",cb);
 				res.render('pages/weather',{
 					weda:cb,
 					appInfo: {
 						url: req.baseUrl+req.originalUrl,
 						title: cb.name.toUpperCase()+" WEATHER",
-						description: data.name + " temp: "+data.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
+						description: cb.name + " temp: "+cb.main.temp +" Deg. Celcius. Get your local weather update along with 7 days forecast. Click here",
 						img: {
 							title: "Sudo Weather Reoprt - Logo",
 							url: "https://sudoweather.herokuapp.com/img/"+cb.name.toLowerCase()+".png"
@@ -168,6 +191,8 @@ app.post('/webhook',(req,res)=>{
 app.set('view engine','ejs');
 // app.set('leaflet','/assets/leaflet');
 app.set('views','./client/views');
+app.use(express.static('client'));
+app.use(express.static('public'));
 app.set('port', (process.env.PORT || 3000))
 app.listen(app.get('port'), function() {
 	console.log("app started at " + app.get('port'));

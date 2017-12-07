@@ -1,0 +1,216 @@
+<script>
+	var weatherData = null,
+	cityURL = document.URL.split('?')[1];
+	// console.log('cityURL',cityURL)
+	function createGraph(forecastData) {
+		nv.addGraph(function() {
+			var chart = nv.models.lineChart()
+				// .height(300)
+				.useInteractiveGuideline(true);
+			chart.xAxis
+				.axisLabel("Date & Time")
+				.tickFormat((d)=>{
+					// console.log("date time fx =",new Date(d*1000))
+					return d3.time.format('%d/%m-%Hhrs')(new Date(d*1000));
+				})
+				// .tickFormat(d3.format('g'));
+			chart.yAxis
+				.axisLabel(null)
+				.tickFormat(d3.format('g'));
+			// console.log("chartData -",forecastData)
+			d3.select("#forecast-graph>svg")
+				.datum(forecastData)
+				.call(chart);
+			nv.utils.windowResize(function(){chart.update()});
+			return chart;
+		});
+	}
+	var json_weather = {},
+		main_centers = ['port moresby','lae', 'mount hagen', 'rabaul','madang','wewak','vanimo','goroka','mendi','porgera','koroba','banz','kundiawa','popondetta','alotau','kiunga','arawa','buka','daru','kerema','kokopo','kimbe','kavieng','lorengau']
+	function getWeather() {
+		main_centers.forEach((cityName)=>{
+			$.get('/api/weather_json/?city='+cityName).done((data)=>{
+				json_weather[""+cityName+""] = {temp:data.main.temp};
+				json_weather[""+cityName+""].weather = data.weather;
+			});
+		});
+	};
+	getWeather();
+	$(()=>{ // in the next upgrade, create a single page application
+		// layers
+
+
+		var lae = L.marker([-6.7325896, 147.0021090]).bindPopup(()=>{
+				var wCity = json_weather["lae"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Lae</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=lae&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Lae';
+			}),
+			mdg = L.marker([-5.2295506, 145.7655979]).bindPopup(()=>{
+				var wCity = json_weather["madang"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Madang</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=madang&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Madang';
+			}),
+			wwk = L.marker([-3.5719304, 143.6192672]).bindPopup(()=>{
+				var wCity = json_weather["wewak"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Wewak</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=wewak&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Wewak';
+			}),
+			van = L.marker([-2.6933613, 141.285896]).bindPopup(()=>{
+				var wCity = json_weather["vanimo"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Vanimo</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=vanimo&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Vanimo';
+			}),
+			gka = L.marker([-6.0729261, 145.3943813]).bindPopup(()=>{
+				var wCity = json_weather["goroka"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Goroka</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=goroka&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Goroka';
+			}),
+			hgn = L.marker([-5.8568155, 144.2203615]).bindPopup(()=>{
+				var wCity = json_weather["mount hagen"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Mount Hagen</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=mount hagen&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Mt. Hagen';
+			}),
+			men = L.marker([-6.1493443, 143.6401033]).bindPopup(()=>{
+				var wCity = json_weather["mendi"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Mendi</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=mendi&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Mendi';
+			}),
+			pog = L.marker([-5.4631945, 143.1390237]).bindPopup(()=>{
+				var wCity = json_weather["porgera"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Porgera</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=porgera&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Porgera';
+			}),
+			kor = L.marker([-5.3824032, 142.4562826]).bindPopup(()=>{
+				var wCity = json_weather["koroba"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Koroba</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=koroba&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Koroba';
+			}),
+			bnz = L.marker([-5.8007166, 144.6187019]).bindPopup(()=>{
+				var wCity = json_weather["banz"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Banz</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=banz&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Banz';
+			}),
+			kwa = L.marker([-6.0215372, 144.9597501]).bindPopup(()=>{
+				var wCity = json_weather["kundiawa"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kundiawa</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kundiawa&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kundiawa';
+			}),
+			pop = L.marker([-8.7652916, 148.2220457]).bindPopup(()=>{
+				var wCity = json_weather["popondetta"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Popondetta</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=popondetta&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Popondetta';
+			}),
+			alo = L.marker([-10.3162914, 150.4555749]).bindPopup(()=>{
+				var wCity = json_weather["alotau"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Alotau</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=alotau&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Alotau';
+			}),
+			kiu = L.marker([-6.1218652, 141.2909603]).bindPopup(()=>{
+				var wCity = json_weather["kiunga"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kiunga</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kiunga&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kiunga';
+			}),
+			arw = L.marker([-6.2281365, 155.5577904]).bindPopup(()=>{
+				var wCity = json_weather["arawa"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Arawa</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=arawa&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Arawa';
+			}),
+			bka = L.marker([-5.4254673, 154.6637721]).bindPopup(()=>{
+				var wCity = json_weather["buka"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Buka</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=buka&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Buka';
+			}),
+			dar = L.marker([-9.0809134, 143.1914661]).bindPopup(()=>{
+				var wCity = json_weather["daru"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Daru</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=daru&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Daru';
+			}),
+			ker = L.marker([-7.9648534, 145.7633829]).bindPopup(()=>{
+				var wCity = json_weather["kerema"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kerema</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kerema&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kerema';
+			}),
+			kop = L.marker([-4.3521554, 152.2641211]).bindPopup(()=>{
+				var wCity = json_weather["kokopo"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kokopo</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kokopo&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kokopo';
+			}),
+			kmb = L.marker([-5.5531189, 150.1313882]).bindPopup(()=>{
+				var wCity = json_weather["kimbe"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kimbe</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kimbe&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kimbe';
+			}),
+			kvg = L.marker([-2.5725321, 150.7896821]).bindPopup(()=>{
+				var wCity = json_weather["kavieng"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Kavieng</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=kavieng&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Kavieng';
+			}),
+			lor = L.marker([-2.3979281, 147.1800852]).bindPopup(()=>{
+				var wCity = json_weather["lorengau"];
+				if (wCity.temp != null) {
+					return "<h3 class='text-center'>"+wCity.temp+" &deg;C Lorengau</h3><p>"+wCity.weather[0].main+" - "+wCity.weather[0].description+". <a href='/api/weather/?city=lorengau&ref=map'>Get 7Day Forecast</a>.</p>";
+				} else return 'Lorengau';
+			});
+		// var cty = L.layerGroup([lae,gka,hgn,kop,pop,mdg,wwk,kmb,van,kvg,alo,kiu,arw,bka,dar,men,pog,kor,ker,bnz,kwa,lor]),
+		var hld = L.layerGroup([gka,hgn,men,pog,kor,bnz,kwa]),
+			mms = L.layerGroup([lae,mdg,wwk,van]),
+			isl = L.layerGroup([kop,kmb,kvg,lor]),
+			sth = L.layerGroup([pop,alo,kiu,arw,bka,dar,ker]);
+		var standard = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'}),
+			topograph = L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', { attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+		var weatherMap = L.map('map',{
+			preferCanvas: true,
+			zoomSnap: 0.25,
+			// dragging: false,
+			center: [-6.7325896, 147.0021090],
+			minZoom: 6,
+			maxZoom: 8,
+			zoom: 6,
+			layers: [standard,hld,mms,isl,sth]
+		});
+		var basemaps = {
+			"Standard": standard,
+			"Topograph": topograph
+		};
+		var overlaymaps = {
+			"Highlands": hld,
+			"Momase": mms,
+			"Islands": isl,
+			"Southern": sth
+		}
+		L.control.layers(basemaps,overlaymaps).addTo(weatherMap);
+	});
+	$(document).ready(function() {
+		$('#search_city').on('change',(event)=>{
+			var toCity = $('#search_city').val();
+			console.log("get weather for",toCity);
+			$(location).attr('href', '/api/weather/?city='+toCity.toLowerCase());
+		});
+		$.get("/api/forecast/?"+cityURL)
+		 .done(function(data){
+			console.log('forecast data -',data);
+			createGraph(data);
+		});
+	});
+</script>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<% include ../partials/head %>
+		<!-- <% /* include ../partials/fb-pixels */ %> -->
+	</head>
+	<body class="container-fluid">
+		<% include ../partials/facebook-integration %>
+		<main class="row">
+			<section id="weather-section" class="col-xs-12 well-sm">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12">
+						<% include ../partials/header %>
+					</div>
+					<div class="col-xs-12 col-sm-12">
+						<article id="weather-info" class="row text-primary bg-warning">
+							<div class="col-sm-10 col-sm-offset-1">
+								<form class="clearfix row form form-inline form-horizontal" ng-app="WeatherReports" ng-controller="forecastController">
+									<input ng-model="latitude" type="number" placeholder="latitude" class="form-control-static col-xs-5">
+									<input ng-model="longitude" type="number" placeholder="longitude" class="form-control-static col-xs-5">
+									<button id="submitQuery" type="submit" class="btn text-center form-control-static col-xs-2"><i class="glyphicon glyphicon-send"></i></button>
+								</form>
+								<h3 class="forecast-title"><%= weda.name %></h3>
+								<table>
+									<thead>
+										<tr>
+											<th>Variable</th>
+											<th>Information</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Latitude</td>
+											<td><%= weda.coord.lat %></td>
+										</tr>
+										<tr>
+											<td>Longitude</td>
+											<td><%= weda.coord.lon %></td>
+										</tr>
+										<tr>
+											<td>Temperature</td>
+											<td><%= weda.main.temp %> &deg;C</td>
+										</tr>
+										<tr>
+											<td>Cloud cover</td>
+											<td><%= weda.clouds.all %>%</td>
+										</tr>
+										<tr>
+											<td>Description</td>
+											<td><%= weda.weather[0].description%></td>
+										</tr>
+										<tr>
+											<td>Wind Speed</td>
+											<td><%= weda.wind.speed %> km/h</td>
+										</tr>
+										<tr>
+											<td>Wind Direction</td>
+											<td><%= weda.wind.deg %> &deg;</td>
+										</tr>
+										<tr>
+											<td>Air pressure</td>
+											<td><%= weda.main.pressure %> hPa</td>
+										</tr>
+										<tr>
+											<td>Humidity</td>
+											<td><%= weda.main.humidity %>%</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</article>
+					</div>
+				</div>
+			</section>
+		</main>
+		<% include ../partials/footer %>
+	</body>
+	<% include ../partials/scripts %>
+	<script src="/controllers/app-client-controller.js"></script>
+</html>
