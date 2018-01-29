@@ -264,7 +264,7 @@ footer .col-md-5.text-right {
 }
 svg.nvd3-svg {
     height: 312px;
-    width: 820px;
+    width: 100%;
     background: black;
     /*background: url("/img/bg2.jpg");*/
 }
@@ -290,13 +290,14 @@ svg.nvd3-svg {
     border-bottom: 2px solid gold;
     padding-bottom: 1em;
 }
-#forecast-title{
-    display: block;
-    top: 17.5%;
-    right: 1em;
+#forecast-title {
+    z-index: 1000;
+    background: black;
+    top: 0;
+    left: 3em;
     position: absolute;
     color: goldenrod;
-    padding: 0.25em .1em;
+    display: block;
 }
 #menu-list{
     display: flex;

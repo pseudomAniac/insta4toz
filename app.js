@@ -21,7 +21,7 @@ router.post("/", function (req, res) {
 	res.redirect("/");
 });
 router.get("/", function(req,res) {
-	var city = "png"
+	var city = "port moresby"
 	weather.getCurrent(city, function(data) {
 		res.render("pages/index",{
 			weda:data,
@@ -57,7 +57,7 @@ router.use((req,res,next)=>{
 	res.locals.city = req.query.city;
 	// console.log('res.locals.city -',res.locals.city);
 	// next({a:"test"});
-	next()
+	next();
 });
 router.get("/forecast", function (req, res) {
 	console.log('req.query.city -',req.query.city);
@@ -90,13 +90,15 @@ router.get('/weather/calebniara/', function (req, res) {
 				})
 			}
 		})
-	}	
+	} else {
+		res.send(500);
+	}
 });
 router.get('/weather/', function (req, res) {
 	if (req.query.city)	{
 		var mycity = res.locals.city.toUpperCase() + " WEATHER REPORT";
 		weather.getCurrent(res.locals.city, function(data) {
-			// console.log('data',data);
+			// console.log('weather data latitude: ',data.city.coord.lat);
 			res.render("pages/weather",{
 				weda:data,
 				appInfo: {

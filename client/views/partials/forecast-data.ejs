@@ -30,7 +30,12 @@
 	function getWeather() {
 		main_centers.forEach((cityName)=>{
 			$.get('/api/weather_json/?city='+cityName).done((data)=>{
-				json_weather[""+cityName+""] = {temp:data.main.temp};
+				if (data.main && data.main.temp) {
+					// console.log("weather foreacast data "+cityName+" "+data.main.temp);
+					json_weather[""+cityName+""] = {temp:data.main.temp};
+				} else { 
+					json_weather[""+cityName+""] = {temp:"undefined"};
+				}
 				json_weather[""+cityName+""].weather = data.weather;
 			});
 		});

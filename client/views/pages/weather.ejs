@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="WeatherReports">
+<html lang="en">
 	<head>
 		<% include ../partials/head %>
 		<!-- <% /* include ../partials/fb-pixels */ %> -->
@@ -24,11 +24,11 @@
 						</script>
 					</div>
 					<div class="col-xs-12 col-sm-12">
-						<article id="weather-info" class="row text-primary bg-warning text-center">
-							<div class="col-sm-10 col-sm-offset-1">
+						<article id="weather-info" class="row text-primary bg-warning text-center" ng-app="WeatherReports">
+							<div class="col-sm-10 col-sm-offset-1" ng-controller="forecastController">
 								<h3 class="forecast-title"><%= weda.name %></h3>
-								<% if (weda.coordinates) { %>
-									<h6 class="text-muted">latitude: <% weda.coordinates.lat %>, longitude: <% weda.coordinates.lon %></h6>
+								<% if (weda.coord) { %>
+									<h6 class="text-muted">latitude: <span><%= weda.coord.lat %></span>, longitude: <span><%= weda.coord.lon %></span></h6>
 								<% } %>
 								<p>The ground temperature is <%= weda.main.temp %> &deg;C. with <%= weda.clouds.all %>% of the sky covered with <%= weda.weather[0].description%>.</p>
 								<p>The wind is averaging speeds of up to <%= weda.wind.speed %> km/h blowing in from the North at <%= weda.wind.deg %> &deg;</p>
