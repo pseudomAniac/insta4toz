@@ -1,6 +1,6 @@
 angular.module('WeatherReports',[])
 	.controller('forecastController',['$scope', function($scope) {
-			$scope.latitude = '4543';
+			// $scope.latitude = '4543';
 			// $scope.longitude = '';
 	
 			// $scope.getWeatherData = function() {
@@ -9,3 +9,7 @@ angular.module('WeatherReports',[])
 			// 	console.log("getWeatherData clicked!")
 			// }
 		}]);
+angular.module('mapApp',[])
+	.controller('mapAppController',['$scope',($scope)=>{
+		// code goes here
+	}])

@@ -66,7 +66,7 @@ router.get("/forecast", function (req, res) {
 	});
 });
 router.get('/weather_json', (req,res)=>{
-	weather.getCurrent(res.locals.city,(err, data)=>{
+	weather.getWeatherSummary({latitude:req.query.lat,longitude:req.query.lon},(err, data)=>{
 		err ? res.send(err) : res.send(data);
 	})
 });

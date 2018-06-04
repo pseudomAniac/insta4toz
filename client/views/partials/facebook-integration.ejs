@@ -6,8 +6,9 @@
         status     : true,
         cookie     : true,
         xfbml      : true,
-        version    : 'v2.8'
+        version    : 'v2.12'
       });
+    FB.AppEvents.logPageView();   
     // ADD ADDITIONAL FACEBOOK CODE HERE
     // Place following code after FB.init call.
 
@@ -31,17 +32,19 @@
         // Otherwise, show Login dialog first.
         FB.login(function(response) {
           onLogin(response);
-        }, {scope: 'public_profile,email,user_friends,publish'});
+        }, {scope: 'public_profile,email'});
       }
     });
   };
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1476643879330794";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+  
   function onLogin(response) {
     if (response.status == 'connected') {
       FB.api('/me','GET',{"fields":"first_name,location, picture{url}"}, function(response) {
@@ -53,6 +56,7 @@
       });
     }
   }
+
   // var city = document.url.split('/')
   function postShare() {
     FB.ui({
